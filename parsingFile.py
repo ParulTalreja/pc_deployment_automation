@@ -9,71 +9,52 @@ from urllib.request import urlopen
 
 
 
-
+#This File reads the deployment logs and Collated PE logs. Parse the logs and fetch the necessary information like Exception Message, PC IP address and Task information
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     #target_url='http://10.41.24.115:9000/scheduled_deployments/2022-08-31/630fa0b173101a6b4ea5a4da/deployments/630fa0b173101a6b4ea5a4dd/DEPLOY/630fa0b173101a6b4ea5a4dd_1.txt'
 
-    target_url='http://10.41.24.115:9000/scheduled_deployments/2022-09-12/631ebc3482e14f8c022bf9cb/deployments/631ebc3482e14f8c022bf9cd/DEPLOY/631ebc3482e14f8c022bf9cd_1.txt'
-    searchException(target_url)
+    target_url='http://10.41.24.115:9000/scheduled_deployments/2022-09-22/632c57b957f2f36ab3aaba57/deployments/632c57b957f2f36ab3aaba59/DEPLOY/632c57b957f2f36ab3aaba59_1.txt'
+    #searchException(target_url)
     searchIPAddress(target_url)
-    pe_collated_log_url='http://10.41.24.115:9000/scheduled_deployments/2022-09-12/631ebc3482e14f8c022bf9cb/deployments/631ebc3482e14f8c022bf9cd/entity_logs/retry_0/collated_logs_pe/pc_deployment_logs_from_pe_10.40.164.175.log'
+    pe_collated_log_url='http://10.41.24.115:9000/scheduled_deployments/2022-09-22/632c57b957f2f36ab3aaba57/deployments/632c57b957f2f36ab3aaba59/entity_logs/retry_0/collated_logs_pe/pc_deployment_logs_from_pe_10.22.184.14.log'
     searchPEInfo(pe_collated_log_url)
 
 
 def searchPEInfo(pe_collated_log_url):
     response = urllib.request.urlopen(pe_collated_log_url)
-    important = []
     test = []
     startIndex=0
     endIndex=0
-    keep_phrases = ["\"operation_type\"",
+    output = "{"
+
+    keep_phrases = ["\"message\"",
                     "\"weight\"",
                     ]
     for index, line in enumerate(response):
         line = line.decode(errors='ignore')
-        if "\"operation_type\"" in line:
+        if "\"message\"" in line:
             startIndex=index
         if "\"weight\"" in line:
             endIndex=index
         if(startIndex>endIndex and startIndex!=0):
-            #print("startIndex: ",startIndex)
-            #print("endIndex: ",endIndex)
-            important.append(line.strip())
+            line=line.strip()
+            output=output+line
             startIndex=startIndex+1
         if(startIndex==endIndex and startIndex!=0):
-            #print("Test startIndex: ", startIndex)
-            #print("Test endIndex: ", endIndex)
-            #test=json.dumps(important)
-            test.append(important)
-            #print(test)
-            important=[]
+            output = output + line.strip() + "}"
+            test.append(output)
+            output="{"
             endIndex=endIndex+1
 
-    #print(len(test))
     print(*test, sep='\n')
-
-    # for index, line in enumerate(response):
-    #     line = line.decode(errors='ignore')
-    #     for phrase in keep_phrases:
-    #         if phrase in line:
-    #             important.append(index)
-    #             break
-    #     if (index>=413 and index<=428):
-    #         test += line
-    # print(important)
-    # print(test)
-
-
-
-    # for line in urllib.request.urlopen(pe_collated_log_url):
-    #     line = line.decode(errors='ignore')
-    #
-    #     if re.search(r'Ergon_', line, re.S):
-    #         x = line.split("Ergon_")
-    #         print(x)
-    #         # print('Exception Message', line)
+    for i in test:
+        obj = json.loads(i)
+        operation_type = obj['operation_type']
+        status= obj['status']
+        # if(status=="kFailed"):
+        #     print('Operation Type:',operation_type,'Task UUID:',obj['uuid'],'Subtask_UUID:',obj['subtask_uuid_list'])
 
 
 def searchException(target_url):
@@ -98,6 +79,7 @@ def searchIPAddress(target_url):
             #print(line)
             x = line.split(":{")
             string = '{' + x[1]
+            #print(string)
             obj = json.loads(string)
             pc_vm_list=obj['resources']['pc_vm_list']
             for item in pc_vm_list:

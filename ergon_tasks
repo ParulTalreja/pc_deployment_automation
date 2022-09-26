@@ -1,0 +1,746 @@
+{
+"internal_opaque": "KGRwMApTJ3BhcmVudF90YXNrX3V1aWQnCnAxClMnJwpwMgpzUyd2ZXJzaW9uJwpwMwpWcGMuMjAyMi42CnA0CnNTJ2luaXRpYWxfcGFzc3dvcmQnCnA1ClYKcDYKc1MnYXV0b19yZWdpc3RlcicKcDcKSTAwCnNTJ3NvZnR3YXJlX3R5cGUnCnA4ClZwcmlzbV9jZW50cmFsX2RlcGxveQpwOQpzUydhZGRfdG9fZXhpc3RpbmdfY2x1c3Rlcl9pcCcKcDEwCmc2CnNTJ2RhdGFfZGlza19zaXplX21pYicKcDExCkw1MTIwMDBMCnNTJ2NsdXN0ZXJfc3BlYycKcDEyClMnXHgxYVx4YTFceDAyXG4kNjAwZTk2ODUtZWMzMi00YTg0LWIyMzUtZWUyOTNjNTE0MjNiXHgxMiFhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTAoXHgwNjBceDgwXHhkMFx4MDFCWlxuXHgwYzEwLjIyLjE0Mi4yMlx4MTJccjI1NS4yNTUuMjU1LjBceDFhXHgwYjEwLjIyLjE0Mi4xIiQxYzM4YzQyNi1mOWZmLTQ2NGUtOGZlZS05MWE3YWE4YzU5N2EqXHgwOHZsYW4uMjQxSlx4MGIxMC40MC42NC4xNUpceDBiMTAuNDAuNjQuMTZSXHgxNTAuY2VudG9zLnBvb2wubnRwLm9yZ1JceDE1MS5jZW50b3MucG9vbC5udHAub3JnUlx4MTUyLmNlbnRvcy5wb29sLm50cC5vcmdSXHgxNTMuY2VudG9zLnBvb2wubnRwLm9yZyBceDAyQlx4MTdkZWZhdWx0LWNvbnRhaW5lci0yMTA4N0pceDBjMTAuMjIuMTQyLjI1JwpwMTMKcy4=",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 7,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Download and deploy prism central",
+"uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"start_time_usecs": "2022-09-22T13:46:39Z",
+"response": {
+"error_detail": "Encountered Exception in cluster creation: UVM  cluster creation is failed"
+},
+"last_updated_time_usecs": "2022-09-22T14:11:15Z",
+"create_time_usecs": "2022-09-22T13:46:39Z",
+"status": "kFailed",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "0005e943-f1bc-79cb-0000-00000000525f",
+"entity_type": "kCluster"
+}
+],
+"component": "cluster_config",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:11:15Z",
+"percentage_complete": 100,
+"operation_type": "kPrismCentralDeploymentRequest"
+}
+{
+"parent_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"internal_opaque": "KGRwMQpTJ2FwcF9kZXBsb3ltZW50X3Rhc2tfdXVpZCcKcDIKUyckJlx4OTlceDhiXHgwZVx4ODFCSVNceGI2XHhkYnZGY1x4Y2RceDE3JwpwMwpzLg==",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 7,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Encountered Exception in cluster creation: UVM  cluster creation is failed",
+"uuid": "2f165b9e-cc17-45b9-7a9f-28ba48204a2a",
+"start_time_usecs": "2022-09-22T13:46:40Z",
+"response": {
+"error_detail": "Encountered Exception in cluster creation: UVM  cluster creation is failed"
+},
+"last_updated_time_usecs": "2022-09-22T14:11:15Z",
+"create_time_usecs": "2022-09-22T13:46:40Z",
+"status": "kFailed",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_type": "kCluster"
+}
+],
+"component": "infra",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:11:15Z",
+"percentage_complete": 100,
+"operation_type": "Prism Central Deployment"
+}
+{
+"parent_task_uuid": "2f165b9e-cc17-45b9-7a9f-28ba48204a2a",
+"request_context": {},
+"logical_timestamp": 5,
+"weight": 600,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Encountered Exception in cluster creation: UVM  cluster creation is failed",
+"uuid": "2426998b-0e81-4249-53b6-db764663cd17",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {
+"error_detail": "Encountered Exception in cluster creation: UVM  cluster creation is failed"
+},
+"last_updated_time_usecs": "2022-09-22T14:11:15Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kFailed",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_type": "kCluster"
+}
+],
+"component": "infra",
+"sequence_id": 3,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:11:15Z",
+"percentage_complete": 100,
+"operation_type": "AppDeployment"
+}
+{
+"parent_task_uuid": "2426998b-0e81-4249-53b6-db764663cd17",
+"request_context": {},
+"logical_timestamp": 1,
+"weight": 300,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "73769775-2e15-47c4-590c-8a1612d9368c",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T14:11:15Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kAborted",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"component": "kCluster",
+"sequence_id": 4,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:11:15Z",
+"percentage_complete": 100,
+"operation_type": "Post Deployment Steps"
+}
+{
+"parent_task_uuid": "2426998b-0e81-4249-53b6-db764663cd17",
+"request_context": {},
+"logical_timestamp": 2,
+"weight": 300,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Encountered Exception in cluster creation: UVM  cluster creation is failed",
+"uuid": "60c39db8-2daf-4b5b-5753-7735d461bb21",
+"start_time_usecs": "2022-09-22T14:08:06Z",
+"response": {
+"error_detail": "Encountered Exception in cluster creation: UVM  cluster creation is failed"
+},
+"last_updated_time_usecs": "2022-09-22T14:11:15Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kFailed",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"component": "kCluster",
+"sequence_id": 3,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:11:15Z",
+"percentage_complete": 100,
+"operation_type": "Cluster Creation"
+}
+{
+"internal_opaque": "KGRwMApTJ2ludGVybmFsX3ZtX3VwZGF0ZV9vcF9oYW5kbGUnCnAxClMnXHRceGVkXHhiNGRceGU1WUtceDkzXHhhOEdzXHhkMFx4OWJceDhiXHgwMHonCnAyCnNTJ2ludGVybmFsX2N1cnJlbnRfc3RhdGVfaW5mbycKcDMKKFMnQ09OU09MSURBVEVfUkVTVUxUUycKcDQKTnRwNQpzUydpbnRlcm5hbF92bV91cGRhdGVfaWRlbXBvdGVuY2VfdG9rZW4nCnA2ClMnXHRceGVkXHhiNGRceGU1WUtceDkzXHhhOEdzXHhkMFx4OWJceDhiXHgwMHonCnA3CnMu",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 6,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "5ac3a4c8-e5fa-45ad-b865-797a40c38e93",
+"start_time_usecs": "2022-09-22T14:08:06Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T14:08:06Z",
+"create_time_usecs": "2022-09-22T14:08:06Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5ac3a4c8-e5fa-45ad-b865-797a40c38e93",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM"
+}
+],
+"component": "Uhura",
+"sequence_id": 3,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:08:06Z",
+"percentage_complete": 100,
+"request": "GhBgDpaF7DJKhLI17ik8UUI7gAIB",
+"operation_type": "VmUpdate"
+}
+{
+"parent_task_uuid": "5ac3a4c8-e5fa-45ad-b865-797a40c38e93",
+"internal_opaque": "CjgKEEROGrx07El+ZMlnjLm43VYSJDYwMGU5Njg1LWVjMzItNGE4NC1iMjM1LWVlMjkzYzUxNDIzYg==",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 4,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "09edb464-e559-4b93-a847-73d09b8b007a",
+"start_time_usecs": "2022-09-22T14:08:06Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T14:08:06Z",
+"create_time_usecs": "2022-09-22T14:08:06Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5ac3a4c8-e5fa-45ad-b865-797a40c38e93",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM"
+},
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Narsil",
+"sequence_id": 3,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:08:06Z",
+"percentage_complete": 100,
+"request": "ChBgDpaF7DJKhLI17ik8UUI7EP///////////wFiEAnttGTlWUuTqEdz0JuLAHpqEFrDpMjl+kWtuGV5ekDDjpN4AeACAQ==",
+"operation_type": "kVmUpdate"
+}
+{
+"parent_task_uuid": "09edb464-e559-4b93-a847-73d09b8b007a",
+"internal_opaque": "CgIQAg==",
+"disable_auto_progress_update": true,
+"capability_list": [
+"\u0002"
+],
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 3,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "444e1abc-74ec-497e-64c9-678cb9b8dd56",
+"start_time_usecs": "2022-09-22T14:08:06Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T14:08:06Z",
+"create_time_usecs": "2022-09-22T14:08:06Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5ac3a4c8-e5fa-45ad-b865-797a40c38e93",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM",
+"logical_timestamp": 3
+},
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Acropolis",
+"sequence_id": 9,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:08:06Z",
+"percentage_complete": 100,
+"request": "ChBgDpaF7DJKhLI17ik8UUI7EP///////////wFiEEROGrx07El+ZMlnjLm43VZqEAnttGTlWUuTqEdz0JuLAHp4AeACAZgDAQ==",
+"operation_type": "kVmUpdate"
+}
+{
+"parent_task_uuid": "2426998b-0e81-4249-53b6-db764663cd17",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 5,
+"weight": 300,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "VMs Deployed and Powered On",
+"uuid": "e5935666-c5cf-4766-4008-a21b82d5bbaa",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T14:08:06Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"component": "kCluster",
+"sequence_id": 2,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T14:08:06Z",
+"percentage_complete": 100,
+"operation_type": "VM Deployment"
+}
+{
+"parent_task_uuid": "e5935666-c5cf-4766-4008-a21b82d5bbaa",
+"internal_opaque": "KGRwMApTJ2ludGVybmFsX3ZtX2NoYW5nZV9wb3dlcl9zdGF0ZV9pZGVtcG90ZW5jZV90b2tlbicKcDEKUydceDFkXHgxOVFceDhmXHgxN1BEXHhhY1x4YTRceDFkXHhkY1x4YTVceGEySVZceGE1JwpwMgpzUydpbnRlcm5hbF92bV9jaGFuZ2VfcG93ZXJfc3RhdGVfb3BfaGFuZGxlJwpwMwpTJ1x4MWRceDE5UVx4OGZceDE3UERceGFjXHhhNFx4MWRceGRjXHhhNVx4YTJJVlx4YTUnCnA0CnNTJ2ludGVybmFsX2N1cnJlbnRfc3RhdGVfaW5mbycKcDUKKFMnQ09OU09MSURBVEVfUkVTVUxUUycKcDYKTnRwNwpzLg==",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 5,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "b336651d-f7d8-4424-89e2-df552b959688",
+"start_time_usecs": "2022-09-22T13:50:00Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:50:04Z",
+"create_time_usecs": "2022-09-22T13:50:00Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM"
+}
+],
+"component": "Uhura",
+"sequence_id": 2,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:50:04Z",
+"percentage_complete": 100,
+"request": "EhDlk1Zmxc9HZkAIohuC1buqGhBgDpaF7DJKhLI17ik8UUI7IAE=",
+"operation_type": "VmChangePowerState"
+}
+{
+"parent_task_uuid": "b336651d-f7d8-4424-89e2-df552b959688",
+"internal_opaque": "CjgKEAB0+hiStEluapZiIC5+FVcSJDYwMGU5Njg1LWVjMzItNGE4NC1iMjM1LWVlMjkzYzUxNDIzYg==",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 4,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "1d19518f-1750-44ac-a41d-dca5a24956a5",
+"start_time_usecs": "2022-09-22T13:50:00Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:50:04Z",
+"create_time_usecs": "2022-09-22T13:50:00Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM"
+},
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Narsil",
+"sequence_id": 2,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:50:04Z",
+"percentage_complete": 100,
+"request": "ChBgDpaF7DJKhLI17ik8UUI7EP///////////wEYAVIQHRlRjxdQRKykHdyloklWpVoQszZlHffYRCSJ4t9VK5WWiA==",
+"operation_type": "kVmSetPowerState"
+}
+{
+"parent_task_uuid": "1d19518f-1750-44ac-a41d-dca5a24956a5",
+"internal_opaque": "CiIQAToQAKa7dx+VS6WTOm0/L7tOD1gCegoKBlBrjdEw0RADepICCo8CCowCCg5WbVBvd2VyT25BdWRpdBIQYA6WhewySoSyNe4pPFFCOxoQQH13EHHPSo6faWupdPm+RyIqCgJ2bRIkNjAwZTk2ODUtZWMzMi00YTg0LWIyMzUtZWUyOTNjNTE0MjNiIiwKBG5vZGUSJDAwYTZiYjc3LTFmOTUtNGJhNS05MzNhLTZkM2YyZmJiNGUwZipoKGRwMApTJ3ZtX25hbWUnCnAxClZhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTAKcDIKc1MnbWVzc2FnZScKcDMKUydQb3dlcmVkIG9uIFZNIHt2bV9uYW1lfScKcDQKcy5BijluVkTpBQBJpEqoVkTpBQBQAQ==",
+"disable_auto_progress_update": true,
+"capability_list": [
+"\u0002"
+],
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 6,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "0074fa18-92b4-496e-6a96-62202e7e1557",
+"start_time_usecs": "2022-09-22T13:50:00Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:50:04Z",
+"create_time_usecs": "2022-09-22T13:50:00Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM",
+"logical_timestamp": 2
+},
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Acropolis",
+"sequence_id": 8,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:50:04Z",
+"percentage_complete": 100,
+"request": "ChBgDpaF7DJKhLI17ik8UUI7EP///////////wEYAVIQAHT6GJK0SW5qlmIgLn4VV1oQHRlRjxdQRKykHdyloklWpagBAQ==",
+"operation_type": "kVmSetPowerState"
+}
+{
+"parent_task_uuid": "e5935666-c5cf-4766-4008-a21b82d5bbaa",
+"internal_opaque": "KGRwMApTJ2ludGVybmFsX2NsZWFyX3ZtX3RyYW5zaWVudCcKcDEKSTAxCnNTJ2ludGVybmFsX3ZtX2NyZWF0ZV9vcF9oYW5kbGUnCnAyClMnflx4YTNceGI2XHgxZlx4Y2JceGU5RFx4MWZceGJmXHg5N1x4ZTZceDAyXHhmN1x4ZjZceGIxXHhkMCcKcDMKc1MnaW50ZXJuYWxfY3VycmVudF9zdGF0ZV9pbmZvJwpwNAooUydDT05TT0xJREFURV9SRVNVTFRTJwpwNQpOdHA2CnNTJ2ludGVybmFsX3ZtX2NyZWF0ZV9pZGVtcG90ZW5jZV90b2tlbicKcDcKUyd+XHhhM1x4YjZceDFmXHhjYlx4ZTlEXHgxZlx4YmZceDk3XHhlNlx4MDJceGY3XHhmNlx4YjFceGQwJwpwOApzUydpbnRlcm5hbF92bV91dWlkJwpwOQpTJ2BceDBlXHg5Nlx4ODVceGVjMkpceDg0XHhiMjVceGVlKTxRQjsnCnAxMApzUydpbnRlcm5hbF92bV9hZ25vc3RpY191dWlkJwpwMTEKUyc2MDBlOTY4NS1lYzMyLTRhODQtYjIzNS1lZTI5M2M1MTQyM2InCnAxMgpzLg==",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 6,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "749a0b55-57ce-4803-95b5-4eaf70c3dd70",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {
+"ret": "ChBgDpaF7DJKhLI17ik8UUI7"
+},
+"last_updated_time_usecs": "2022-09-22T13:50:00Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM"
+}
+],
+"component": "Uhura",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:50:00Z",
+"percentage_complete": 100,
+"request": "EhBgDpaF7DJKhLI17ik8UUI7GhDlk1Zmxc9HZkAIohuC1buqIiFhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTAqE051dGFuaXhQcmlzbUNlbnRyYWwwBkiA0AFaOggAEAAyNAoyCAAiLi9kZWZhdWx0LWNvbnRhaW5lci0yMTA4Ny9wYy4yMDIyLjYtcGMtYm9vdC5pbWdaOggAEAEyNAoyCAAiLi9kZWZhdWx0LWNvbnRhaW5lci0yMTA4Ny9wYy4yMDIyLjYtcGMtaG9tZS5pbWdaHAgAEAM6FgiAoB8SEGHfmT0q7EvioTczhk/DSQpaHAgAEAQ6Fgi2uwQSEGHfmT0q7EvioTczhk/DSQpaSAgBGAEyQgpAIj4vZGVmYXVsdC1jb250YWluZXItMjEwODcvYXV0b19wY182MzJjNTdiOTU3ZjJmMzZhYjNhYWJhNTkwLmlzb3IUOABaEBw4xCb5/0ZOj+6Rp6qMWXqaAQtjZW50b3NHdWVzdPABBKICBAgAEAI=",
+"operation_type": "VmCreate"
+}
+{
+"parent_task_uuid": "749a0b55-57ce-4803-95b5-4eaf70c3dd70",
+"internal_opaque": "CjgKEJqZsNYOJUlsRBeX24Jt5kkSJDYwMGU5Njg1LWVjMzItNGE4NC1iMjM1LWVlMjkzYzUxNDIzYg==",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 4,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "7ea3b61f-cbe9-441f-bf97-e602f7f6b1d0",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {
+"ret": "ChBgDpaF7DJKhLI17ik8UUI7"
+},
+"last_updated_time_usecs": "2022-09-22T13:50:00Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM"
+}
+],
+"component": "Narsil",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:50:00Z",
+"percentage_complete": 100,
+"request": "Cp8DCiFhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTASE051dGFuaXhQcmlzbUNlbnRyYWwYBiCA0AEqPAoICgRzY3NpEAAiMBIuL2RlZmF1bHQtY29udGFpbmVyLTIxMDg3L3BjLjIwMjIuNi1wYy1ib290LmltZyo8CggKBHNjc2kQASIwEi4vZGVmYXVsdC1jb250YWluZXItMjEwODcvcGMuMjAyMi42LXBjLWhvbWUuaW1nKiUKCAoEc2NzaRADKhkIgICAgNAPIhBh35k9KuxL4qE3M4ZPw0kKKiUKCAoEc2NzaRAEKhkIgICA250CIhBh35k9KuxL4qE3M4ZPw0kKKk0KBQoDaWRlEAEYACJAEj4vZGVmYXVsdC1jb250YWluZXItMjEwODcvYXV0b19wY182MzJjNTdiOTU3ZjJmMzZhYjNhYWJhNTkwLmlzbzIYEhAcOMQm+f9GTo/ukaeqjFl6KAE4AEABOhBgDpaF7DJKhLI17ik8UUI7SgNVVENqBAgAEAKAAQC6AQJwY8ABAMgBBMgCARIQfqO2H8vpRB+/l+YC9/ax0BoQdJoLVVfOSAOVtU6vcMPdcA==",
+"operation_type": "kVmCreate"
+}
+{
+"parent_task_uuid": "7ea3b61f-cbe9-441f-bf97-e602f7f6b1d0",
+"internal_opaque": "CkQKEGAOloXsMkqEsjXuKTxRQjsqKhIQHDjEJvn/Rk6P7pGnqoxZeigBOAFqEFTLz/62TU0JkW1qQKjfwupwAYABAbgBAXrtGgrqGgq2BAoNVm1DcmVhdGVBdWRpdBIyNjAwZTk2ODUtZWMzMi00YTg0LWIyMzUtZWUyOTNjNTE0MjNiOlZtQ3JlYXRlQXVkaXQaEF6O5gLEs0oqoCpiFifFY6MiKgoCdm0SJDYwMGU5Njg1LWVjMzItNGE4NC1iMjM1LWVlMjkzYzUxNDIzYiqeAyhkcDAKUyd2bV9uYW1lJwpwMQpWYXV0b19wY182MzJjNTdiOTU3ZjJmMzZhYjNhYWJhNTkwCnAyCnNTJ251bV90aHJlYWRzX3Blcl9jb3JlJwpwMwpMMUwKc1Mndm1fdHlwZScKcDQKUydQQ1ZNJwpwNQpzUydkaXNhYmxlX2JyYW5kaW5nJwpwNgpJMDAKc1MnZW5hYmxlX3ZnYV9jb25zb2xlJwpwNwpJMDEKc1MnZW5hYmxlX2NwdV9wYXNzdGhyb3VnaCcKcDgKSTAwCnNTJ21lbW9yeV9tYicKcDkKTDI2NjI0TApzUydtYWNoaW5lX3R5cGUnCnAxMApWcGMKcDExCnNTJ2hhcmR3YXJlX2Nsb2NrX3RpbWV6b25lJwpwMTIKVlVUQwpwMTMKc1MnbWVzc2FnZScKcDE0ClMnQ3JlYXRlZCBWTSB7dm1fbmFtZX0nCnAxNQpzUydudW1fdmNwdXMnCnAxNgpMNkwKc1MnYW5ub3RhdGlvbicKcDE3ClZOdXRhbml4UHJpc21DZW50cmFsCnAxOApzLkFMKGNWROkFAEm0i2tWROkFAFABCvYDCg5WbURpc2tBZGRBdWRpdBINc2NzaS4wOmNyZWF0ZRoQXV0OZLzFQhSjwuDb9bYeeiIqCgJ2bRIkNjAwZTk2ODUtZWMzMi00YTg0LWIyMzUtZWUyOTNjNTE0MjNiIjQKDHZpcnR1YWxfZGlzaxIkNmU4NGJiODYtYzA5OC00ZTQ3LTk2ZDUtMWEzOTM0ZmQ4MzVlIkoKCWNvbnRhaW5lchIkNjFkZjk5M2QtMmFlYy00YmUyLWExMzctMzM4NjRmYzM0OTBhGhdkZWZhdWx0LWNvbnRhaW5lci0yMTA4NyqAAihkcDAKUyd2bV9uYW1lJwpwMQpWYXV0b19wY182MzJjNTdiOTU3ZjJmMzZhYjNhYWJhNTkwCnAyCnNTJ3NpemVfYnl0ZXMnCnAzCkwxNTcyODY0MEwKc1MnbWVzc2FnZScKcDQKUydBZGRlZCBkaXNrIHtkaXNrX2FkZHJlc3N9IHRvIFZNIHt2bV9uYW1lfScKcDUKc1Mnc291cmNlX25mc19wYXRoJwpwNgpWL2RlZmF1bHQtY29udGFpbmVyLTIxMDg3L3BjLjIwMjIuNi1wYy1ib290LmltZwpwNwpzUydkaXNrX2FkZHJlc3MnCnA4ClZzY3NpLjAKcDkKcy5BTChjVkTpBQBJtItrVkTpBQBQAQr5AwoOVm1EaXNrQWRkQXVkaXQSDXNjc2kuMTpjcmVhdGUaEN1fXqT1sEQevAXqB3K2tF8iKgoCdm0SJDYwMGU5Njg1LWVjMzItNGE4NC1iMjM1LWVlMjkzYzUxNDIzYiI0Cgx2aXJ0dWFsX2Rpc2sSJDUxNTBkYTE2LTc0YzYtNDNkYi1hNjUwLTY1OGJkNWY4MDlkMiJKCgljb250YWluZXISJDYxZGY5OTNkLTJhZWMtNGJlMi1hMTM3LTMzODY0ZmMzNDkwYRoXZGVmYXVsdC1jb250YWluZXItMjEwODcqgwIoZHAwClMndm1fbmFtZScKcDEKVmF1dG9fcGNfNjMyYzU3Yjk1N2YyZjM2YWIzYWFiYTU5MApwMgpzUydzaXplX2J5dGVzJwpwMwpMNzUxNjE5Mjc2ODBMCnNTJ21lc3NhZ2UnCnA0ClMnQWRkZWQgZGlzayB7ZGlza19hZGRyZXNzfSB0byBWTSB7dm1fbmFtZX0nCnA1CnNTJ3NvdXJjZV9uZnNfcGF0aCcKcDYKVi9kZWZhdWx0LWNvbnRhaW5lci0yMTA4Ny9wYy4yMDIyLjYtcGMtaG9tZS5pbWcKcDcKc1MnZGlza19hZGRyZXNzJwpwOApWc2NzaS4xCnA5CnMuQUwoY1ZE6QUASbSLa1ZE6QUAUAEKsAMKDlZtRGlza0FkZEF1ZGl0Eg1zY3NpLjM6Y3JlYXRlGhCV/tl8q4tGrId6aBJvFVv8IioKAnZtEiQ2MDBlOTY4NS1lYzMyLTRhODQtYjIzNS1lZTI5M2M1MTQyM2IiNAoMdmlydHVhbF9kaXNrEiRmZDMxNGU3Mi1kNzllLTQ0NTMtYThmYy1lOTNkNWY0YzIwODMiSgoJY29udGFpbmVyEiQ2MWRmOTkzZC0yYWVjLTRiZTItYTEzNy0zMzg2NGZjMzQ5MGEaF2RlZmF1bHQtY29udGFpbmVyLTIxMDg3KroBKGRwMApTJ3ZtX25hbWUnCnAxClZhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTAKcDIKc1Mnc2l6ZV9ieXRlcycKcDMKTDUzNjg3MDkxMjAwMEwKc1MnbWVzc2FnZScKcDQKUydBZGRlZCBkaXNrIHtkaXNrX2FkZHJlc3N9IHRvIFZNIHt2bV9uYW1lfScKcDUKc1MnZGlza19hZGRyZXNzJwpwNgpWc2NzaS4zCnA3CnMuQUwoY1ZE6QUASbSLa1ZE6QUAUAEKrwMKDlZtRGlza0FkZEF1ZGl0Eg1zY3NpLjQ6Y3JlYXRlGhALuNProVJDqqln8BRdFdcyIioKAnZtEiQ2MDBlOTY4NS1lYzMyLTRhODQtYjIzNS1lZTI5M2M1MTQyM2IiNAoMdmlydHVhbF9kaXNrEiQyNWRjZGJkOS0yNTkyLTQzMzctYmRiZi1hZDQ1MDAwMGMxM2IiSgoJY29udGFpbmVyEiQ2MWRmOTkzZC0yYWVjLTRiZTItYTEzNy0zMzg2NGZjMzQ5MGEaF2RlZmF1bHQtY29udGFpbmVyLTIxMDg3KrkBKGRwMApTJ3ZtX25hbWUnCnAxClZhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTAKcDIKc1Mnc2l6ZV9ieXRlcycKcDMKTDc2Njk0OTQ1NzkyTApzUydtZXNzYWdlJwpwNApTJ0FkZGVkIGRpc2sge2Rpc2tfYWRkcmVzc30gdG8gVk0ge3ZtX25hbWV9JwpwNQpzUydkaXNrX2FkZHJlc3MnCnA2ClZzY3NpLjQKcDcKcy5BTChjVkTpBQBJtItrVkTpBQBQAQqXBAoOVm1EaXNrQWRkQXVkaXQSDGlkZS4wOmNyZWF0ZRoQc9zSPdrAQwiCJnOzZSwjtSIqCgJ2bRIkNjAwZTk2ODUtZWMzMi00YTg0LWIyMzUtZWUyOTNjNTE0MjNiIjQKDHZpcnR1YWxfZGlzaxIkY2VkMTE2MTItOTgzZS00MjA2LWI3NzItODIyZDgzMzA2MDIzIkoKCWNvbnRhaW5lchIkNjFkZjk5M2QtMmFlYy00YmUyLWExMzctMzM4NjRmYzM0OTBhGhdkZWZhdWx0LWNvbnRhaW5lci0yMTA4NyqiAihkcDAKUyd2bV9uYW1lJwpwMQpWYXV0b19wY182MzJjNTdiOTU3ZjJmMzZhYjNhYWJhNTkwCnAyCnNTJ2Rpc2tfYWRkcmVzcycKcDMKVmlkZS4wCnA0CnNTJ2lzX2Nkcm9tJwpwNQpJMDEKc1Mnc2l6ZV9ieXRlcycKcDYKTDM3NDc4NEwKc1MnbWVzc2FnZScKcDcKUydBZGRlZCBkaXNrIHtkaXNrX2FkZHJlc3N9IHRvIFZNIHt2bV9uYW1lfScKcDgKc1Mnc291cmNlX25mc19wYXRoJwpwOQpWL2RlZmF1bHQtY29udGFpbmVyLTIxMDg3L2F1dG9fcGNfNjMyYzU3Yjk1N2YyZjM2YWIzYWFiYTU5MC5pc28KcDEwCnMuQUwoY1ZE6QUASbSLa1ZE6QUAUAEKugMKDVZtTmljQWRkQXVkaXQSKzU0Y2JjZmZlLWI2NGQtNGQwOS05MTZkLTZhNDBhOGRmYzJlYTpjcmVhdGUaEEjjGtkhB0O3vPfniFTP5oMiKgoCdm0SJDYwMGU5Njg1LWVjMzItNGE4NC1iMjM1LWVlMjkzYzUxNDIzYiIzCgt2aXJ0dWFsX25pYxIkNTRjYmNmZmUtYjY0ZC00ZDA5LTkxNmQtNmE0MGE4ZGZjMmVhIjcKD3ZpcnR1YWxfbmV0d29yaxIkMWMzOGM0MjYtZjlmZi00NjRlLThmZWUtOTFhN2FhOGM1OTdhKrsBKGRwMApTJ3ZtX25hbWUnCnAxClZhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTAKcDIKc1MnbWVzc2FnZScKcDMKUydBZGRlZCBOSUMge21hY19hZGRyZXNzfSB0byBWTSB7dm1fbmFtZX0nCnA0CnNTJ2lzX2Nvbm5lY3RlZCcKcDUKSTAxCnNTJ21hY19hZGRyZXNzJwpwNgpTJzUwOjZiOjhkOmQxOjMwOmQxJwpwNwpzLkFMKGNWROkFAEm0i2tWROkFAFAB",
+"disable_auto_progress_update": true,
+"capability_list": [
+"\u0002"
+],
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 6,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "9a99b0d6-0e25-496c-4417-97db826de649",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {
+"ret": "ChBgDpaF7DJKhLI17ik8UUI7"
+},
+"last_updated_time_usecs": "2022-09-22T13:50:00Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "600e9685-ec32-4a84-b235-ee293c51423b",
+"entity_type": "kVM",
+"logical_timestamp": 1
+}
+],
+"component": "Acropolis",
+"sequence_id": 7,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:50:00Z",
+"percentage_complete": 100,
+"request": "Cp8DCiFhdXRvX3BjXzYzMmM1N2I5NTdmMmYzNmFiM2FhYmE1OTASE051dGFuaXhQcmlzbUNlbnRyYWwYBiCA0AEqPAoICgRzY3NpEAAiMBIuL2RlZmF1bHQtY29udGFpbmVyLTIxMDg3L3BjLjIwMjIuNi1wYy1ib290LmltZyo8CggKBHNjc2kQASIwEi4vZGVmYXVsdC1jb250YWluZXItMjEwODcvcGMuMjAyMi42LXBjLWhvbWUuaW1nKiUKCAoEc2NzaRADKhkIgICAgNAPIhBh35k9KuxL4qE3M4ZPw0kKKiUKCAoEc2NzaRAEKhkIgICA250CIhBh35k9KuxL4qE3M4ZPw0kKKk0KBQoDaWRlEAEYACJAEj4vZGVmYXVsdC1jb250YWluZXItMjEwODcvYXV0b19wY182MzJjNTdiOTU3ZjJmMzZhYjNhYWJhNTkwLmlzbzIYEhAcOMQm+f9GTo/ukaeqjFl6KAE4AEABOhBgDpaF7DJKhLI17ik8UUI7SgNVVENqBAgAEAKAAQC6AQJwY8ABAMgBBMgCARIQmpmw1g4lSWxEF5fbgm3mSRoQfqO2H8vpRB+/l+YC9/ax0DgB",
+"operation_type": "kVmCreate"
+}
+{
+"parent_task_uuid": "2426998b-0e81-4249-53b6-db764663cd17",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 3,
+"weight": 100,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "State Machine Setup Completed",
+"uuid": "f123d0cb-47d7-45e1-7cec-39427ca75cab",
+"start_time_usecs": "2022-09-22T13:49:59Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:49:59Z",
+"create_time_usecs": "2022-09-22T13:49:59Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"component": "kCluster",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:49:59Z",
+"percentage_complete": 100,
+"operation_type": "Setup State Machine"
+}
+{
+"parent_task_uuid": "2f165b9e-cc17-45b9-7a9f-28ba48204a2a",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 6,
+"weight": 400,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Extracted tarball, starting app deployment",
+"uuid": "40343d95-4e48-4f2b-756e-6d63c874d8fd",
+"start_time_usecs": "2022-09-22T13:46:40Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:49:59Z",
+"create_time_usecs": "2022-09-22T13:46:40Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_type": "kCluster"
+}
+],
+"component": "infra",
+"sequence_id": 2,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:49:59Z",
+"percentage_complete": 100,
+"operation_type": "Tarball Extraction"
+}
+{
+"parent_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"internal_opaque": "ChRwcmlzbV9jZW50cmFsX2RlcGxveRIJcGMuMjAyMi42Gg1wY19kZXBsb3ltZW50IiQwMGE2YmI3Ny0xZjk1LTRiYTUtOTMzYS02ZDNmMmZiYjRlMGY=",
+"disable_auto_progress_update": true,
+"request_context": {},
+"logical_timestamp": 1,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Software exists on the cluster",
+"uuid": "c3cac078-c43c-44a2-5efe-b2d2e4986871",
+"start_time_usecs": "2022-09-22T13:46:39Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:46:40Z",
+"create_time_usecs": "2022-09-22T13:46:39Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "5c569263-fe77-46f3-4408-f4e643e5f0c8",
+"entity_list": [
+{
+"entity_id": "0005e943-f1bc-79cb-0000-00000000525f",
+"entity_type": "kCluster"
+}
+],
+"component": "cluster_config",
+"sequence_id": 2,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:46:40Z",
+"percentage_complete": 100,
+"operation_type": "kDownload"
+}
+{
+"internal_opaque": "OmQKEBw4xCb5/0ZOj+6Rp6qMWXoQACJMChAcOMQm+f9GTo/ukaeqjFl6IAEo8QFCA2JyMFIIdmxhbi4yNDFqJGQyODNlYTRmLTdhZmItNDc4Mi05ZDEyLTJlNmJiZDE1NWZmOSgA",
+"disable_auto_progress_update": true,
+"use_sync_barrier": true,
+"request_context": {
+"user_name": "admin",
+"user_ip": "10.41.24.120"
+},
+"logical_timestamp": 3,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "f2a33f53-df22-4174-a8cc-8953746507ef",
+"start_time_usecs": "2022-09-22T13:46:15Z",
+"response": {
+"ret": "ChAcOMQm+f9GTo/ukaeqjFl6"
+},
+"last_updated_time_usecs": "2022-09-22T13:46:16Z",
+"create_time_usecs": "2022-09-22T13:46:15Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "f2a33f53-df22-4174-a8cc-8953746507ef",
+"entity_list": [
+{
+"entity_id": "1c38c426-f9ff-464e-8fee-91a7aa8c597a",
+"entity_type": "kVirtualNetwork"
+}
+],
+"component": "Acropolis",
+"sequence_id": 6,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:46:16Z",
+"percentage_complete": 100,
+"request": "Cg8gASjxAVIIdmxhbi4yNDE=",
+"operation_type": "kNetworkCreate"
+}
+{
+"disable_auto_progress_update": true,
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 2,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "92de3aae-9c9d-422a-86c6-bc3ec7661892",
+"start_time_usecs": "2022-09-22T13:31:18Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:31:18Z",
+"create_time_usecs": "2022-09-22T13:31:18Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "92de3aae-9c9d-422a-86c6-bc3ec7661892",
+"entity_list": [
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Acropolis",
+"sequence_id": 5,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:31:18Z",
+"percentage_complete": 100,
+"request": "ChAAprt3H5VLpZM6bT8vu04P",
+"operation_type": "kHandleRf1VmAfterAosMaintenance"
+}
+{
+"internal_opaque": "EgO4AQA=",
+"disable_auto_progress_update": true,
+"capability_list": [
+"\u0002"
+],
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 3,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "950dce03-9727-4616-aa4f-595456e2a8e0",
+"start_time_usecs": "2022-09-22T13:31:03Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:31:03Z",
+"create_time_usecs": "2022-09-22T13:31:02Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "950dce03-9727-4616-aa4f-595456e2a8e0",
+"entity_list": [
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Acropolis",
+"sequence_id": 4,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:31:03Z",
+"percentage_complete": 100,
+"request": "ChAAprt3H5VLpZM6bT8vu04P",
+"operation_type": "kHostRestoreVmLocality"
+}
+{
+"internal_opaque": "EgO4AQA=",
+"disable_auto_progress_update": true,
+"capability_list": [
+"\u0002"
+],
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 3,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "1db5f621-bbe8-447e-be9b-50f23f8c6a9d",
+"start_time_usecs": "2022-09-22T13:31:02Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:31:03Z",
+"create_time_usecs": "2022-09-22T13:30:57Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "1db5f621-bbe8-447e-be9b-50f23f8c6a9d",
+"entity_list": [
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Acropolis",
+"sequence_id": 3,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:31:03Z",
+"percentage_complete": 100,
+"request": "ChAAprt3H5VLpZM6bT8vu04P",
+"operation_type": "kHostRestoreVmLocality"
+}
+{
+"internal_opaque": "igGwAQoUChCTd8cqtQtIhbSsogIATrZ4EAcKFAoQTH7MW+giT/qP0wr58wuAdBAHChQKEK3+rpaA8UXQs3ChnRdlCJUQBwoUChAQ6fBE4+NAPYJE9JoqeFSWEAcKFAoQ5lMX9PXLSvu9ZZhULSfQ3RAHChQKELCcwrNBtU0fmljfYbAVIcYQBwoUChA/vuO5xNFLkb/XMwWXNQx4EAcKFAoQFx21i8NlTGOxUi7nJhw9fhAH",
+"disable_auto_progress_update": true,
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 3,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "b52196ba-66ca-4cd0-8409-658ef1366f85",
+"start_time_usecs": "2022-09-22T13:30:57Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:31:02Z",
+"create_time_usecs": "2022-09-22T13:30:57Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "b52196ba-66ca-4cd0-8409-658ef1366f85",
+"entity_list": [
+{
+"entity_id": "00a6bb77-1f95-4ba5-933a-6d3f2fbb4e0f",
+"entity_type": "kNode"
+}
+],
+"component": "Acropolis",
+"sequence_id": 2,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:31:02Z",
+"percentage_complete": 100,
+"request": "ChAAprt3H5VLpZM6bT8vu04P",
+"operation_type": "kHostSwapAttach"
+}
+{
+"disable_auto_progress_update": true,
+"request_context": {
+"user_name": "System"
+},
+"internal_task": true,
+"logical_timestamp": 2,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"uuid": "72bf1c2e-1871-411f-b500-48cd66d39a03",
+"start_time_usecs": "2022-09-22T13:30:31Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:30:48Z",
+"create_time_usecs": "2022-09-22T13:30:27Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "72bf1c2e-1871-411f-b500-48cd66d39a03",
+"component": "Acropolis",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:30:48Z",
+"percentage_complete": 100,
+"request": "ChByvxwuGHFBH7UASM1m05oDEAE=",
+"operation_type": "kBeginVGOwnershipMigration"
+}
+{
+"internal_opaque": "KGRwMApTJ2ludGVybmFsX3dhbCcKcDEKY21pbmVydmEuaW50ZXJmYWNlLnNlcnZlci5taW5lcnZhX2N2bV93YWxfcGIyClZnVXBkYXRlTWFzdGVyVGFza1dhbApwMgoodFJwMwooZHA0ClMnc2VyaWFsaXplZCcKcDUKUydceDA4XHg5ME4nCnA2CnNic1MnaW50ZXJuYWxfc2tpcF9lcnJfaW5qJwpwNwpJMDEKcy4=",
+"disable_auto_progress_update": true,
+"capability_list": [
+"\u0002"
+],
+"request_context": {},
+"logical_timestamp": 4,
+"weight": 1000,
+"cluster_uuid": "0005e943-f1bc-79cb-0000-00000000525f",
+"message": "Updating Vg",
+"uuid": "706441e5-c9c9-415c-582a-28d5f0736b8e",
+"start_time_usecs": "2022-09-22T13:30:13Z",
+"response": {},
+"last_updated_time_usecs": "2022-09-22T13:30:13Z",
+"create_time_usecs": "2022-09-22T13:30:12Z",
+"status": "kSucceeded",
+"local_root_task_uuid": "706441e5-c9c9-415c-582a-28d5f0736b8e",
+"component": "minerva_cvm",
+"sequence_id": 1,
+"requested_state_transition": "kNone",
+"complete_time_usecs": "2022-09-22T13:30:13Z",
+"percentage_complete": 100,
+"operation_type": "VgUpdateMasterTask"
+}
