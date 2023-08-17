@@ -12,7 +12,8 @@ import hashlib
 
 #This File will have triaging workflow
 # Search for error in file..process the string based on Thread Id and calculate hash based on checksum( SHA-256)
-
+checksum_dict = {"9f7fa57eeb193f668225a5569257251dfd1d780cadd90b4f3ee4fd3a5259e875" : "Error in CMSP configure API. Assign it to CMSP Team for further debugging",
+                 "56ad6aafaf983f1a845506412589887971eaa401d54f59238124e3d850493403" : "Prism Gateway team to check further"}
 
 
 #This method will find the error stacktrace with its threadID
@@ -30,18 +31,23 @@ def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
 def get_checksum_of_string(errorlogs):
     hashed_string = hashlib.sha256(errorlogs.encode('utf-8')).hexdigest()
     print(hashed_string)
+    for key, value in checksum_dict.items():
+        if(key==hashed_string):
+            print(value)
 
 
 def _find_checksum_based_on_thread_id(dir_name, file_name, error_thread_id):
     count = 0
     errorlogs = ''
+    loglevel='ERROR '
     with FileReadBackwards("/Users/parultalrejaaggarwal/PycharmProjects/pythonProject/genesis.out",
                            encoding="latin-1") as frb:
         for line in frb:
-            if error_thread_id in line:
+            if (loglevel + error_thread_id) in line:
                 count += 1
+                print(line)
                 errorlogs += line
-                if (count >= 15):
+                if (count >= 10):
                     break;
         return get_checksum_of_string(errorlogs)
 
@@ -51,7 +57,7 @@ def _find_exception_in_logFile(logFileName, searchContent):
     #TO-DO: This is an array.can have multiple files in file name
     file_name=logFileName
     error_thread_id=_find_error_thread_id_in_file(dir_name,file_name,searchContent)
-    print(error_thread_id)
+    print("Thread Id: ",error_thread_id)
     _find_checksum_based_on_thread_id(dir_name,file_name,error_thread_id)
 
 
@@ -60,20 +66,22 @@ def _find_exception_in_logFile(logFileName, searchContent):
 
 
 
-def pc_deploy_debug_mapping():
-    ergon_error_message="deploy msp:failed to deploy the ntnx dvp: Operation timed out"
+def pc_deploy_debug_mapping(errorMessage):
     dir_name = "/Users/parultalrejaaggarwal/PycharmProjects/pythonProject/triage_rules/failed_rules/"
     file_name = "pc_deploy_debug_mapping.json"
     with open(os.path.join(dir_name, file_name), "r") as f:
         pc_deployment_error_list = json.load(f)
         #print("dep stages : {}".format(pc_deployment_error_list))
         for i in pc_deployment_error_list['pc.deployment']:
-            if(ergon_error_message in i['exception_summary']):
-                cluster_log = i['cluster_log']
-                #cluster_log=pe/pc TODO-Add logic for using pc/pe log location
-                for logFileName in i['file_lst']:
-                    #print(logFileName)
-                    _find_exception_in_logFile(logFileName,i['exception_summary'])
+            if(errorMessage in i['exception_summary']):
+                use_for_checksum=i['use_for_checksum']
+                # Case 1- Direct Deflect Issue
+                if not use_for_checksum:
+                    return i['response']
+                else:
+                    cluster_log = i['cluster_log']  #cluster_log=pe/pc TODO-Add logic for using pc/pe log location
+                    for logFileName in i['file_lst']:
+                        # print(logFileName)
+                        _find_exception_in_logFile(logFileName, i['exception_summary'])
+                    return None
 
-
-pc_deploy_debug_mapping()
