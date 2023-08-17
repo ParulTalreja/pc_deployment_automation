@@ -17,6 +17,18 @@
         "cluster": "src_pc_ip"
       },
       "use_for_checksum": true
+    },
+    {
+      "exception_summary": "Failed while enabling CMSP: Encountered error in cmsp sub task 'IAMv2 Migration & Bootstrap':",
+      "use_for_checksum": false,
+      "response": "Failed in cmsp sub task 'IAMv2 Migration & Bootstrap'. Please check with CMSP team for further triaging"
+
+    },
+    {
+      "exception_summary": "No host has enough available resources",
+      "use_for_checksum": false,
+      "response": "Hosts should have atleast these many resources as follows : \\nFor 1-node Small PC : 6vcpus and 26GiB RAM\\nFor scaleout Small PC : 18vcpus and 78GiB RAM\\nFor 1-node Large PC : 10vcpus and 44GiB RAM\\nFor scaleout Large PC : 30vcpus and 132GiB RAM\\nLook into https://confluence.eng.nutanix.com:8443/pages/viewpage.action?spaceKey=PRIS&title=Triaging+RDM+PC+deployment+issues for more info"
+
     }
   ]
 }
