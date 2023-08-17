@@ -1,0 +1,9 @@
+*.pyc
+.DS_Store
+.arcconfig
+.project
+.pydevproject
+.settings
+.idea
+*.swp
+*.arf
