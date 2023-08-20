@@ -59,14 +59,14 @@ class PCAutoDeployment:
                 return item['$oid']
 
 
-
-pc_deployment = PCAutoDeployment(RDM_URL)
-pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(RDM_URL)
-errorMessage=fileparser_util.searchException(pcdeploymentlogLocation)
-print(errorMessage)
-response=triage_workflow.pc_deploy_debug_mapping(errorMessage)
-print(response)
-#download the PC logs and PE logs and kept under resource location
-#Assume message returned from ergonFile is ergonTaskMessage
-#Define mapping for which file to check based on
+if __name__ == "__main__":
+    pc_deployment = PCAutoDeployment(RDM_URL)
+    pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(RDM_URL)
+    errorMessage=fileparser_util.searchException(pcdeploymentlogLocation)
+    print(errorMessage)
+    response=triage_workflow.pc_deploy_debug_mapping(errorMessage)
+    print(response)
+    #download the PC logs and PE logs and kept under resource location
+    #Assume message returned from ergonFile is ergonTaskMessage
+    #Define mapping for which file to check based on
 
