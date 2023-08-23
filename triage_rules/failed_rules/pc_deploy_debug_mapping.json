@@ -25,6 +25,29 @@
 
     },
     {
+      "exception_summary": "Failure in operation 'Deploy MSP platform', error Microservice platform deployment failed, error deploy msp:Error deploying addons: failed to deploy monitoring addon: failed to deploy and verify kube-prometheus: failed to verify kube-prometheus:",
+      "use_for_checksum": false,
+      "response": "Failed in cmsp sub task 'Deploy MSP platform'. Please check with CMSP team for further triaging"
+
+    },
+    {
+      "exception_summary": "Failed while enabling CMSP: Encountered error in cmsp sub task 'Deploy Microservice Platform': Failure in operation 'Deploy MSP platform', error Failed to get C-MSP:",
+      "use_for_checksum": false,
+      "response": "Failed in cmsp sub task 'Deploy Microservice Platform'. Please check with CMSP team for further triaging"
+
+    },
+    {
+      "exception_summary": "Failure in operation 'CMSP Bootstrap Config', error Failed to copy spec /home/docker/msp_controller/bootstrap/cmsp-deployment-spec.json to PC VM",
+      "use_for_checksum": false,
+      "response": "Failure in operation 'CMSP Bootstrap Config'. Please check with CMSP team for further triaging"
+
+    },
+    {
+      "exception_summary": "Failed while enabling CMSP: Encountered error in cmsp sub task 'Setting up local registry': Failure in operation 'Deploy MSP platform",
+      "use_for_checksum": false,
+      "response": "Failure in operation 'Setting up local registry'. Please check with CMSP team for further triaging"
+    },
+    {
       "exception_summary": "No host has enough available resources",
       "use_for_checksum": false,
       "response": "Hosts should have atleast these many resources as follows : \\nFor 1-node Small PC : 6vcpus and 26GiB RAM\\nFor scaleout Small PC : 18vcpus and 78GiB RAM\\nFor 1-node Large PC : 10vcpus and 44GiB RAM\\nFor scaleout Large PC : 30vcpus and 132GiB RAM\\nLook into https://confluence.eng.nutanix.com:8443/pages/viewpage.action?spaceKey=PRIS&title=Triaging+RDM+PC+deployment+issues for more info"
