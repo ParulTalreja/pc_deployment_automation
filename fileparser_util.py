@@ -8,8 +8,6 @@ urllib3.disable_warnings()
 from urllib.request import urlopen
 
 
-# url='http://10.41.24.115:9000/scheduled_deployments/2022-09-29/6335855857f2f3fa52949d9f/deployments/6335855857f2f3fa52949da1/DEPLOY/6335855857f2f3fa52949da1_1.txt'
-
 def searchException(target_url):
     response = urllib.request.urlopen(target_url)
     for index, line in enumerate(response):
