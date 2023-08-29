@@ -1,7 +1,7 @@
 # pc_deployment_automation
 Execute via below command
 
-python start_autotriage_deployment_bot.py <RDM Link> <PC LogURL location> <PE LogURL location>
+python start_autotriage_deployment_bot.py <<RDM Link>> <<PCLogURL location>> <<PELogURL location>>
 
 
 Example:
