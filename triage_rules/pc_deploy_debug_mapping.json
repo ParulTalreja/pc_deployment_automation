@@ -3,16 +3,16 @@
     {
       "exception_summary": "Encountered Exception in post_deployment step: Failed to enable micro services infrastructure on PC: deploy msp:failed to deploy the ntnx dvp: Operation timed out",
       "file_lst": ["genesis.out"],
-      "cluster_log": "pc",
+      "cluster_log": ["PC"],
       "params": {
         "cluster": "src_pc_ip"
       },
       "use_for_checksum": true
     },
     {
-      "exception_summary": "Testing",
+      "exception_summary": "Failed to insert rule sudo_wrapper ip6tables -A WORLDLIST -p tcp -m tcp --dport 8000 -j ACCEPT with ret 1 out  err ip6tables: No chain/target/match by that name.",
       "file_lst": ["genesis.out"],
-      "cluster_log": "pc",
+      "cluster_log": ["PE"],
       "params": {
         "cluster": "src_pc_ip"
       },
@@ -52,6 +52,12 @@
       "use_for_checksum": false,
       "response": "Hosts should have atleast these many resources as follows : \\nFor 1-node Small PC : 6vcpus and 26GiB RAM\\nFor scaleout Small PC : 18vcpus and 78GiB RAM\\nFor 1-node Large PC : 10vcpus and 44GiB RAM\\nFor scaleout Large PC : 30vcpus and 132GiB RAM\\nLook into https://confluence.eng.nutanix.com:8443/pages/viewpage.action?spaceKey=PRIS&title=Triaging+RDM+PC+deployment+issues for more info"
 
+    },
+    {
+      "exception_summary": "Either cluster name or cluster IP is required to create base cluster object.",
+      "use_for_checksum": false,
+      "response": "Either cluster name or cluster IP is missing in cluster object payload. Kindly recheck the parameter passed. Ref: DIAL-12081"
     }
+
   ]
 }

@@ -7,9 +7,9 @@ import zipfile
 import requests
 
 
-def tar_download_and_extract():
-    file_url = 'http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/10.37.110.39/home_nutanix_data_logs.tar.gz'
+def tar_download_and_extract(PC_LOG_URL):
     file_name = 'home_nutanix_data_logs.tar.gz'
+    file_url=PC_LOG_URL+file_name
     extract_folder = "resources"
     # Create the extraction folder if it doesn't exist
     os.makedirs(extract_folder, exist_ok=True)
@@ -17,7 +17,7 @@ def tar_download_and_extract():
     response = requests.get(file_url)
     if response.status_code == 200:
         # Save the downloaded file locally
-        downloaded_file_path = os.path.join(extract_folder, "home_nutanix_data_logs.tar.gz")
+        downloaded_file_path = os.path.join(extract_folder, file_name)
         with open(downloaded_file_path, "wb") as f:
             f.write(response.content)
         print("File downloaded successfully.")
@@ -25,28 +25,35 @@ def tar_download_and_extract():
 
         # Run the tar command to extract the file
         command = ["tar", "-xvf", tar_file_path, "-C", extract_folder]
+        extract_folder_url = "resources/home/nutanix/data/logs"
         try:
             subprocess.run(command, check=True)
             print("Extraction completed successfully.")
+            os.remove(tar_file_path)
+            return extract_folder_url
         except subprocess.CalledProcessError as e:
             print(f"Extraction failed: {e}")
     else:
-        print("Failed to download the file.")
+        print("Failed to download the tar file. Please check if logs are available")
 
-def zip_download_and_extract(file_url):
-    # URL of the .zip file to download
-    log_location = "http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/auto_cluster_prod_1a46c0e53cc4/logbay_auto_cluster_prod_1a46c0e53cc4_1691575466/"
-
+def zip_download_and_extract(PE_LOG_URL):
+    # PE_LOG_URL:URL of the .zip file to download
     # Folder where you want to extract the contents
     extract_folder = "resources"
 
     # Create the extraction folder if it doesn't exist
     os.makedirs(extract_folder, exist_ok=True)
 
-    zip_links=fetch_page_content()
+    zip_links=fetch_page_content(PE_LOG_URL)
+    if not zip_links:
+        print("No Zip file available at url ",PE_LOG_URL)
+        return
     for zip_link in zip_links:
-        file_url = log_location+zip_link
+        file_url = PE_LOG_URL+zip_link
         download_and_save_zip_file(file_url,extract_folder,zip_link)
+        os.remove(extract_folder+"/"+zip_link)
+
+
 
 
 def download_and_save_zip_file(file_url,extract_folder,file_name):
@@ -72,9 +79,7 @@ def download_and_save_zip_file(file_url,extract_folder,file_name):
     else:
         print("Failed to download the file.")
 
-def fetch_page_content():
-    url = "http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/auto_cluster_prod_1a46c0e53cc4/logbay_auto_cluster_prod_1a46c0e53cc4_1691575466/"
-
+def fetch_page_content(url):
     # Fetch the page content
     response = requests.get(url)
     if response.status_code == 200:
@@ -84,8 +89,9 @@ def fetch_page_content():
     else:
         print("Failed to fetch the page content.")
 
-if __name__ == "__main__": pwd
 
-#tar_download_and_extract()
-zip_download_and_extract(file_url=None)
+if __name__ == "__main__": pwd
+PC_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/10.37.110.39/'
+#tar_download_and_extract(PC_LOG_URL)
+#zip_download_and_extract(file_url=None)
 #fetch_page_content()

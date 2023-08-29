@@ -2,20 +2,11 @@ import requests
 import json
 import re
 import urllib3
-import fileparser_util
 import triage_workflow
 urllib3.disable_warnings()
+from lib import util
 
-#Given RDM Link..Filter Out deploymentID
-#Build Failed Deployment log url
-#Read and Parse Deployment Log txt file
-#Extract Error Message from Deployment Log file
-#Read and Parse Ergon task File
-#Define Mapping for checking the logs
-#Define response based on the logs file checking
-
-
-RDM_URL = "https://rdm.eng.nutanix.com/scheduled_deployments/64d9a14073101aace9900ca3"
+RDM_URL = "https://rdm.eng.nutanix.com/scheduled_deployments/64d9f0c773101acfa245df34"
 
 class PCAutoDeployment:
     def __init__(self, RDM_URL):
@@ -44,6 +35,11 @@ class PCAutoDeployment:
         print(failedDeploymentLogUrl)
         return failedDeploymentLogUrl
 
+    def is_log_available(self,log_url):
+        r = requests.head(log_url)
+        return r.status_code == 200
+
+
     def filter_deploymentId(self, RDM_URL):
         dep_id = re.search('http[s]?://.*?scheduled_deployments/([0-9a-fA-F]+)[/]?', RDM_URL)
         dep_id = dep_id.group(1)
@@ -59,14 +55,13 @@ class PCAutoDeployment:
                 return item['$oid']
 
 
-if __name__ == "__main__":
-    pc_deployment = PCAutoDeployment(RDM_URL)
-    pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(RDM_URL)
-    errorMessage=fileparser_util.searchException(pcdeploymentlogLocation)
+pc_deployment = PCAutoDeployment(RDM_URL)
+pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(RDM_URL)
+if pc_deployment.is_log_available(pcdeploymentlogLocation):
+    errorMessage=util.searchException(pcdeploymentlogLocation)
     print(errorMessage)
     response=triage_workflow.pc_deploy_debug_mapping(errorMessage)
     print(response)
-    #download the PC logs and PE logs and kept under resource location
-    #Assume message returned from ergonFile is ergonTaskMessage
-    #Define mapping for which file to check based on
+else :
+    print("Logs are not available")
 

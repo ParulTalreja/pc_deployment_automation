@@ -1,22 +1,12 @@
-import urllib
-
-import requests
 import json
 import re
 import urllib3
 urllib3.disable_warnings()
-from urllib.request import urlopen
 import os
 from file_read_backwards import FileReadBackwards
-import hashlib
-
-#This File will have triaging workflow
-# Search for error in file..process the string based on Thread Id and calculate hash based on checksum( SHA-256)
-checksum_dict = {"9f7fa57eeb193f668225a5569257251dfd1d780cadd90b4f3ee4fd3a5259e875" : "Error in CMSP configure API. Assign it to CMSP Team for further debugging",
-                 "56ad6aafaf983f1a845506412589887971eaa401d54f59238124e3d850493403" : "Prism Gateway team to check further"}
+from lib import download_util, util
 
 
-#This method will find the error stacktrace with its threadID
 def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
     with open(os.path.join(dir_name, file_name), mode='r', encoding='latin-1') as fp:
         for l_no, line in enumerate(fp):
@@ -28,60 +18,69 @@ def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
         return ''.join(error_thread_id)
 
 
-def get_checksum_of_string(errorlogs):
-    hashed_string = hashlib.sha256(errorlogs.encode('utf-8')).hexdigest()
-    print(hashed_string)
-    for key, value in checksum_dict.items():
-        if(key==hashed_string):
-            print(value)
-
-
-def _find_checksum_based_on_thread_id(dir_name, file_name, error_thread_id):
+def find_error_msg_in_logfile(dir_name, file_name, error_thread_id):
     count = 0
     errorlogs = ''
     loglevel='ERROR '
-    with FileReadBackwards("/Users/parultalrejaaggarwal/PycharmProjects/pythonProject/genesis.out",
-                           encoding="latin-1") as frb:
+    file_url=dir_name+file_name
+    with FileReadBackwards(file_url,encoding="latin-1") as frb:
         for line in frb:
             if (loglevel + error_thread_id) in line:
-                count += 1
-                print(line)
-                errorlogs += line
-                if (count >= 10):
-                    break;
-        return get_checksum_of_string(errorlogs)
+                return line
+        print("Error message not found in %s", file_name)
 
 
-def _find_exception_in_logFile(logFileName, searchContent):
-    dir_name="/Users/parultalrejaaggarwal/PycharmProjects/pythonProject/"
-    #TO-DO: This is an array.can have multiple files in file name
-    file_name=logFileName
-    error_thread_id=_find_error_thread_id_in_file(dir_name,file_name,searchContent)
+def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
+    error_thread_id=_find_error_thread_id_in_file(downloaded_log_location,logFileName,searchContent)
     print("Thread Id: ",error_thread_id)
-    _find_checksum_based_on_thread_id(dir_name,file_name,error_thread_id)
+    error_msg=find_error_msg_in_logfile(downloaded_log_location,logFileName,error_thread_id)
+    checksum_string = util.remove_uuid_digits_from_string(error_msg)
+    chksm = util.get_checksum_without_caching(checksum_string)
+    print("Checksum for string: {0} is {1}".format(checksum_string, chksm))
+    chksm_mapping_available= util.retrieve_value_from_json(chksm)
+    if(not chksm_mapping_available):
+        util.update_json_with_checksum(chksm, searchContent)
+        print("No Existing Result found based on checksum")
+    else:
+        print(chksm_mapping_available)
+        return chksm_mapping_available
 
 
 
 
-
-
-
-def pc_deploy_debug_mapping(errorMessage):
-    dir_name = "/Users/parultalrejaaggarwal/PycharmProjects/pythonProject/triage_rules/failed_rules/"
+def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL=None,PE_LOG_URL=None):
+    dir_name = "triage_rules/"
     file_name = "pc_deploy_debug_mapping.json"
+    mapping_found = False
     with open(os.path.join(dir_name, file_name), "r") as f:
         pc_deployment_error_list = json.load(f)
-        #print("dep stages : {}".format(pc_deployment_error_list))
         for i in pc_deployment_error_list['pc.deployment']:
             if(errorMessage in i['exception_summary']):
+                mapping_found = True
                 use_for_checksum=i['use_for_checksum']
                 # Case 1- Direct Deflect Issue
                 if not use_for_checksum:
                     return i['response']
                 else:
-                    cluster_log = i['cluster_log']  #cluster_log=pe/pc TODO-Add logic for using pc/pe log location
+                    cluster_log = i['cluster_log'] #possible values PC/PE/PC,PE
+                    if "PC" in cluster_log:
+                        #downloaded_log_location="resources/home/nutanix/data/logs/"
+                        downloaded_log_location=download_util.tar_download_and_extract(PC_LOG_URL)
+                    if "PE" in cluster_log:
+                        downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL)
+
                     for logFileName in i['file_lst']:
-                        # print(logFileName)
-                        _find_exception_in_logFile(logFileName, i['exception_summary'])
+                        _collects_log_from_file(downloaded_log_location,logFileName, i['exception_summary'])
                     return None
 
+        if(not mapping_found):
+            print("Log Signature not found in pc debug mapping")
+
+
+if __name__ == "__main__":
+    errorMessage="Failed to insert rule sudo_wrapper ip6tables -A WORLDLIST -p tcp -m tcp --dport 8000 -j ACCEPT with ret 1 out  err ip6tables: No chain/target/match by that name."
+    PC_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/10.37.110.39/'
+    PE_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/auto_cluster_prod_1a46c0e53cc4/logbay_auto_cluster_prod_1a46c0e53cc4_1691575466/'
+    pc_deploy_debug_mapping(errorMessage,None,PE_LOG_URL)
+#zip_download_and_extract(file_url=None)
+#fetch_page_content()
