@@ -1,11 +1,9 @@
-# pc_deployment_automation
-Automating PC deployment Issues
+# PC Deployment automated triage
 
 
-#Installing Modules Commands
+## Installing Modules Commands
 
-sudo pip3 install requests
+sudo pip3 install requirements.txt
 
-#For installing BeautifulSoup used for file parsing and download
-pip3 install bs4
-pip3 install wget
+## Usage
+python3.9 start_autotriage_pcDeployment.py 

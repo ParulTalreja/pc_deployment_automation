@@ -4,6 +4,7 @@ import re
 import urllib3
 import triage_workflow
 urllib3.disable_warnings()
+from lib import util
 
 RDM_URL = "https://rdm.eng.nutanix.com/scheduled_deployments/64d9f0c773101acfa245df34"
 
@@ -54,17 +55,13 @@ class PCAutoDeployment:
                 return item['$oid']
 
 
-
 pc_deployment = PCAutoDeployment(RDM_URL)
 pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(RDM_URL)
 if pc_deployment.is_log_available(pcdeploymentlogLocation):
-    errorMessage=fileparser_util.searchException(pcdeploymentlogLocation)
+    errorMessage=util.searchException(pcdeploymentlogLocation)
     print(errorMessage)
     response=triage_workflow.pc_deploy_debug_mapping(errorMessage)
     print(response)
 else :
     print("Logs are not available")
-#download the PC logs and PE logs and kept under resource location
-#Assume message returned from ergonFile is ergonTaskMessage
-#Define mapping for which file to check based on
 
