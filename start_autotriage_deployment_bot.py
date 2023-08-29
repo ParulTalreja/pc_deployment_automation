@@ -4,11 +4,37 @@ import re
 import urllib3
 import triage_workflow
 urllib3.disable_warnings()
+from lib import util
+import sys
 
-RDM_URL = "https://rdm.eng.nutanix.com/scheduled_deployments/64d9f0c773101acfa245df34"
+def start_autotriage_deployment_bot():
+    """
+    execute python start_autotriage_deployment_bot.py <RDM Link> <PC LogURL> <PE LogURL>
+    :return:
+    """
+    # Check if the correct number of arguments is provided
+    if len(sys.argv) != 4:
+        print("Usage: python start_autotriage_deployment_bot.py RDMLink PCLogURL PELogURL")
+        return
+
+    rdm_link= sys.argv[1]
+    pc_log_url = sys.argv[2]
+    pe_log_url = sys.argv[3]
+    print("RDM link:", rdm_link)
+    print("PC Log URL:", pc_log_url)
+    print("PE Log URL:", pe_log_url)
+    pc_deployment = PCAutoDeployment(rdm_link,pc_log_url,pe_log_url)
+    pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(rdm_link)
+    if pc_deployment.is_log_available(pcdeploymentlogLocation):
+        errorMessage = util.searchException(pcdeploymentlogLocation)
+        print(errorMessage)
+        response = triage_workflow.pc_deploy_debug_mapping(errorMessage)
+        print(response)
+    else:
+        print("Logs are not available")
 
 class PCAutoDeployment:
-    def __init__(self, RDM_URL):
+    def __init__(self, RDM_URL,PC_LOG_URL,PE_LOG_URL):
         self.RDM_URL = RDM_URL
 
 
@@ -31,7 +57,7 @@ class PCAutoDeployment:
         failed_deployment_id=self._get_failed_deployment_id(deployments_id)
         deploymentFileName=failed_deployment_id+"_1.txt"
         failedDeploymentLogUrl= log_link + "deployments/" + failed_deployment_id + "/DEPLOY/"+deploymentFileName
-        print(failedDeploymentLogUrl)
+        #print(failedDeploymentLogUrl)
         return failedDeploymentLogUrl
 
     def is_log_available(self,log_url):
@@ -54,17 +80,6 @@ class PCAutoDeployment:
                 return item['$oid']
 
 
-
-pc_deployment = PCAutoDeployment(RDM_URL)
-pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(RDM_URL)
-if pc_deployment.is_log_available(pcdeploymentlogLocation):
-    errorMessage=fileparser_util.searchException(pcdeploymentlogLocation)
-    print(errorMessage)
-    response=triage_workflow.pc_deploy_debug_mapping(errorMessage)
-    print(response)
-else :
-    print("Logs are not available")
-#download the PC logs and PE logs and kept under resource location
-#Assume message returned from ergonFile is ergonTaskMessage
-#Define mapping for which file to check based on
+if __name__ == "__main__":
+    start_autotriage_deployment_bot()
 
