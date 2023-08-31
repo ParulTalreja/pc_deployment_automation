@@ -6,6 +6,7 @@ import triage_workflow
 urllib3.disable_warnings()
 from lib import util
 import sys
+import time
 
 def start_autotriage_deployment_bot():
     """
@@ -24,11 +25,14 @@ def start_autotriage_deployment_bot():
     print("PC Log URL:", pc_log_url)
     print("PE Log URL:", pe_log_url)
     pc_deployment = PCAutoDeployment(rdm_link,pc_log_url,pe_log_url)
+    bot_start_time = time.time()
     pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(rdm_link)
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
         print(errorMessage)
-        response = triage_workflow.pc_deploy_debug_mapping(errorMessage)
+        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url)
+        analysis_competion_time= time.time()-bot_start_time
+        print("Bot Analysis Completed in %s sec" % analysis_competion_time)
         print(response)
     else:
         print("Logs are not available")

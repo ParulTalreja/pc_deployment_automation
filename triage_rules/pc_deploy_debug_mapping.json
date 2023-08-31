@@ -2,6 +2,7 @@
   "pc.deployment": [
     {
       "exception_summary": "Encountered Exception in post_deployment step: Failed to enable micro services infrastructure on PC: deploy msp:failed to deploy the ntnx dvp: Operation timed out",
+      "log_signature": "Encountered Exception in post_deployment step: Failed to enable micro services infrastructure on PC: deploy msp:failed to deploy the ntnx dvp: Operation timed out",
       "file_lst": ["genesis.out"],
       "cluster_log": ["PC"],
       "params": {
@@ -11,6 +12,7 @@
     },
     {
       "exception_summary": "Failed to insert rule sudo_wrapper ip6tables -A WORLDLIST -p tcp -m tcp --dport 8000 -j ACCEPT with ret 1 out  err ip6tables: No chain/target/match by that name.",
+      "log_signature": "Failed to insert rule sudo_wrapper ip6tables -A WORLDLIST -p tcp -m tcp --dport 8000 -j ACCEPT with ret 1 out  err ip6tables: No chain/target/match by that name.",
       "file_lst": ["genesis.out"],
       "cluster_log": ["PE"],
       "params": {
@@ -20,44 +22,67 @@
     },
     {
       "exception_summary": "Failed while enabling CMSP: Encountered error in cmsp sub task 'IAMv2 Migration & Bootstrap':",
+      "log_signature": "Failed while enabling CMSP: Encountered error in cmsp sub task 'IAMv2 Migration & Bootstrap':",
       "use_for_checksum": false,
       "response": "Failed in cmsp sub task 'IAMv2 Migration & Bootstrap'. Please check with CMSP team for further triaging"
 
     },
     {
       "exception_summary": "Failure in operation 'Deploy MSP platform', error Microservice platform deployment failed, error deploy msp:Error deploying addons: failed to deploy monitoring addon: failed to deploy and verify kube-prometheus: failed to verify kube-prometheus:",
+      "log_signature": "Failure in operation 'Deploy MSP platform', error Microservice platform deployment failed, error deploy msp:Error deploying addons: failed to deploy monitoring addon: failed to deploy and verify kube-prometheus: failed to verify kube-prometheus:",
       "use_for_checksum": false,
       "response": "Failed in cmsp sub task 'Deploy MSP platform'. Please check with CMSP team for further triaging"
 
     },
     {
       "exception_summary": "Failed while enabling CMSP: Encountered error in cmsp sub task 'Deploy Microservice Platform': Failure in operation 'Deploy MSP platform', error Failed to get C-MSP:",
+      "log_signature": "Failed while enabling CMSP: Encountered error in cmsp sub task 'Deploy Microservice Platform': Failure in operation 'Deploy MSP platform', error Failed to get C-MSP:",
       "use_for_checksum": false,
       "response": "Failed in cmsp sub task 'Deploy Microservice Platform'. Please check with CMSP team for further triaging"
 
     },
     {
       "exception_summary": "Failure in operation 'CMSP Bootstrap Config', error Failed to copy spec /home/docker/msp_controller/bootstrap/cmsp-deployment-spec.json to PC VM",
+      "log_signature": "Failure in operation 'CMSP Bootstrap Config', error Failed to copy spec /home/docker/msp_controller/bootstrap/cmsp-deployment-spec.json to PC VM",
       "use_for_checksum": false,
       "response": "Failure in operation 'CMSP Bootstrap Config'. Please check with CMSP team for further triaging"
 
     },
     {
       "exception_summary": "Failed while enabling CMSP: Encountered error in cmsp sub task 'Setting up local registry': Failure in operation 'Deploy MSP platform",
+      "log_signature": "Failed while enabling CMSP: Encountered error in cmsp sub task 'Setting up local registry': Failure in operation 'Deploy MSP platform",
       "use_for_checksum": false,
       "response": "Failure in operation 'Setting up local registry'. Please check with CMSP team for further triaging"
     },
     {
       "exception_summary": "No host has enough available resources",
+      "log_signature": "No host has enough available resources",
       "use_for_checksum": false,
       "response": "Hosts should have atleast these many resources as follows : \\nFor 1-node Small PC : 6vcpus and 26GiB RAM\\nFor scaleout Small PC : 18vcpus and 78GiB RAM\\nFor 1-node Large PC : 10vcpus and 44GiB RAM\\nFor scaleout Large PC : 30vcpus and 132GiB RAM\\nLook into https://confluence.eng.nutanix.com:8443/pages/viewpage.action?spaceKey=PRIS&title=Triaging+RDM+PC+deployment+issues for more info"
 
     },
     {
       "exception_summary": "Either cluster name or cluster IP is required to create base cluster object.",
+      "log_signature": "Either cluster name or cluster IP is required to create base cluster object.",
       "use_for_checksum": false,
       "response": "Either cluster name or cluster IP is missing in cluster object payload. Kindly recheck the parameter passed. Ref: DIAL-12081"
-    }
+    },
+    {
+      "exception_summary": "Error while Registering PE to PC: get request failed for https://10.37.96.125:9440/PrismGateway/services/rest/v2.0/cluster with status code 500",
+      "log_signature": "Error while Registering PE to PC: get request failed for https://10.37.96.125:9440/PrismGateway/services/rest/v2.0/cluster with status code 500",
+      "use_for_checksum": false,
+      "response": "Get request failed for https://10.37.96.125:9440/PrismGateway/services/rest/v2.0/cluster with status code 500. Please check with Prism Gateway team for further analysis"
 
+    },
+    {
+      "exception_summary": "[30053]Post-Deployment Error:PE-PC Trust creation failed on PC: {\"message\":\"RPC error kTransportError raised: Error response code: 404\"}",
+      "log_signature": "RPC error kTransportError raised: Error response code: 404",
+      "file_lst": ["prism_gateway.log"],
+      "cluster_log": ["PC"],
+      "params": {
+        "cluster": "src_pc_ip"
+      },
+      "use_for_checksum": true
+    }
   ]
 }

@@ -19,6 +19,11 @@ def searchException(target_url):
                 x[1] = ast.literal_eval(x[1])
                 message = extractErrorMessageFromString(x[1])
                 return message
+            else:
+                word = 'NuTestInterfaceError:'
+                if line.find(word) == 0 :
+                    x = line.split(word)
+                    return x[1].strip()
     except Exception as e:
         error = "Encountered Exception in checking deployment logs: %s" % str(e)
         print(error)
@@ -71,7 +76,7 @@ def remove_uuid_digits_from_string(msg):
   Returns:
     strings:
   """
-  print(msg)
+  #print(msg)
 
   # Remove test name if exists
   if 'Timeout executing method - test_' in msg:
@@ -124,7 +129,7 @@ def get_checksum_without_caching(msg):
 
 def update_json_with_checksum(key,value):
     # Load the existing JSON data
-    with open("../triage_rules/result.json", "r") as json_file:
+    with open("triage_rules/result.json", "r") as json_file:
         existing_data = json.load(json_file)
     # Add a new key-value pair
     existing_data[key] = value
@@ -146,3 +151,7 @@ def retrieve_value_from_json(key_to_retrieve):
     else:
         print(f"Key '{key_to_retrieve}' not found in the JSON data.")
         return False
+
+# if __name__ == "__main__":
+#     target_url= 'http://10.41.24.115:9000/scheduled_deployments/2023-08-29/64edbfc982e14f1dd16678be/deployments/64edbfc982e14f1dd16678bf/DEPLOY/64edbfc982e14f1dd16678bf_1.txt'
+#     searchException(target_url)
