@@ -17,8 +17,19 @@ def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
                 break
         return ''.join(error_thread_id)
 
+def _find_error_msg_in_logfile(dir_name, file_name , searchContent):
+    with open(os.path.join(dir_name, file_name), mode='r', encoding='latin-1') as fp:
+        previous_line = None
+        for l_no, line in enumerate(fp):
+            # search string
+            if searchContent in line:
+                return previous_line+line
+            else:
+                previous_line = line
 
-def find_error_msg_in_logfile(dir_name, file_name, error_thread_id):
+
+
+def find_error_msg_in_logfile_using_threadId(dir_name, file_name, error_thread_id):
     count = 0
     errorlogs = ''
     loglevel='ERROR '
@@ -31,12 +42,16 @@ def find_error_msg_in_logfile(dir_name, file_name, error_thread_id):
 
 
 def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
-    error_thread_id=_find_error_thread_id_in_file(downloaded_log_location,logFileName,searchContent)
-    print("Thread Id: ",error_thread_id)
-    error_msg=find_error_msg_in_logfile(downloaded_log_location,logFileName,error_thread_id)
+    if(logFileName=="prism_gateway.log"):
+        error_msg=_find_error_msg_in_logfile(downloaded_log_location,logFileName,searchContent)
+        print("Return value",error_msg)
+    else:
+        error_thread_id=_find_error_thread_id_in_file(downloaded_log_location,logFileName,searchContent)
+        print("Thread Id: ",error_thread_id)
+        error_msg=find_error_msg_in_logfile_using_threadId(downloaded_log_location,logFileName,error_thread_id)
     checksum_string = util.remove_uuid_digits_from_string(error_msg)
     chksm = util.get_checksum_without_caching(checksum_string)
-    print("Checksum for string: {0} is {1}".format(checksum_string, chksm))
+    #print("Checksum for string: {0} is {1}".format(checksum_string, chksm))
     chksm_mapping_available= util.retrieve_value_from_json(chksm)
     if(not chksm_mapping_available):
         util.update_json_with_checksum(chksm, searchContent)
@@ -48,7 +63,7 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
 
 
 
-def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL=None,PE_LOG_URL=None):
+def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
     dir_name = "triage_rules/"
     file_name = "pc_deploy_debug_mapping.json"
     mapping_found = False
@@ -57,6 +72,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL=None,PE_LOG_URL=None):
         for i in pc_deployment_error_list['pc.deployment']:
             if(errorMessage in i['exception_summary']):
                 mapping_found = True
+                log_signature=i['log_signature']
                 use_for_checksum=i['use_for_checksum']
                 # Case 1- Direct Deflect Issue
                 if not use_for_checksum:
@@ -65,22 +81,21 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL=None,PE_LOG_URL=None):
                     cluster_log = i['cluster_log'] #possible values PC/PE/PC,PE
                     if "PC" in cluster_log:
                         #downloaded_log_location="resources/home/nutanix/data/logs/"
-                        downloaded_log_location=download_util.tar_download_and_extract(PC_LOG_URL)
+                        downloaded_log_location= download_util.download_pc_logs(PC_LOG_URL)
                     if "PE" in cluster_log:
                         downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL)
 
                     for logFileName in i['file_lst']:
-                        _collects_log_from_file(downloaded_log_location,logFileName, i['exception_summary'])
+                        _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'])
                     return None
 
         if(not mapping_found):
             print("Log Signature not found in pc debug mapping")
 
 
-if __name__ == "__main__":
-    errorMessage="Failed to insert rule sudo_wrapper ip6tables -A WORLDLIST -p tcp -m tcp --dport 8000 -j ACCEPT with ret 1 out  err ip6tables: No chain/target/match by that name."
-    PC_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/10.37.110.39/'
-    PE_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-09/64d35cea82e14f1c567fdc0b/deployments/64d35cea82e14f1c567fdc0d/entity_logs/retry_0/auto_cluster_prod_1a46c0e53cc4/logbay_auto_cluster_prod_1a46c0e53cc4_1691575466/'
-    pc_deploy_debug_mapping(errorMessage,None,PE_LOG_URL)
-#zip_download_and_extract(file_url=None)
-#fetch_page_content()
+
+# if __name__ == "__main__":
+#     errorMessage="Failed while enabling CMSP: Encountered error in cmsp sub task 'IAMv2 Migration & Bootstrap':"
+#     PC_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-29/64edf55f82e14f4f40d436b2/deployments/64edf55f82e14f4f40d436b4/entity_logs/retry_0/10.37.110.97/logbay_PC-10.37.110.97_1693329010/'
+#     PE_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-29/64edf55f82e14f4f40d436b2/deployments/64edf55f82e14f4f40d436b4/entity_logs/retry_0/auto_cluster_prod_f348cf370366/logbay_auto_cluster_prod_f348cf370366_1693328666/'
+#     print(pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL))
