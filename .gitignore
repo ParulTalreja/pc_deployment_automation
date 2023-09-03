@@ -9,3 +9,5 @@
 *.arf
 venv
 resources
+/logs
+/download
