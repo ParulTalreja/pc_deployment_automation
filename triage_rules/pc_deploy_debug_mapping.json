@@ -78,6 +78,7 @@
       "exception_summary": "[30053]Post-Deployment Error:PE-PC Trust creation failed on PC: {\"message\":\"RPC error kTransportError raised: Error response code: 404\"}",
       "log_signature": "RPC error kTransportError raised: Error response code: 404",
       "file_lst": ["prism_gateway.log"],
+      "Ticket" : "DIAL-11012",
       "cluster_log": ["PC"],
       "params": {
         "cluster": "src_pc_ip"
