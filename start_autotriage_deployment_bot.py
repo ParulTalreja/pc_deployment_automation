@@ -19,7 +19,7 @@ def is_valid_rdm_url(rdmurl):
     if(rdmlink==rdmurl[0:len(rdmlink)]):
         return True
     return False
-    
+
 def start_bot_analysis(rdm_link):
     if not is_valid_rdm_url(rdm_link):
         response = "Invalid RDM link"
@@ -32,13 +32,13 @@ def start_bot_analysis(rdm_link):
         print("PC LOGS NOT FOUND")
     else:
         print("PC Log URL:",pc_log_url)
-        
+
     if pe_log_url=="":
         print("PE LOGS NOT FOUND")
     else:
         print("PE Log URL:", pe_log_url)
-    
-    
+
+
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
         print(errorMessage)
@@ -48,7 +48,7 @@ def start_bot_analysis(rdm_link):
 
     analysis_competion_time= time.time()-bot_start_time
     result=analysis_result(response, analysis_competion_time)
-    return result
+    return response
 
 def start_autotriage_deployment_bot_cmd():
     """
@@ -60,7 +60,6 @@ def start_autotriage_deployment_bot_cmd():
     args = parser.parse_args()
     rdm_link =args.rdmurl
     return start_bot_analysis(rdm_link)
-
 
 class PCAutoDeployment:
     def __init__(self, RDM_URL):
@@ -77,8 +76,8 @@ class PCAutoDeployment:
             if re.match(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/',link['href']):
                 URL = URL + link['href']
                 # print(URL)
-                
-        
+
+
 
         response = requests.get(URL)
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -90,7 +89,7 @@ class PCAutoDeployment:
                 # print(URL)
 
         return pc_log_link
-    
+
     def find_pe_log_url(self,URL):
         pe_log_link =  ""
         response = requests.get(URL)
@@ -110,7 +109,7 @@ class PCAutoDeployment:
             if re.match(r'logbay_auto_cluster_prod.*?/',link['href']):
                 pe_log_link = URL + link['href']
                 # print(URL)
-        
+
         return pe_log_link
 
     def _get_failed_deployment_logurl(self, RDM_URL):
@@ -133,7 +132,7 @@ class PCAutoDeployment:
         deploymentFileName=failed_deployment_id+"_1.txt"
         baseLogPath = log_link + "deployments/" + failed_deployment_id + "/"
         failedDeploymentLogUrl= log_link + "deployments/" + failed_deployment_id + "/DEPLOY/"+deploymentFileName
-        
+
         URL = baseLogPath+"entity_logs/"
 
         response = requests.get(URL)
@@ -177,10 +176,7 @@ class PCAutoDeployment:
 
 
 if __name__ == "__main__":
-    result=start_autotriage_deployment_bot_cmd()
-    if(result):
-        print("Bot Analysis Completed in %s sec" % result.time)
-        print(result.response)
+    print(start_autotriage_deployment_bot_cmd())
 
 
 

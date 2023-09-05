@@ -55,9 +55,9 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
     chksm_mapping_available= util.retrieve_value_from_json(chksm)
     if(not chksm_mapping_available):
         util.update_json_with_checksum(chksm, searchContent)
-        print("No Existing Result found based on checksum")
+        return "No Existing Result found based on checksum"
     else:
-        print(chksm_mapping_available)
+        #print(chksm_mapping_available)
         return chksm_mapping_available
 
 
@@ -92,12 +92,13 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
                         downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL)
 
                     for logFileName in i['file_lst']:
-                        _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'])
-                    return None
+                        return _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'])
+
 
 
         if(not mapping_found):
-            print("Log Signature not found in pc debug mapping")
+            return "Log Signature not found in pc debug mapping"
+
 
 
 
@@ -105,4 +106,4 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
 #     errorMessage="Failed while enabling CMSP: Encountered error in cmsp sub task 'IAMv2 Migration & Bootstrap':"
 #     PC_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-29/64edf55f82e14f4f40d436b2/deployments/64edf55f82e14f4f40d436b4/entity_logs/retry_0/10.37.110.97/logbay_PC-10.37.110.97_1693329010/'
 #     PE_LOG_URL='http://10.41.24.125:9000/scheduled_deployments/2023-08-29/64edf55f82e14f4f40d436b2/deployments/64edf55f82e14f4f40d436b4/entity_logs/retry_0/auto_cluster_prod_f348cf370366/logbay_auto_cluster_prod_f348cf370366_1693328666/'
-#     print(pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL))
+#     download_util.zip_download_and_extract(PE_LOG_URL)
