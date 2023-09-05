@@ -16,7 +16,7 @@ def searchException(target_url):
             word = 'Exception'
             if line.find(word) == 0:
                 x = line.split("Exception:")
-                x[1] = ast.literal_eval(x[1])
+                x[1] = ast.literal_eval(x[1][1:])
                 message = extractErrorMessageFromString(x[1])
                 return message
             else:
