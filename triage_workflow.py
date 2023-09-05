@@ -70,7 +70,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
     with open(os.path.join(dir_name, file_name), "r") as f:
         pc_deployment_error_list = json.load(f)
         for i in pc_deployment_error_list['pc.deployment']:
-            if(errorMessage in i['exception_summary']):
+            if(errorMessage in i['exception_summary'] or errorMessage.find(i['exception_summary'])!=-1):
                 mapping_found = True
                 log_signature=i['log_signature']
                 use_for_checksum=i['use_for_checksum']
@@ -79,15 +79,22 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
                     return i['response']
                 else:
                     cluster_log = i['cluster_log'] #possible values PC/PE/PC,PE
+                    if(PC_LOG_URL==""):
+                        print("PC LOGS NOT FOUND")
+                        exit(-1)
                     if "PC" in cluster_log:
                         #downloaded_log_location="resources/home/nutanix/data/logs/"
                         downloaded_log_location= download_util.download_pc_logs(PC_LOG_URL)
+                    if(PE_LOG_URL==""):
+                        print("PE LOGS NOT FOUND")
+                        exit(-1)
                     if "PE" in cluster_log:
                         downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL)
 
                     for logFileName in i['file_lst']:
                         _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'])
                     return None
+
 
         if(not mapping_found):
             print("Log Signature not found in pc debug mapping")

@@ -84,6 +84,30 @@
         "cluster": "src_pc_ip"
       },
       "use_for_checksum": true
+    },
+    {
+      "exception_summary": "IP: 127.0.0.1 did not get allocated from the deployment API for this VM",
+      "log_signature": "IP: 127.0.0.1 did not get allocated from the deployment API for this VM.",
+      "use_for_checksum": false,
+      "response": "This happens when the VM got 127.0.0.1 as the IP which could be because the DHCP pool is exhausted of IPs. Check with IT team on this."
+    },
+    {
+      "exception_summary": "PC is not reachable from PE",
+      "log_signature": "PC is not reachable from PE",
+      "use_for_checksum": false,
+      "response": "PC is not reachable from PE"
+    },
+    {
+      "exception_summary": "Tar extraction failed",
+      "log_signature": "Tar extraction failed",
+      "use_for_checksum": false,
+      "response": "Tar extraction failed"
+    },
+    {
+      "exception_summary": "Download took too much time or failed",
+      "log_signature": "Download took too much time or failed",
+      "use_for_checksum": false,
+      "response": "Download took too much time or failed"
     }
   ]
 }

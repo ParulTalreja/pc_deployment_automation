@@ -9,6 +9,7 @@ import sys
 import time
 from bs4 import BeautifulSoup
 import argparse
+import analysis_result as ar
 
 def list_of_strings(arg):
     return arg
@@ -22,6 +23,36 @@ def get_rdm():
     else:
         print("Invalid RDM link.")
         return None
+    
+def start_bot_analysis(rdm_link):
+    pc_deployment = PCAutoDeployment(rdm_link)
+    bot_start_time = time.time()
+    pcdeploymentlogLocation,pc_log_url, pe_log_url = pc_deployment._get_failed_deployment_logurl(rdm_link)
+    print("RDM Link: ",rdm_link)
+
+    if pc_log_url=="":
+        print("PC LOGS NOT FOUND")
+        #exit(-1)
+    else:
+        print("PC Log URL:",pc_log_url)
+        
+    if pe_log_url=="":
+        print("PE LOGS NOT FOUND")
+        #exit(-1) 
+    else:
+        print("PE Log URL:", pe_log_url)
+    
+    
+    if pc_deployment.is_log_available(pcdeploymentlogLocation):
+        errorMessage = util.searchException(pcdeploymentlogLocation)
+        print(errorMessage)
+        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url)
+    else:
+        response="Logs are not available"
+
+    analysis_competion_time= time.time()-bot_start_time
+    result=ar.analysis_result(response, analysis_competion_time)
+    return result
 
 def start_autotriage_deployment_bot():
     """
@@ -33,33 +64,9 @@ def start_autotriage_deployment_bot():
     if rdm_link is None:
         return
     
-    pc_deployment = PCAutoDeployment(rdm_link)
-    bot_start_time = time.time()
-    pcdeploymentlogLocation,pc_log_url, pe_log_url = pc_deployment._get_failed_deployment_logurl(rdm_link)
-    print("RDM Link: ",rdm_link)
+    return start_bot_analysis(rdm_link)
 
-    if pc_log_url=="":
-        print("PC LOGS NOT FOUND")
-        exit(-1)
-    else:
-        print("PC Log URL:",pc_log_url)
-        
-    if pe_log_url=="":
-        print("PE LOGS NOT FOUND")
-        exit(-1) 
-    else:
-        print("PE Log URL:", pe_log_url)
-    
-    
-    if pc_deployment.is_log_available(pcdeploymentlogLocation):
-        errorMessage = util.searchException(pcdeploymentlogLocation)
-        print(errorMessage)
-        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url)
-        analysis_competion_time= time.time()-bot_start_time
-        print("Bot Analysis Completed in %s sec" % analysis_competion_time)
-        print(response)
-    else:
-        print("Logs are not available")
+    #Bot should return response
 
 class PCAutoDeployment:
     def __init__(self, RDM_URL):
@@ -176,5 +183,7 @@ class PCAutoDeployment:
 
 
 if __name__ == "__main__":
-    start_autotriage_deployment_bot()
+    result=start_autotriage_deployment_bot()
+    print("Bot Analysis Completed in %s sec" % result.time)
+    print(result.response)
 
