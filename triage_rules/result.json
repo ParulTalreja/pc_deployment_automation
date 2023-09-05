@@ -1,4 +1,4 @@
 {
     "dba3d9d15fb89277c152c88a31a3ccad": "Failed to insert rule sudo_wrapper ip6tables -A WORLDLIST -p tcp -m tcp --dport 8000 -j ACCEPT with ret 1 out  err ip6tables: No chain/target/match by that name.",
-    "2539d9301a5c518935e00198b4a5d3bf": "RPC error kTransportError raised: Error response code: 404"
+    "2539d9301a5c518935e00198b4a5d3bf": "Failed to add certificate to remote cluster"
 }

@@ -44,7 +44,7 @@ def find_error_msg_in_logfile_using_threadId(dir_name, file_name, error_thread_i
 def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
     if(logFileName=="prism_gateway.log"):
         error_msg=_find_error_msg_in_logfile(downloaded_log_location,logFileName,searchContent)
-        print("Return value",error_msg)
+        print(error_msg)
     else:
         error_thread_id=_find_error_thread_id_in_file(downloaded_log_location,logFileName,searchContent)
         print("Thread Id: ",error_thread_id)

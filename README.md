@@ -1,4 +1,11 @@
-# pc_deployment_automation
+# PC Deployment automated triage
+
+## Installing Modules Commands
+sudo pip3 install requirements.txt
+
+## Usage
+python3.9 start_autotriage_deployment_bot.py
+
 Execute via below command
 
 python start_autotriage_deployment_bot.py << RDMLink >> << PCLogURLlocation >> << PELogURLlocation >>
