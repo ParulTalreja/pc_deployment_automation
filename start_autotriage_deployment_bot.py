@@ -9,36 +9,32 @@ import sys
 import time
 from bs4 import BeautifulSoup
 import argparse
-import analysis_result as ar
+from analysis_result import analysis_result
 
 def list_of_strings(arg):
     return arg
-def get_rdm():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--rdmurl', type=list_of_strings)
-    args=parser.parse_args()
+
+def is_valid_rdm_url(rdmurl):
     rdmlink="https://rdm.eng.nutanix.com/scheduled_deployments/"
-    if(rdmlink==args.rdmurl[0:len(rdmlink)]):
-        return args.rdmurl
-    else:
-        print("Invalid RDM link.")
-        return None
+    if(rdmlink==rdmurl[0:len(rdmlink)]):
+        return True
+    return False
     
 def start_bot_analysis(rdm_link):
+    if not is_valid_rdm_url(rdm_link):
+        response = "Invalid RDM link"
+        return analysis_result(response)
     pc_deployment = PCAutoDeployment(rdm_link)
     bot_start_time = time.time()
     pcdeploymentlogLocation,pc_log_url, pe_log_url = pc_deployment._get_failed_deployment_logurl(rdm_link)
     print("RDM Link: ",rdm_link)
-
     if pc_log_url=="":
         print("PC LOGS NOT FOUND")
-        #exit(-1)
     else:
         print("PC Log URL:",pc_log_url)
         
     if pe_log_url=="":
         print("PE LOGS NOT FOUND")
-        #exit(-1) 
     else:
         print("PE Log URL:", pe_log_url)
     
@@ -51,28 +47,26 @@ def start_bot_analysis(rdm_link):
         response="Logs are not available"
 
     analysis_competion_time= time.time()-bot_start_time
-    result=ar.analysis_result(response, analysis_competion_time)
+    result=analysis_result(response, analysis_competion_time)
     return result
 
-def start_autotriage_deployment_bot():
+def start_autotriage_deployment_bot_cmd():
     """
-    execute python start_autotriage_deployment_bot.py <RDM Link> <PC LogURL> <PE LogURL>
+    execute python start_autotriage_deployment_bot.py --rdmurl = <RDM_URL>
     :return:
     """
-
-    rdm_link= get_rdm()
-    if rdm_link is None:
-        return
-    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--rdmurl', type=list_of_strings)
+    args = parser.parse_args()
+    rdm_link =args.rdmurl
     return start_bot_analysis(rdm_link)
 
-    #Bot should return response
 
 class PCAutoDeployment:
     def __init__(self, RDM_URL):
         self.RDM_URL = RDM_URL
 
-    def find_pc_link(self,URL):
+    def find_pc_log_url(self,URL):
         pc_log_link =  ""
         response = requests.get(URL)
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -97,7 +91,7 @@ class PCAutoDeployment:
 
         return pc_log_link
     
-    def find_pe_link(self,URL):
+    def find_pe_log_url(self,URL):
         pe_log_link =  ""
         response = requests.get(URL)
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -157,8 +151,8 @@ class PCAutoDeployment:
                     break
 
 
-        PC_log_link = self.find_pc_link(URL)
-        PE_log_link = self.find_pe_link(URL)
+        PC_log_link = self.find_pc_log_url(URL)
+        PE_log_link = self.find_pe_log_url(URL)
         #print(failedDeploymentLogUrl)
         return failedDeploymentLogUrl, PC_log_link, PE_log_link
 
@@ -183,7 +177,10 @@ class PCAutoDeployment:
 
 
 if __name__ == "__main__":
-    result=start_autotriage_deployment_bot()
-    print("Bot Analysis Completed in %s sec" % result.time)
-    print(result.response)
+    result=start_autotriage_deployment_bot_cmd()
+    if(result):
+        print("Bot Analysis Completed in %s sec" % result.time)
+        print(result.response)
+
+
 
