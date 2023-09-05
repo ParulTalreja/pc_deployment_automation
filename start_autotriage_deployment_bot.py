@@ -7,26 +7,50 @@ urllib3.disable_warnings()
 from lib import util
 import sys
 import time
+from bs4 import BeautifulSoup
+import argparse
+
+def list_of_strings(arg):
+    return arg
+def get_rdm():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--rdmurl', type=list_of_strings)
+    args=parser.parse_args()
+    rdmlink="https://rdm.eng.nutanix.com/scheduled_deployments/"
+    if(rdmlink==args.rdmurl[0:len(rdmlink)]):
+        return args.rdmurl
+    else:
+        print("Invalid RDM link.")
+        return None
 
 def start_autotriage_deployment_bot():
     """
     execute python start_autotriage_deployment_bot.py <RDM Link> <PC LogURL> <PE LogURL>
     :return:
     """
-    # Check if the correct number of arguments is provided
-    if len(sys.argv) != 4:
-        print("Usage: python start_autotriage_deployment_bot.py RDMLink PCLogURL PELogURL")
-        return
 
-    rdm_link= sys.argv[1]
-    pc_log_url = sys.argv[2]
-    pe_log_url = sys.argv[3]
-    print("RDM link:", rdm_link)
-    print("PC Log URL:", pc_log_url)
-    print("PE Log URL:", pe_log_url)
-    pc_deployment = PCAutoDeployment(rdm_link,pc_log_url,pe_log_url)
+    rdm_link= get_rdm()
+    if rdm_link is None:
+        return
+    
+    pc_deployment = PCAutoDeployment(rdm_link)
     bot_start_time = time.time()
-    pcdeploymentlogLocation = pc_deployment._get_failed_deployment_logurl(rdm_link)
+    pcdeploymentlogLocation,pc_log_url, pe_log_url = pc_deployment._get_failed_deployment_logurl(rdm_link)
+    print("RDM Link: ",rdm_link)
+
+    if pc_log_url=="":
+        print("PC LOGS NOT FOUND")
+        exit(-1)
+    else:
+        print("PC Log URL:",pc_log_url)
+        
+    if pe_log_url=="":
+        print("PE LOGS NOT FOUND")
+        exit(-1) 
+    else:
+        print("PE Log URL:", pe_log_url)
+    
+    
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
         print(errorMessage)
@@ -38,9 +62,55 @@ def start_autotriage_deployment_bot():
         print("Logs are not available")
 
 class PCAutoDeployment:
-    def __init__(self, RDM_URL,PC_LOG_URL,PE_LOG_URL):
+    def __init__(self, RDM_URL):
         self.RDM_URL = RDM_URL
 
+    def find_pc_link(self,URL):
+        pc_log_link =  ""
+        response = requests.get(URL)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        links = soup.find_all('a',href = True)
+
+        #Identifying the PC IP Address
+        for link in links:
+            if re.match(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/',link['href']):
+                URL = URL + link['href']
+                # print(URL)
+                
+        
+
+        response = requests.get(URL)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        links = soup.find_all('a',href = True)
+
+        for link in links:
+            if re.match(r'logbay_PC.*?/',link['href']):
+                pc_log_link = URL + link['href']
+                # print(URL)
+
+        return pc_log_link
+    
+    def find_pe_link(self,URL):
+        pe_log_link =  ""
+        response = requests.get(URL)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        links = soup.find_all('a',href = True)
+
+        for link in links:
+            if re.match(r'auto_cluster_prod.*?/',link['href']):
+                URL = URL + link['href']
+                # print(URL)
+
+        response = requests.get(URL)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        links = soup.find_all('a',href = True)
+
+        for link in links:
+            if re.match(r'logbay_auto_cluster_prod.*?/',link['href']):
+                pe_log_link = URL + link['href']
+                # print(URL)
+        
+        return pe_log_link
 
     def _get_failed_deployment_logurl(self, RDM_URL):
         """
@@ -60,9 +130,30 @@ class PCAutoDeployment:
         deployments_id = actual_data['data']['deployments']
         failed_deployment_id=self._get_failed_deployment_id(deployments_id)
         deploymentFileName=failed_deployment_id+"_1.txt"
+        baseLogPath = log_link + "deployments/" + failed_deployment_id + "/"
         failedDeploymentLogUrl= log_link + "deployments/" + failed_deployment_id + "/DEPLOY/"+deploymentFileName
+        
+        URL = baseLogPath+"entity_logs/"
+
+        response = requests.get(URL)
+        if response.status_code == 200:
+            # Parse the HTML content using BeautifulSoup
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            # Find all <a> tags with an href attribute
+            links = soup.find_all('a', href=True)
+
+            for link in links:
+                match = re.match(r'retry_\d+/',link['href'])
+                if match:
+                    URL = URL + link['href']
+                    break
+
+
+        PC_log_link = self.find_pc_link(URL)
+        PE_log_link = self.find_pe_link(URL)
         #print(failedDeploymentLogUrl)
-        return failedDeploymentLogUrl
+        return failedDeploymentLogUrl, PC_log_link, PE_log_link
 
     def is_log_available(self,log_url):
         r = requests.head(log_url)
