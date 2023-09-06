@@ -5,6 +5,7 @@ urllib3.disable_warnings()
 import os
 from file_read_backwards import FileReadBackwards
 from lib import download_util, util
+import stage_extraction
 
 
 def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
@@ -132,6 +133,8 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
             if PE_LOG_URL!="":
                 pe_log_location = download_util.download_pc_logs(PE_LOG_URL)
                 pe_cluster_config_log_location, pe_genesis_log_location = get_log_files_for_staging(pe_log_location)
+            
+            print(stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location))
 
             return "Log Signature not found in pc debug mapping"
 
