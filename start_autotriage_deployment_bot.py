@@ -23,7 +23,7 @@ def is_valid_rdm_url(rdmurl):
 def start_bot_analysis(rdm_link):
     if not is_valid_rdm_url(rdm_link):
         response = "Invalid RDM link"
-        return analysis_result(response)
+        return response
     pc_deployment = PCAutoDeployment(rdm_link)
     bot_start_time = time.time()
     pcdeploymentlogLocation,pc_log_url, pe_log_url = pc_deployment._get_failed_deployment_logurl(rdm_link)
@@ -44,10 +44,10 @@ def start_bot_analysis(rdm_link):
         print(errorMessage)
         response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url)
     else:
-        response="Logs are not available"
+        response="Logs are not available."
 
     analysis_competion_time= time.time()-bot_start_time
-    result=analysis_result(response, analysis_competion_time)
+    #result=analysis_result(response, analysis_competion_time)
     return response
 
 def start_autotriage_deployment_bot_cmd():

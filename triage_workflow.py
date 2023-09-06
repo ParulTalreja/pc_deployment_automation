@@ -79,16 +79,14 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
                     return i['response']
                 else:
                     cluster_log = i['cluster_log'] #possible values PC/PE/PC,PE
-                    if(PC_LOG_URL==""):
-                        print("PC LOGS NOT FOUND")
-                        exit(-1)
                     if "PC" in cluster_log:
+                        if (PC_LOG_URL == ""):
+                            return "PC LOGS NOT FOUND"
                         #downloaded_log_location="resources/home/nutanix/data/logs/"
                         downloaded_log_location= download_util.download_pc_logs(PC_LOG_URL)
-                    if(PE_LOG_URL==""):
-                        print("PE LOGS NOT FOUND")
-                        exit(-1)
                     if "PE" in cluster_log:
+                        if (PE_LOG_URL == ""):
+                            return "PE LOGS NOT FOUND"
                         downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL)
 
                     for logFileName in i['file_lst']:

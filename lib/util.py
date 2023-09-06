@@ -26,7 +26,7 @@ def searchException(target_url):
                     return x[1].strip()
     except Exception as e:
         error = "Encountered Exception in checking deployment logs: %s" % str(e)
-        print(error)
+        return error
 
 
 
