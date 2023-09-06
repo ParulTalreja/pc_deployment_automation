@@ -1,0 +1,153 @@
+2023-09-05 19:35:54,455Z rolled over log file
+2023-09-05 19:35:54,445Z INFO 66852 /src/bigtop/infra/infra_server/cluster/service_monitor/service_monitor.c:256 main: /home/nutanix/bin/service_monitor: appending fatal messages to /home/nutanix/data/logs/cluster_config.FATAL
+2023-09-05 19:35:54,446Z INFO 66852 /src/bigtop/infra/infra_server/cluster/service_monitor/service_monitor.c:87 StartServiceMonitor: Launched child with pid: 66854
+2023-09-05 19:35:54,447Z INFO 66854 /src/bigtop/infra/infra_server/cluster/service_monitor/service_monitor.c:158 StartService: Starting service with cmd: /home/nutanix/bin/service_proxy
+2023-09-05 19:35:54,447Z INFO 66854 /src/bigtop/infra/infra_server/cluster/service_monitor/nxenv.c:99 RefreshZkHostPortList: Setting ZOOKEEPER_HOST_PORT_LIST=zk1:9876;
+I20230905 19:35:54.000556Z 66854(0x7ff23630c340) zookeeper_init:994] Initiating client connection, host=zk1:9876 sessionTimeout=20000 watcher=0x7ff240205fb0 sessionId=0 sessionPasswd=<null> context=0x5595224c0040 flags=0
+I20230905 19:35:54.000573Z 66854(0x7ff235977700) zookeeper_interest:1950] Connecting to server 10.33.0.18:9876
+I20230905 19:35:54.000574Z 66854(0x7ff235977700) zookeeper_interest:1987] Zookeeper handle state changed to ZOO_CONNECTING_STATE for socket [10.33.0.18:9876]
+I20230905 19:35:54.000574Z 66854(0x7ff235977700) check_events:2196] initiated connection to server [10.33.0.18:9876]
+I20230905 19:35:54.000575Z 66854(0x7ff235977700) check_events:2244] session establishment complete on server [10.33.0.18:9876], sessionId=0x18a66d2ff1e0081, negotiated timeout=20000
+2023-09-05 19:36:05,216Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-09-05 19:36:05,249Z INFO zookeeper_session.py:250 Parsed cluster id: 3550714607169226625, cluster incarnation id: 1693942083452212 
+2023-09-05 19:36:05,254Z INFO zookeeper_session.py:271 cluster_config is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-09-05 19:36:05,259Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a66d2ff1e00a1, negotiated timeout=20 secs 
+2023-09-05 19:36:05,260Z INFO server.py:259 Cleanup software zk entry 
+2023-09-05 19:36:05,260Z INFO recovery_server.py:358 Cleanup stale software entries 
+2023-09-05 19:36:05,284Z INFO leadership.py:153 Leadership blueprint zknode does not exist, watch will be triggered when it is created 
+2023-09-05 19:36:05,312Z INFO sync_rpc_client.py:591 Started node list checker thread to remove stale RPC stubs 
+2023-09-05 19:36:05,352Z INFO client.py:243 Creating stub for Ergon on 10.33.0.18: 2090 
+2023-09-05 19:36:05,420Z INFO master.py:80 My node uuid: 6e34cd71-7283-45e6-a1af-a9a8420f8e5a 
+2023-09-05 19:36:05,421Z INFO master.py:81 Volunteering for master leadership 
+2023-09-05 19:36:05,425Z INFO leadership.py:405 Volunteering for leadership for the path: /appliance/logical/pyleaders/cluster_config_master with value: 6e34cd71-7283-45e6-a1af-a9a8420f8e5a 
+2023-09-05 19:36:05,433Z INFO leadership.py:422 Successfully created intent-node for leadership at path: /appliance/logical/pyleaders/cluster_config_master/n_0000000000 with value: 6e34cd71-7283-45e6-a1af-a9a8420f8e5a 
+2023-09-05 19:36:15,442Z INFO master.py:97 Recover local tasks 
+2023-09-05 19:36:15,444Z INFO recovery_server.py:175 Found 0 pending download tasks 
+2023-09-05 19:36:15,445Z INFO server.py:277 Starting the serve_http thread 
+2023-09-05 19:36:15,446Z INFO server.py:287 component_registration feature is enabled, starting registration workflows. 
+2023-09-05 19:36:15,447Z INFO server.py:114 Not an Azure / AWS cluster, not starting component registration workflows 
+2023-09-05 19:36:15,448Z INFO server.py:295 Starting multi-vdisk deployment. 
+2023-09-05 19:36:15,448Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-09-05 19:36:15,449Z INFO zookeeper_session.py:250 Parsed cluster id: 3550714607169226625, cluster incarnation id: 1693942083452212 
+2023-09-05 19:36:15,449Z INFO zookeeper_session.py:271 cluster_config is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-09-05 19:36:15,452Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a66d2ff1e00b9, negotiated timeout=20 secs 
+2023-09-05 19:36:15,467Z INFO zookeeper_session.py:349 close() was called for session 0x18a66d2ff1e00b9 
+2023-09-05 19:36:15,468Z INFO zookeeper_session.py:359 Invalidated the Zookeeper C-client object for session 0x18a66d2ff1e00b9 
+2023-09-05 19:36:15,469Z WARNING utils.py:905 PC size field is not set in zeus config 
+2023-09-05 19:36:15,470Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-09-05 19:36:15,471Z INFO zookeeper_session.py:250 Parsed cluster id: 3550714607169226625, cluster incarnation id: 1693942083452212 
+2023-09-05 19:36:15,471Z INFO zookeeper_session.py:271 cluster_config is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-09-05 19:36:15,482Z INFO zookeeper_session.py:943 Calling c_impl.close() for session 0x0 
+2023-09-05 19:36:15,482Z INFO zookeeper_session.py:944 Calling zookeeper_close and invalidating zhandle 
+2023-09-05 19:36:15,486Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a66d2ff1e00ba, negotiated timeout=20 secs 
+2023-09-05 19:36:15,487Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-09-05 19:36:15,487Z INFO zookeeper_session.py:250 Parsed cluster id: 3550714607169226625, cluster incarnation id: 1693942083452212 
+2023-09-05 19:36:15,488Z INFO zookeeper_session.py:271 cluster_config is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-09-05 19:36:15,516Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a66d2ff1e00bb, negotiated timeout=20 secs 
+2023-09-05 19:36:15,572Z INFO zookeeper_session.py:349 close() was called for session 0x18a66d2ff1e00ba 
+2023-09-05 19:36:15,572Z INFO zookeeper_session.py:359 Invalidated the Zookeeper C-client object for session 0x18a66d2ff1e00ba 
+2023-09-05 19:36:15,573Z WARNING utils.py:905 PC size field is not set in zeus config 
+2023-09-05 19:36:15,595Z INFO server.py:60 Discovered a small PC 
+2023-09-05 19:36:15,596Z INFO server.py:62 Multi-vdisk workflow is not enabled on small PC. Please set enable_pc_multivdisk_deployment_on_small_pc to True to enable this for small PC 
+2023-09-05 19:36:15,601Z INFO zookeeper_session.py:943 Calling c_impl.close() for session 0x0 
+2023-09-05 19:36:15,601Z INFO zookeeper_session.py:944 Calling zookeeper_close and invalidating zhandle 
+2023-09-05 19:36:15,626Z INFO master.py:135 Recover global tasks 
+2023-09-05 19:36:15,628Z INFO recovery_server.py:99 recovering deployment task if any 
+2023-09-05 19:36:15,628Z INFO master.py:138 Starting CMSP auto enablement thread 
+2023-09-05 19:36:15,633Z ERROR utils.py:146 Cluster is no a Prism Central. CMSP is not applicable. 
+2023-09-05 19:36:15,634Z INFO master.py:142 Acquired leadership. 
+2023-09-05 19:36:15,656Z INFO master.py:187 Listening to changes in nodes: set([u'10.33.0.18']) 
+2023-09-05 19:36:15,657Z INFO sync_rpc_client.py:591 Started node list checker thread to remove stale RPC stubs 
+2023-09-05 19:36:15,664Z INFO client.py:243 Creating stub for Ergon on 10.33.0.18: 2090 
+2023-09-05 19:36:15,676Z INFO deploy_handler.py:656 No pending deployment tasks found 
+2023-09-05 19:38:15,659Z INFO sync_rpc_client.py:607 Stopping node list checker thread as the object calling this method was garbage collected 
+2023-09-05 19:49:15,829Z INFO deploy_handler.py:548 Flushed DNS resolver cache 
+2023-09-05 19:49:15,872Z WARNING validation_utils.py:85 10.33.16.1 IP is not available 
+2023-09-05 19:49:15,873Z INFO validation_utils.py:321 List of IP address: [u'10.33.16.81', u'10.33.16.80'] 
+2023-09-05 19:49:15,874Z INFO validation_utils.py:221 Thread-57, Started Unavailable Ips thread 
+2023-09-05 19:49:17,911Z INFO validation_utils.py:88 10.33.16.81 IP is available 
+2023-09-05 19:49:17,912Z INFO validation_utils.py:321 List of IP address: [u'10.40.64.15', u'10.40.64.16', u'3.centos.pool.ntp.org', u'0.centos.pool.ntp.org', u'2.centos.pool.ntp.org', u'1.centos.pool.ntp.org'] 
+2023-09-05 19:49:17,912Z INFO validation_utils.py:328 Thread-58, Started Ip: 10.33.16.81 status thread 
+2023-09-05 19:49:17,913Z INFO validation_utils.py:228 Thread-59, Started DNS/NTP Ips thread 
+2023-09-05 19:49:17,957Z WARNING validation_utils.py:85 10.40.64.15 IP is not available 
+2023-09-05 19:49:20,007Z INFO validation_utils.py:88 10.33.16.80 IP is available 
+2023-09-05 19:49:20,007Z INFO validation_utils.py:328 Thread-60, Started Ip: 10.40.64.15 status thread 
+2023-09-05 19:49:20,008Z INFO validation_utils.py:328 Thread-61, Started Ip: 10.33.16.80 status thread 
+2023-09-05 19:49:20,008Z INFO validation_utils.py:331 Completed all Ip status threads 
+2023-09-05 19:49:20,008Z INFO validation_utils.py:332 Ip status: {u'10.33.16.81': True, u'10.33.16.80': True} 
+2023-09-05 19:49:20,053Z WARNING validation_utils.py:85 10.40.64.16 IP is not available 
+2023-09-05 19:49:20,054Z INFO validation_utils.py:328 Thread-62, Started Ip: 10.40.64.16 status thread 
+2023-09-05 19:49:20,159Z WARNING validation_utils.py:85 3.centos.pool.ntp.org IP is not available 
+2023-09-05 19:49:20,160Z INFO validation_utils.py:328 Thread-63, Started Ip: 3.centos.pool.ntp.org status thread 
+2023-09-05 19:49:20,230Z WARNING validation_utils.py:85 0.centos.pool.ntp.org IP is not available 
+2023-09-05 19:49:20,231Z INFO validation_utils.py:328 Thread-64, Started Ip: 0.centos.pool.ntp.org status thread 
+2023-09-05 19:49:20,314Z WARNING validation_utils.py:85 2.centos.pool.ntp.org IP is not available 
+2023-09-05 19:49:20,314Z INFO validation_utils.py:328 Thread-65, Started Ip: 2.centos.pool.ntp.org status thread 
+2023-09-05 19:49:22,355Z INFO validation_utils.py:88 1.centos.pool.ntp.org IP is available 
+2023-09-05 19:49:22,355Z INFO validation_utils.py:328 Thread-66, Started Ip: 1.centos.pool.ntp.org status thread 
+2023-09-05 19:49:22,355Z INFO validation_utils.py:331 Completed all Ip status threads 
+2023-09-05 19:49:22,356Z INFO validation_utils.py:332 Ip status: {u'10.40.64.15': False, u'10.40.64.16': False, u'3.centos.pool.ntp.org': False, u'0.centos.pool.ntp.org': False, u'2.centos.pool.ntp.org': False, u'1.centos.pool.ntp.org': True} 
+2023-09-05 19:49:22,356Z WARNING validation_utils.py:287 DNS/NTP IP(s) not reachable: [u'1.centos.pool.ntp.org'] 
+2023-09-05 19:49:22,357Z INFO validation_utils.py:232 Completed Unavailable Ips and DNS/NTP Ips threads 
+2023-09-05 19:49:22,364Z INFO sync_rpc_client.py:591 Started node list checker thread to remove stale RPC stubs 
+2023-09-05 19:49:22,368Z INFO client.py:243 Creating stub for Ergon on 10.33.0.18: 2090 
+2023-09-05 19:49:22,380Z INFO upgrade_helper.py:153 Arithmos master_ip: 10.33.0.18 
+2023-09-05 19:49:22,382Z INFO upgrade_helper.py:245 Returning arithmos attr:cluster_upgrade_status value:kSucceeded 
+2023-09-05 19:49:22,385Z WARNING genesis_utils.py:350 Deprecated: use util.ndb.infrastructure.cluster.get_cluster_uuid(config_proto=None) instead 
+2023-09-05 19:49:22,387Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 19:49:22,404Z INFO deploy_handler.py:110 Prism central deployment parent task created with uuid: 6a72a4c8-b2ad-4cf4-786a-98b1fc06af8a 
+2023-09-05 19:49:24,992Z INFO sync_rpc_client.py:591 Started node list checker thread to remove stale RPC stubs 
+2023-09-05 19:49:24,994Z INFO client.py:243 Creating stub for Ergon on 10.33.0.18: 2090 
+2023-09-05 19:49:25,004Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 19:49:25,014Z INFO software_download_utils.py:218 executed the download task with status 0 and message None 
+2023-09-05 19:49:25,015Z INFO software_download_utils.py:231 Download task created with uuid: 338b8354-38bb-40af-6f84-9ff69722ba8f 
+2023-09-05 19:49:25,015Z INFO software_download_utils.py:73 Retried the software info from the task 3ãÉT8ª@ØoÑüˆó"∫è 
+2023-09-05 19:49:25,015Z INFO software_download_utils.py:73 Retried the software info from the task 3ãÉT8ª@ØoÑüˆó"∫è 
+2023-09-05 19:49:25,016Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-09-05 19:49:25,016Z INFO zookeeper_session.py:250 Parsed cluster id: 3550714607169226625, cluster incarnation id: 1693942083452212 
+2023-09-05 19:49:25,017Z INFO zookeeper_session.py:271 cluster_config is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-09-05 19:49:25,050Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a66d2ff1e017f, negotiated timeout=20 secs 
+2023-09-05 19:49:25,066Z INFO interfaces.py:71 Executing prism_central_deploy download request 338b8354-38bb-40af-6f84-9ff69722ba8f for version el8.5-release-master-b03c8f36a10c3e31a25a906102088220fdbec196 
+2023-09-05 19:49:25,067Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 19:49:25,078Z INFO zookeeper_session.py:349 close() was called for session 0x18a66d2ff1e017f 
+2023-09-05 19:49:25,079Z INFO zookeeper_session.py:359 Invalidated the Zookeeper C-client object for session 0x18a66d2ff1e017f 
+2023-09-05 19:49:25,079Z ERROR zookeeper_session.py:415 Invalid access to Zookeeper C-client object 
+2023-09-05 19:49:25,079Z INFO zookeeper_session.py:943 Calling c_impl.close() for session 0x0 
+2023-09-05 19:49:25,080Z INFO zookeeper_session.py:944 Calling zookeeper_close and invalidating zhandle 
+2023-09-05 19:49:25,317Z INFO v2_utils.py:244 Http call to URL https://10.33.0.27:9440/api/nutanix/v2.0/networks/a35f9b6b-d73e-4a97-8de1-5570d133a2c6 succeeded 
+2023-09-05 19:49:25,317Z INFO deploy_handler.py:581 PC is not deploying on AHV managed network 
+2023-09-05 19:49:25,318Z WARNING genesis_utils.py:350 Deprecated: use util.ndb.infrastructure.cluster.get_cluster_uuid(config_proto=None) instead 
+2023-09-05 19:49:25,319Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 19:49:25,343Z INFO task.py:268 Poll task 338b8354-38bb-40af-6f84-9ff69722ba8f until it is complete 
+2023-09-05 19:49:25,344Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 19:49:25,358Z INFO deploy_handler.py:466 Configure DNS/NTP ip address 
+2023-09-05 19:49:25,358Z INFO deploy_handler.py:471 UVM: uuid: "47907119-7458-4508-b30f-9a29a785e2c6"
+name: "auto_pc_64f7444e73101a15cf0003e90"
+num_vcpus: 6
+memory_mb: 26624
+ip_address_list {
+  ip_address: "10.33.16.80"
+  netmask_ipv4_address: "255.255.240.0"
+  gateway_ipv4_address: "10.33.16.1"
+  virtual_network_uuid: "a35f9b6b-d73e-4a97-8de1-5570d133a2c6"
+  virtual_network_name: "vlan.100"
+}
+dns_ipv4_address: "10.40.64.15"
+dns_ipv4_address: "10.40.64.16"
+ntp_ipv4_address: "0.centos.pool.ntp.org"
+ntp_ipv4_address: "1.centos.pool.ntp.org"
+ntp_ipv4_address: "2.centos.pool.ntp.org"
+ntp_ipv4_address: "3.centos.pool.ntp.org"
+ 
+2023-09-05 19:49:25,375Z INFO deploy_handler.py:246 Prism central deployment task created with uuid: e48b1843-7f80-41b9-76d2-a034b8fd8dac 
+2023-09-05 19:49:25,375Z INFO task.py:268 Poll task e48b1843-7f80-41b9-76d2-a034b8fd8dac until it is complete 
+2023-09-05 19:49:25,376Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 19:49:26,080Z ERROR zookeeper_session.py:415 Invalid access to Zookeeper C-client object 
+2023-09-05 19:49:26,080Z INFO zookeeper_session.py:349 close() was called for session 0x0 
+2023-09-05 19:51:22,366Z INFO sync_rpc_client.py:607 Stopping node list checker thread as the object calling this method was garbage collected 
+2023-09-05 19:51:24,993Z INFO sync_rpc_client.py:607 Stopping node list checker thread as the object calling this method was garbage collected 
+2023-09-05 21:02:23,545Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 21:02:23,548Z ERROR deploy_handler.py:641 Prism central deployment task with uuid: 6a72a4c8-b2ad-4cf4-786a-98b1fc06af8a failed with err: Encountered Exception in deployment: Failed to reach genesis within specified timeout 
+2023-09-05 21:02:23,548Z INFO client.py:243 Creating stub for Ergon on 127.0.0.1: 2090 
+2023-09-05 21:02:23,668Z INFO v2_utils.py:244 Http call to URL https://10.33.0.27:9440/api/nutanix/v2.0/networks/a35f9b6b-d73e-4a97-8de1-5570d133a2c6 succeeded 
+2023-09-05 21:02:23,669Z INFO deploy_handler.py:617 PC is not deploying on AHV managed network 
