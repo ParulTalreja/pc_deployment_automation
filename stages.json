@@ -1,0 +1,63 @@
+{
+    "stage1":
+    {
+        "name": "Validation of Pc deployment request was successful",
+        "logMessage": "Prism central deployment parent task created with uuid",
+        "log_file": ["cluster_config.out"]
+    },
+    "stage2":
+    {
+        "name": "Download Software",
+        "logMessage": "Prism central deployment task created with uuid",
+        "log_file": ["cluster_config.out"]
+    },
+    "stage3":
+    {
+        "name": "Tarball Extraction",
+        "logMessage": "[Pc-Deployment] (2.2) Tarball Extraction / Streaming qcow2 files",
+        "log_file": ["genesis.out"]
+    },
+    "stage4":
+    {
+        "name": "Create VM",
+        "logMessage": "[Pc-Deployment] (3.2.1) App Deployment / VM Deployment / VM Create passed",
+        "log_file": ["genesis.out"]
+    },
+    "stage5":
+    {
+        "name": "Power On VM",
+        "logMessage": "Uhura Power on initiate",
+        "log_file": ["genesis.out"]
+    },
+    "stage6":
+    {
+        "name": "Wait for Genesis",
+        "logMessage": "[Pc-Deployment] (3.2.3) App Deployment / VM Deployment / Genesis bring up",
+        "log_file": ["genesis.out"]
+    },
+    "stage7":
+    {
+        "name": "Cluster Creation",
+        "logMessage": "[Pc-Deployment] (3.3) App Deployment / Cluster Creation passed",
+        "log_file": ["genesis.out"]
+    },
+    "stage8":
+    {
+        "name": "Trust Validation",
+        "logMessage": "[Pc-Deployment] (3.4.2) App Deployment Post Deployment Steps/Trust validation steps End",
+        "log_file": ["genesis.out"]
+    }, 
+    "stage9":
+    {
+        "name": "CMSP Enablement",
+        "logMessage": "[Pc-Deployment] (3.4.3) App Deployment / Post Deployment Steps / CMSP Deployment",
+        "log_file": ["genesis.out"]
+    },
+    "stage10":
+    {
+        "name": "Reset Admin Password",
+        "logMessage": "[Pc-Deployment] (3.4.4) App Deployment / Post Deployment Steps / Reset admin",
+        "log_file": ["genesis.out"]
+    }
+
+}
