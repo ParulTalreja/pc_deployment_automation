@@ -18,16 +18,15 @@ def searchException(target_url):
                 x = line.split("Exception:")
                 x[1] = ast.literal_eval(x[1][1:])
                 message = extractErrorMessageFromString(x[1])
-                return message
-            else:
-                
-                word = 'NuTest.*Error:'
-                #if line.find(word) == 0 :
-                res=re.search(word,line)
-                if res is not None:
-                    matchedWord= res.group()
-                    x = line.split(matchedWord)
-                    return x[1].strip()
+            word2 = 'NuTest.*Error:'
+            #if line.find(word) == 0 :
+            res=re.search(word2,line)
+            if res is not None:
+                matchedWord= res.group()
+                x = line.split(matchedWord)
+                message = x[1].strip()
+        #print("message:", message)
+        return message
                 
     except Exception as e:
         error = "Encountered Exception in checking deployment logs: %s" % str(e)
@@ -131,6 +130,10 @@ def get_checksum_without_caching(msg):
   hasher.update(msg.encode('utf-8'))
   return hasher.hexdigest()
 
+def get_checksum_of_errorstring(msg):
+    chcksum_str=remove_uuid_digits_from_string(msg)
+    chkcm=get_checksum_without_caching(chcksum_str)
+    return chkcm
 
 def update_json_with_checksum(key,value):
     # Load the existing JSON data
