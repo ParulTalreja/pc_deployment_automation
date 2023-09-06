@@ -121,6 +121,15 @@ def fetch_error_traceback(filename, linesBefore=3, linesAfter=3, errorPrefix="ER
 
     Returns: return matched lines
 
+    Example: if the errorPrefix="ERROR 897367" and the logs have lines in this order:
+    ..
+    L1  INFO.....
+    L2  WARNING.....
+    L3  ERROR 897367 <some error messsage>      Here is this error message is matched, and the error prefix is "ERROR 897367"
+    L4  INFO......                              Suppose we need 2 lines before and after matched msg with the prefix. Here, there are mo
+    L5  ERROR 897365                            matching lines before L3 and only one (L5) after L3. So only L3 and L5 are returned.       
+    L6  INFO.....
+
     """
 
 
@@ -171,6 +180,17 @@ def fetch_error_traceback_firstX(filename, linesBefore=3, linesAfter=3, errorPre
 
 def fetch_error_traceback_lastY(filename, linesBefore=3, linesAfter=3, errorPrefix="ERROR",errorMessage="", X=2):
 #fetch all m,n lines of specific error pid before and after last Y instaces of matching error message 
+    """
+    Returns m,n lines of specific error which are the Last Y matches of instances
+    Args:
+        fileName: complete path of file example: resources/nutest_2023-08-25_22_31_54-2023-08-25-81114631834-10.37.109.88-CW/cvm_logs/aplos.FATAL
+        linesBefore: X Line Before the errorMessage starting with errorPrefix
+        linesAfter: Y Line after the errorMessage starting with errorPrefix
+        errorPrefix: Example "ERROR 897367"
+        errorMessage: any error string (RDM exception summary string)
+
+    Returns: return matched lines which contain the error message and the X, Y lines conatining the error prefix
+    """
     f= fetch_error_lines(filename, errorPrefix)
     str = ""
     count=0
@@ -193,15 +213,23 @@ def fetch_error_traceback_lastY(filename, linesBefore=3, linesAfter=3, errorPref
 
 def fetch_traceback(filename, linesBefore=3, linesAfter=3, errorPrefix="ERROR"):
     """
-    Fetches X lines before matched string and Y lines after matched string
+    Fetches X lines before all instances of the matched string and Y lines after matched string stored in errrorPrefix but these X and Y lines returned respectively are not
+    checked for the error prefix.
     Args:
-        filename:
-        linesBefore:
-        linesAfter:
-        errorPrefix:
+        fileName: complete path of file example: resources/nutest_2023-08-25_22_31_54-2023-08-25-81114631834-10.37.109.88-CW/cvm_logs/aplos.FATAL
+        linesBefore: X Line Before the errorMessage starting with errorPrefix
+        linesAfter: Y Line after the errorMessage starting with errorPrefix
+        errorPrefix: Example "ERROR 897367". A specific error message can also be used here (RDM exception summary string)
+    Returns: returns the matched lines and X and Y no of lines before and after the matched lines
 
-    Returns:
-
+    Example: if the errorPrefix="ERROR 897367" and the logs have lines in this order:
+    ..
+    L1  INFO.....
+    L2  WARNING.....
+    L3  ERROR 897367    ( Here, this is a first matched instance and we need 2 lines before and after matched prefix 
+    L4  INFO......         "ERROR 897367; Lines L1 to L5 will be returned. Here L1, L2, L4 donot contain the same error prefix
+    L5  ERROR 897365        After this, Line L5 is also matched, so Lines L3 to L7 will also be returned & son on)
+    L6  INFO.....
     """
     str = ""
     with open(filename, "r", encoding="latin-1", newline="") as f:
@@ -220,6 +248,17 @@ def fetch_traceback(filename, linesBefore=3, linesAfter=3, errorPrefix="ERROR"):
 
 def fetch_traceback_first_matched_instance(filename, linesBefore=3, linesAfter=3, errorPrefix="ERROR"):
     #fetches m,n lines (not just error specific lines) before and after first instace of matching error pid
+    """
+    Fetches X lines before matched string and Y lines after the first instance of the matched string stored in errrorPrefix but these X and Y lines returned respectively are not
+    checked for the error prefix.
+    Args:
+        fileName: complete path of file example: resources/nutest_2023-08-25_22_31_54-2023-08-25-81114631834-10.37.109.88-CW/cvm_logs/aplos.FATAL
+        linesBefore: X Line Before the errorMessage starting with errorPrefix
+        linesAfter: Y Line after the errorMessage starting with errorPrefix
+        errorPrefix: Example "ERROR 897367". A specific error message can also be used here (RDM exception summary string)
+    Returns: returns the first matched line with error message and X and Y no of lines before and after the matched lines
+
+    """
     str = ""
     with open(filename, "r", encoding="latin-1", newline="") as f:
         before = collections.deque(maxlen=linesBefore)
@@ -236,8 +275,19 @@ def fetch_traceback_first_matched_instance(filename, linesBefore=3, linesAfter=3
             before.append(line)
         return str
 
-def fetch_traceback_firstX(filename, linesBefore=3, linesAfter=3, X=2, errorPrefix="ERROR"):
+def fetch_traceback_firstM(filename, linesBefore=3, linesAfter=3, X=2, errorPrefix="ERROR"):
         #fetches m,n lines (not just error specific lines) before and after first X instaces of matching error pid
+    """
+    Fetches X lines before matched string and Y lines after matched string for first M instances of the matched string stored in errrorPrefix but these X and Y lines returned respectively are not
+    checked for the error prefix.
+    Args:
+        fileName: complete path of file example: resources/nutest_2023-08-25_22_31_54-2023-08-25-81114631834-10.37.109.88-CW/cvm_logs/aplos.FATAL
+        linesBefore: X Line Before the errorMessage starting with errorPrefix
+        linesAfter: Y Line after the errorMessage starting with errorPrefix
+        errorPrefix: Example "ERROR 897367". A specific error message can also be used here (RDM exception summary string)
+    Returns: returns the first M instances of the matched lines and X and Y number of lines before and after the matched lines in order
+
+    """
     str = ""
     count=0
     with open(filename, "r", encoding="latin-1", newline="") as f:
@@ -259,6 +309,17 @@ def fetch_traceback_firstX(filename, linesBefore=3, linesAfter=3, X=2, errorPref
 
 def fetch_traceback_last_matched_instance(filename, linesBefore=3, linesAfter=3, errorPrefix="ERROR"):
     str = ""
+    """
+    Fetches X lines before and Y lines after the last instance of the matched string stored in errrorPrefix but these X and Y lines returned respectively are not
+    checked for the error prefix.
+    Args:
+        fileName: complete path of file example: resources/nutest_2023-08-25_22_31_54-2023-08-25-81114631834-10.37.109.88-CW/cvm_logs/aplos.FATAL
+        linesBefore: X Line Before the errorMessage starting with errorPrefix
+        linesAfter: Y Line after the errorMessage starting with errorPrefix
+        errorPrefix: Example "ERROR 897367". A specific error message can also be used here (RDM exception summary string)
+    Returns: returns the last instance of the matched line and X and Y no of lines before and after the matched line
+
+    """
         #fetches m,n lines (not just error specific lines) before and after last instace of matching error pid
         #backward file read module was not working. We can improve the time complexity by using that later
     with open(filename, "r", encoding="latin-1", newline="") as f:
@@ -283,7 +344,19 @@ def fetch_traceback_last_matched_instance(filename, linesBefore=3, linesAfter=3,
                 before.append(line)
     return str 
 
-def fetch_traceback_lastY(filename, linesBefore=3, linesAfter=3, Y=2, errorPrefix="ERROR"):
+def fetch_traceback_lastM(filename, linesBefore=3, linesAfter=3, Y=2, errorPrefix="ERROR"):
+    """
+    Fetches X lines before matched string and Y lines after matched string for last M instances of the matched string stored in errrorPrefix but these X and Y lines returned respectively are not
+    checked for the error prefix.
+    Args:
+        fileName: complete path of file example: resources/nutest_2023-08-25_22_31_54-2023-08-25-81114631834-10.37.109.88-CW/cvm_logs/aplos.FATAL
+        linesBefore: X Line Before the errorMessage starting with errorPrefix
+        linesAfter: Y Line after the errorMessage starting with errorPrefix
+        errorPrefix: Example "ERROR 897367". A specific error message can also be used here (RDM exception summary string)
+    Returns: returns the last M instances of the matched lines and X and Y number of lines before and after the matched lines in order
+
+    """
+
     #fetches m,n lines (not just error specific lines) before and after all last Y instaces of matching error pid
     #backward file read module was not working. We can improve the time complexity by using that later
 
@@ -312,5 +385,3 @@ def fetch_traceback_lastY(filename, linesBefore=3, linesAfter=3, Y=2, errorPrefi
                     
                 before.append(line)
     return str
-
-
