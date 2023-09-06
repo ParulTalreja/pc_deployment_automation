@@ -41,7 +41,7 @@ def find_error_msg_in_logfile_using_threadId(dir_name, file_name, error_thread_i
         print("Error message not found in %s", file_name)
 
 
-def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
+def _collects_log_from_file(downloaded_log_location,logFileName, searchContent , rdm_error_checksm):
     if(logFileName=="prism_gateway.log"):
         error_msg=_find_error_msg_in_logfile(downloaded_log_location,logFileName,searchContent)
         print(error_msg)
@@ -49,8 +49,11 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
         error_thread_id=_find_error_thread_id_in_file(downloaded_log_location,logFileName,searchContent)
         print("Thread Id: ",error_thread_id)
         error_msg=find_error_msg_in_logfile_using_threadId(downloaded_log_location,logFileName,error_thread_id)
-    checksum_string = util.remove_uuid_digits_from_string(error_msg)
-    chksm = util.get_checksum_without_caching(checksum_string)
+    file_msg_chcksum = util.get_checksum_of_errorstring(error_msg)
+
+    #Get combined checksum of RDM error message and logfile message
+    chksm = util.get_checksum_without_caching(rdm_error_checksm+file_msg_chcksum)
+
     #print("Checksum for string: {0} is {1}".format(checksum_string, chksm))
     chksm_mapping_available= util.retrieve_value_from_json(chksm)
     if(not chksm_mapping_available):
@@ -67,6 +70,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
     dir_name = "triage_rules/"
     file_name = "pc_deploy_debug_mapping.json"
     mapping_found = False
+    rdm_error_checksm=util.get_checksum_of_errorstring(errorMessage)
     with open(os.path.join(dir_name, file_name), "r") as f:
         pc_deployment_error_list = json.load(f)
         for i in pc_deployment_error_list['pc.deployment']:
@@ -92,7 +96,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
                         #downloaded_log_location= (download_util_multithreaded.download_multithreaded(PE_LOG_URL))[0]
 
                     for logFileName in i['file_lst']:
-                        return _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'])
+                        return _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'],rdm_error_checksm)
 
 
 

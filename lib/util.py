@@ -130,6 +130,10 @@ def get_checksum_without_caching(msg):
   hasher.update(msg.encode('utf-8'))
   return hasher.hexdigest()
 
+def get_checksum_of_errorstring(msg):
+    chcksum_str=remove_uuid_digits_from_string(msg)
+    chkcm=get_checksum_without_caching(chcksum_str)
+    return chkcm
 
 def update_json_with_checksum(key,value):
     # Load the existing JSON data
