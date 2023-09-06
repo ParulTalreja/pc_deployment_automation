@@ -60,13 +60,34 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent):
         #print(chksm_mapping_available)
         return chksm_mapping_available
 
+def get_log_files_for_staging(parent_path):
+    files = os.listdir(parent_path)
+    sorted_files = sorted(files)
+    last_genesis_out = None
+    last_cluster_config_out = None
+    for file_name in sorted_files:
+        if(file_name == "genesis.out"):
+            last_genesis_out =  file_name
+            break
+        if(file_name.find('genesis.out') != -1):
+            last_genesis_out = file_name
+    for file_name in sorted_files:
+        if(file_name == "cluster_config.out"):
+            last_cluster_config_out =  file_name
+            break
 
+        if(file_name.find('cluster_config.out') != -1):
+            last_cluster_config_out = file_name
+
+    return parent_path+"/"+last_cluster_config_out, parent_path+"/"+last_genesis_out
 
 
 def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
     dir_name = "triage_rules/"
     file_name = "pc_deploy_debug_mapping.json"
     mapping_found = False
+    pc_log_location = ""
+    pe_log_location = ""
     with open(os.path.join(dir_name, file_name), "r") as f:
         pc_deployment_error_list = json.load(f)
         for i in pc_deployment_error_list['pc.deployment']:
@@ -97,6 +118,17 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
 
 
         if(not mapping_found):
+            pc_cluster_config_log_location = ""
+            pc_genesis_log_location = ""
+            pe_cluster_config_log_location = ""
+            pe_genesis_log_location = ""
+            if PC_LOG_URL!="":
+                pc_log_location = download_util.download_pc_logs(PC_LOG_URL)
+                pc_cluster_config_log_location, pc_genesis_log_location = get_log_files_for_staging(pc_log_location)
+            if PE_LOG_URL!="":
+                pe_log_location = download_util.download_pc_logs(PE_LOG_URL)
+                pe_cluster_config_log_location, pe_genesis_log_location = get_log_files_for_staging(pe_log_location)
+
             return "Log Signature not found in pc debug mapping"
 
 
