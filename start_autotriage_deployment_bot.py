@@ -97,9 +97,13 @@ class PCAutoDeployment:
         links = soup.find_all('a',href = True)
 
         for link in links:
+            print()
             if re.match(r'auto_cluster_prod.*?/',link['href']):
                 URL = URL + link['href']
                 # print(URL)
+            elif re.match(r'auto_cluster_qms.*?/',link['href']):
+                URL = URL + link['href']
+
 
         response = requests.get(URL)
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -109,6 +113,8 @@ class PCAutoDeployment:
             if re.match(r'logbay_auto_cluster_prod.*?/',link['href']):
                 pe_log_link = URL + link['href']
                 # print(URL)
+            elif re.match(r'logbay_auto_cluster_qms.*?/',link['href']):
+                pe_log_link = URL + link['href']
 
         return pe_log_link
 
