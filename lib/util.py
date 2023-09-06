@@ -20,10 +20,15 @@ def searchException(target_url):
                 message = extractErrorMessageFromString(x[1])
                 return message
             else:
-                word = 'NuTestInterfaceError:'
-                if line.find(word) == 0 :
-                    x = line.split(word)
+                
+                word = 'NuTest.*Error:'
+                #if line.find(word) == 0 :
+                res=re.search(word,line)
+                if res is not None:
+                    matchedWord= res.group()
+                    x = line.split(matchedWord)
                     return x[1].strip()
+                
     except Exception as e:
         error = "Encountered Exception in checking deployment logs: %s" % str(e)
         return error
