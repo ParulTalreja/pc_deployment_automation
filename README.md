@@ -26,10 +26,14 @@ Example:
 
  Cronfile for periodic cleaning
  1. Execute the following command in virtual machine: crontab -e
+
  2. Edit using vim
+ 
  3. add the following line to the crontab file
-    0 0 * * * find <resources folder path>/* -type f -mtime +7 -exec rm {} \; -o -type d -empty -mtime +7 -exec rmdir {} \;
+      0 0 * * * find /home/nutanix/.venvs/bin/bin/pc_deployment_automation/resources/* -type f -mtime +7 -exec rm -r {} \; -o -type d -mtime +7 -exec /bin/rm -rf {} \;
+
  4. 0 0 * * * daily
     0 * * * * hourly
     * * * * * every minute
+    
  5. change -mtime to desired value (no of days old)
