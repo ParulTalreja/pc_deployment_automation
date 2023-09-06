@@ -1,0 +1,318 @@
+2023-08-25 21:52:34,475Z rolled over log file
+2023-08-25 21:52:34,452Z INFO 26824 /src/bigtop/infra/infra_server/cluster/service_monitor/service_monitor.c:256 main: /home/nutanix/bin/service_monitor: appending fatal messages to /home/nutanix/data/logs/aplos.FATAL
+2023-08-25 21:52:34,452Z INFO 26824 /src/bigtop/infra/infra_server/cluster/service_monitor/service_monitor.c:87 StartServiceMonitor: Launched child with pid: 26826
+2023-08-25 21:52:34,452Z INFO 26826 /src/bigtop/infra/infra_server/cluster/service_monitor/service_monitor.c:158 StartService: Starting service with cmd: /home/nutanix/bin/aplos
+2023-08-25 21:52:34,452Z INFO 26826 /src/bigtop/infra/infra_server/cluster/service_monitor/nxenv.c:99 RefreshZkHostPortList: Setting ZOOKEEPER_HOST_PORT_LIST=zk1:9876;
+2023-08-25 21:53:02,308Z INFO aplos:228 Starting new aplos stack without uswsgi 
+2023-08-25 21:53:02,310Z INFO aplos:189 Setting APLOS_CONFIG to /usr/local/nutanix/aplos/config/aplos.cfg 
+2023-08-25 21:53:02,312Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-08-25 21:53:02,398Z INFO zookeeper_session.py:250 Parsed cluster id: 1193913850445108741, cluster incarnation id: 3356295150465666839 
+2023-08-25 21:53:02,411Z INFO zookeeper_session.py:271 aplos is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-08-25 21:53:02,420Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a2ead769100ba, negotiated timeout=20 secs 
+2023-08-25 21:53:02,421Z INFO aplos:222 Closing the existing zookeeper session 
+2023-08-25 21:53:02,422Z INFO zookeeper_session.py:349 close() was called for session 0x18a2ead769100ba 
+2023-08-25 21:53:02,422Z INFO zookeeper_session.py:359 Invalidated the Zookeeper C-client object for session 0x18a2ead769100ba 
+2023-08-25 21:53:38,192Z INFO tracer.py:65 Initializing Observability Object with service name : aplos-pc,            use_active_scope: True 
+2023-08-25 21:53:38,193Z INFO tracer.py:108 Parsing Observability Config file : /home/nutanix/config/observability/config.json 
+2023-08-25 21:53:38,194Z INFO tracer.py:124 Finished parsing config file, Parsed Observability Config [Enabled: False, Agent Host: , Port: ] 
+2023-08-25 21:53:38,195Z INFO tracer.py:69 Observability is Disabled. 
+2023-08-25 21:53:38,204Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-08-25 21:53:38,220Z INFO zookeeper_session.py:250 Parsed cluster id: 1193913850445108741, cluster incarnation id: 3356295150465666839 
+2023-08-25 21:53:38,221Z INFO zookeeper_session.py:271 aplos is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-08-25 21:53:38,222Z INFO zookeeper_session.py:943 Calling c_impl.close() for session 0x0 
+2023-08-25 21:53:38,223Z INFO zookeeper_session.py:944 Calling zookeeper_close and invalidating zhandle 
+2023-08-25 21:53:38,229Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a2ead769100da, negotiated timeout=20 secs 
+2023-08-25 21:53:38,243Z INFO ssl_config_setup.py:145 Trying to clear rules from zknode with path /appliance/logical/ssl_terminator and port 9444 
+2023-08-25 21:53:38,265Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-08-25 21:53:38,266Z INFO zookeeper_session.py:250 Parsed cluster id: 1193913850445108741, cluster incarnation id: 3356295150465666839 
+2023-08-25 21:53:38,267Z INFO zookeeper_session.py:271 aplos is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-08-25 21:53:38,277Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a2ead769100db, negotiated timeout=20 secs 
+2023-08-25 21:53:38,279Z INFO config_utils.py:190 The new value of is_xi flag is False 
+2023-08-25 21:53:38,444Z INFO zookeeper_session.py:349 close() was called for session 0x18a2ead769100da 
+2023-08-25 21:53:38,445Z INFO zookeeper_session.py:359 Invalidated the Zookeeper C-client object for session 0x18a2ead769100da 
+2023-08-25 21:53:38,446Z INFO intentgw_app.py:150 Starting intent gateway.... 
+2023-08-25 21:53:38,517Z INFO _register_.py:91 creating rule for draas_billing with url /v3/proxy/draas_billing/api/v1/prices and supported methods ['GET'] and index 0 
+2023-08-25 21:53:38,518Z INFO _register_.py:91 creating rule for citrix_connector with url /v3/proxy/citrix_connector/<customer_id>/resource_locations and supported methods ['POST', 'GET'] and index 0 
+2023-08-25 21:53:38,519Z INFO _register_.py:91 creating rule for citrix_connector with url /v3/proxy/citrix_connector/<customer_id>/edgeservers and supported methods ['GET', 'DELETE'] and index 1 
+2023-08-25 21:53:38,696Z INFO zookeeper_session.py:943 Calling c_impl.close() for session 0x0 
+2023-08-25 21:53:38,701Z INFO zookeeper_session.py:944 Calling zookeeper_close and invalidating zhandle 
+2023-08-25 21:53:38,843Z INFO metric_utils.py:66 Metric table aplos_gateway_api_stats is registered. 
+2023-08-25 21:53:38,923Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-08-25 21:53:38,924Z INFO zookeeper_session.py:250 Parsed cluster id: 1193913850445108741, cluster incarnation id: 3356295150465666839 
+2023-08-25 21:53:38,925Z INFO zookeeper_session.py:271 aplos is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-08-25 21:53:38,936Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a2ead769100dc, negotiated timeout=20 secs 
+2023-08-25 21:53:38,942Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-08-25 21:53:38,943Z INFO zookeeper_session.py:250 Parsed cluster id: 1193913850445108741, cluster incarnation id: 3356295150465666839 
+2023-08-25 21:53:38,944Z INFO zookeeper_session.py:271 aplos is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-08-25 21:53:38,969Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a2ead769100de, negotiated timeout=20 secs 
+2023-08-25 21:53:38,976Z INFO server_cert_utils.py:123 Intial load of keys 
+2023-08-25 21:53:38,979Z INFO server_cert_utils.py:195 No prism key defined in zookeeper, use default 
+2023-08-25 21:53:38,980Z INFO server_cert_utils.py:203 Using default for secure key 
+2023-08-25 21:53:38,981Z INFO server_cert_utils.py:216 Key is determined to be a RSA cert 
+2023-08-25 21:53:39,624Z INFO server_cert_utils.py:296 Setting key file contents 
+2023-08-25 21:53:39,634Z INFO server_cert_utils.py:390 Verfiying Key Pair 
+2023-08-25 21:53:39,663Z INFO server_cert_utils.py:393 Token in verifying key pair: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXN0Ijoia2V5X2ZvbyJ9.YtnDqoFsgKNtYEZlViNFJso1gWUw4B6AV21ZZ78BYEaRL_CbpMuvLrJ-q38GjQ3av7rgzjU3LErPo1Hs6dVYnvC33ARRPSxIiDzTphqGVojzv_ZehRLpNSz3Hm5uRfTwqWzqVWQQSJoj2IsiJBCd5B1Da1ONqWhhlivcrwkDbQC7s-I-9zrHcMEadkGBlqm2vTJYR-FqeQ4f_hZJb7GhCQ9nX2cQIgXRo9SIxC84892NHJyxMANgGruwuqZvpZMOQwteSrQXKEbWp91XgkVE5qpL_D_hf-wxeKRGrN0SLYNis2puCk1F-ABRLS47XjqPd3rgUQoD1n-Q7IIbGDog2A 
+2023-08-25 21:53:39,679Z INFO server_cert_utils.py:396 Key Value pair verification status is True 
+2023-08-25 21:53:39,688Z INFO server_cert_utils.py:265 Using RSA key for JWT sesions 
+2023-08-25 21:53:41,289Z INFO intent_spec_watcher.py:242 Insights IP and port : 127.0.0.1 : 2027 
+2023-08-25 21:53:41,307Z INFO api_lock_watcher.py:64 Starting ApiLockWatcher thread 
+2023-08-25 21:53:41,308Z INFO api_lock_watcher.py:255 Insights IP and port : 127.0.0.1 : 2027 
+2023-08-25 21:53:41,353Z INFO insights_watch_client.py:1590 Registered watch client. ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos(299465b4-3bd8-4007-9032-85e6883180ec) 
+2023-08-25 21:53:41,354Z INFO insights_watch_client.py:351 __del__: Stopping Watch client ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos(299465b4-3bd8-4007-9032-85e6883180ec) 
+2023-08-25 21:53:41,364Z INFO api_lock_watcher.py:255 Insights IP and port : 127.0.0.1 : 2027 
+2023-08-25 21:53:41,377Z INFO insights_watch_client.py:1590 Registered watch client. IntentSpecWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_0(29a91aa5-b48e-4ed9-b9b8-d0be1ffc90ad) 
+2023-08-25 21:53:41,388Z INFO insights_watch_client.py:351 __del__: Stopping Watch client IntentSpecWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_0(29a91aa5-b48e-4ed9-b9b8-d0be1ffc90ad) 
+2023-08-25 21:53:41,391Z INFO intent_spec_watcher.py:242 Insights IP and port : 127.0.0.1 : 2027 
+2023-08-25 21:53:43,754Z INFO cpdb_impl.py:422 Creating CPDB schema for domain 
+2023-08-25 21:53:43,765Z INFO cluster_map_cache_utils.py:29 Periodic refresh of cluster map 
+2023-08-25 21:53:43,766Z INFO cluster.py:110 Refreshing cluster_map_cache 
+2023-08-25 21:53:43,825Z INFO cluster_map_cache_utils.py:49 Watching for creation of zknode /appliance/physical/zeusconfig 
+2023-08-25 21:53:43,828Z INFO insights_watch_client.py:1590 Registered watch client. ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos(d046c83f-e2bc-4c03-8128-9c337cd0f693) 
+2023-08-25 21:53:43,829Z INFO api_lock_watcher.py:99 Pick up locks interrupted by IDF crash if there are any. 
+2023-08-25 21:53:43,838Z INFO api_lock_interface.py:365 Getting locks owned by unknown 
+2023-08-25 21:53:43,844Z INFO insights_watch_client.py:1590 Registered watch client. IntentSpecWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_0(f7b7468f-621c-4a49-b374-d5be71618d18) 
+2023-08-25 21:53:43,845Z INFO intent_spec_watcher.py:82 register watches for intent spec entity 
+2023-08-25 21:53:43,850Z INFO intent_spec_watcher.py:148 intent spec watch setting the watch on intent spec updation 
+2023-08-25 21:53:43,860Z INFO cluster_map_cache_utils.py:58 Waiting on cluster list creation event 
+2023-08-25 21:53:43,881Z INFO cpdb_impl.py:422 Creating CPDB schema for domain 
+2023-08-25 21:53:43,946Z INFO insights_watch_client.py:2050 Registered watch 'IntentSpecWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_0:f7b7468f-621c-4a49-b374-d5be71618d18:kEntityUpdate:intent_spec:::7c1d821e98a7490f0971db065d078fb4eaf4361f34cb369e30e0b661e9bd8098'. 
+2023-08-25 21:53:43,947Z INFO intent_spec_watcher.py:84 Start intent spec watch client 
+2023-08-25 21:53:43,948Z INFO insights_watch_client.py:389 Starting watch client: IntentSpecWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_0(f7b7468f-621c-4a49-b374-d5be71618d18) 
+2023-08-25 21:53:43,949Z INFO insights_watch_client.py:2108 Polling thread for watch client IntentSpecWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_0(f7b7468f-621c-4a49-b374-d5be71618d18) is started. 
+2023-08-25 21:53:43,967Z INFO api_lock_watcher.py:104 Register watches for api lock entity 
+2023-08-25 21:53:43,968Z INFO api_lock_watcher.py:131 Api lock watch setting the watch on api lock update 
+2023-08-25 21:53:44,007Z INFO intentgw_app.py:224 Creating an LRU cache (size=1024) for collecting per-request metrics. 
+2023-08-25 21:53:48,419Z INFO namespace.py:202 Loading resource util.mincli.modules 
+2023-08-25 21:53:48,510Z INFO insights_watch_client.py:2050 Registered watch 'ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos:d046c83f-e2bc-4c03-8128-9c337cd0f693:kEntityUpdate:api_lock:::a95f979bfa6811836aff96ddda3c9a2008e64385f676ea4a2ec12b911a27ee98'. 
+2023-08-25 21:53:48,511Z INFO api_lock_watcher.py:138 Api lock watch setting the watch on api lock delete 
+2023-08-25 21:53:48,581Z INFO insights_watch_client.py:2050 Registered watch 'ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos:d046c83f-e2bc-4c03-8128-9c337cd0f693:kEntityDelete:api_lock:::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'. 
+2023-08-25 21:53:48,584Z INFO api_lock_watcher.py:106 Start api lock watch client 
+2023-08-25 21:53:48,585Z INFO insights_watch_client.py:389 Starting watch client: ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos(d046c83f-e2bc-4c03-8128-9c337cd0f693) 
+2023-08-25 21:53:48,587Z INFO insights_watch_client.py:2108 Polling thread for watch client ApiLockWatcher_dd35bfa1-cf02-44ac-adf0-c442e9a19398_aplos(d046c83f-e2bc-4c03-8128-9c337cd0f693) is started. 
+2023-08-25 21:53:48,745Z INFO namespace.py:202 Loading resource aplos.shell.modules 
+2023-08-25 21:54:05,039Z INFO namespace.py:202 Loading resource aplos.shell.modules.vm 
+2023-08-25 21:54:08,934Z WARNING genesis_utils.py:350 Deprecated: use util.ndb.infrastructure.cluster.get_cluster_uuid(config_proto=None) instead 
+2023-08-25 21:54:10,911Z INFO manager.py:125 Token expiration set to 63072000 
+2023-08-25 21:54:11,032Z INFO metric_utils.py:66 Metric table aplos_gateway_heartbeat is registered. 
+2023-08-25 21:54:11,055Z INFO intentgw_app.py:377 Gateway heartbeat to Insights is enabled. 
+2023-08-25 21:54:11,056Z INFO gateway_server.py:72 Starting Intent Gateway server on 127.0.0.1:9500 
+2023-08-25 21:54:11,147Z INFO gateway_server.py:144 Starting Http server 
+2023-08-25 21:54:11,162Z INFO insights_watch_client.py:1590 Registered watch client. AplosClusterSchema-aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398(e54dcdde-c136-4da4-b4b7-a0ad1fad501f) 
+2023-08-25 21:54:11,163Z INFO insights_watch_client.py:389 Starting watch client: AplosClusterSchema-aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398(e54dcdde-c136-4da4-b4b7-a0ad1fad501f) 
+2023-08-25 21:54:11,164Z INFO insights_watch_client.py:2108 Polling thread for watch client AplosClusterSchema-aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398(e54dcdde-c136-4da4-b4b7-a0ad1fad501f) is started. 
+2023-08-25 21:54:11,169Z INFO aplos_gateway_metrics_server.py:71 Starting Aplos gateway metrics server on 10.37.109.88:9501 
+2023-08-25 21:54:11,189Z INFO aplos_gateway_metrics_server.py:103 Starting HTTP server. 
+2023-08-25 21:54:11,208Z INFO insights_watch_client.py:2050 Registered watch 'AplosClusterSchema-aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:e54dcdde-c136-4da4-b4b7-a0ad1fad501f:kEntityUpdate:cluster:::d1fe53a40853c2d4b5070c7746055465d2a7364b5beb4fc5e39aba89a9fcb9fa'. 
+2023-08-25 21:54:19,049Z INFO metric_utils.py:66 Metric table aplos_authentication_stat is registered. 
+2023-08-25 21:54:19,068Z INFO zookeeper_session.py:137 Using multithreaded Zookeeper client library: 1 
+2023-08-25 21:54:19,069Z INFO zookeeper_session.py:250 Parsed cluster id: 1193913850445108741, cluster incarnation id: 3356295150465666839 
+2023-08-25 21:54:19,070Z INFO zookeeper_session.py:271 aplos is attempting to connect to Zookeeper, host port list zk1:9876 
+2023-08-25 21:54:19,081Z INFO zookeeper_session.py:850 ZK session establishment complete, sessionId=0x18a2ead769100ef, negotiated timeout=20 secs 
+2023-08-25 21:54:19,112Z INFO cpdb_watch_client_adapter.py:113 Watch client id: aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459 
+2023-08-25 21:54:19,146Z INFO cpdb_watch_client_adapter.py:143 Reset watch client thread started 
+2023-08-25 21:54:19,173Z INFO cpdb_watch_client_adapter.py:634 Inactive watch unregistering thread started 
+2023-08-25 21:54:19,195Z INFO insights_watch_client.py:1590 Registered watch client. aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) 
+2023-08-25 21:54:19,195Z INFO cpdb_watch_client_adapter.py:192 Registered watch client aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) 
+2023-08-25 21:54:19,196Z INFO cpdb_watch_client_adapter.py:198 Re-registering all watches aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) 
+2023-08-25 21:54:19,196Z INFO cpdb_watch_client_adapter.py:225 Re-registered all watches aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) 
+2023-08-25 21:54:19,196Z INFO cpdb_watch_client_adapter.py:233 Invoking all callbacks 
+2023-08-25 21:54:19,197Z INFO insights_watch_client.py:389 Starting watch client: aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) 
+2023-08-25 21:54:19,197Z INFO insights_watch_client.py:2108 Polling thread for watch client aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) is started. 
+2023-08-25 21:54:19,198Z INFO cpdb_watch_client_adapter.py:171 watch client started aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459(49965dee-17a4-4d51-85c4-b0e488f86d47) 
+2023-08-25 21:54:19,202Z INFO cpdb_watch_client_adapter.py:147 Waiting for reset event 
+2023-08-25 21:54:19,271Z INFO insights_watch_client.py:2050 Registered watch 'aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459:49965dee-17a4-4d51-85c4-b0e488f86d47:kEntityUpdate:abac_user_capability:4cd9c802-1641-4157-81ca-c0446993f9ca::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'. 
+2023-08-25 21:54:19,283Z INFO insights_watch_client.py:2050 Registered watch 'aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459:49965dee-17a4-4d51-85c4-b0e488f86d47:kEntityDelete:abac_user_capability:4cd9c802-1641-4157-81ca-c0446993f9ca::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'. 
+2023-08-25 21:54:19,332Z INFO insights_watch_client.py:2050 Registered watch 'aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459:49965dee-17a4-4d51-85c4-b0e488f86d47:kEntityUpdate:xi_tenant:00000000-0000-0000-0000-000000000000::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'. 
+2023-08-25 21:54:19,343Z INFO insights_watch_client.py:2050 Registered watch 'aplos:dd35bfa1-cf02-44ac-adf0-c442e9a19398:1693000459:49965dee-17a4-4d51-85c4-b0e488f86d47:kEntityDelete:xi_tenant:00000000-0000-0000-0000-000000000000::e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'. 
+2023-08-25 21:54:19,377Z INFO resource_intentful.py:351 tenant_uuid:00000000-0000-0000-0000-000000000001  [POST] Generated entity UUID 6e7a257d-145b-4cb4-8099-b94141061523 for kind "entity_sync_rule" 
+2023-08-25 21:54:19,378Z WARNING genesis_utils.py:350 tenant_uuid:00000000-0000-0000-0000-000000000001  Deprecated: use util.ndb.infrastructure.cluster.get_cluster_uuid(config_proto=None) instead 
+2023-08-25 21:54:19,379Z INFO resource_intentful.py:384 tenant_uuid:00000000-0000-0000-0000-000000000001  [POST] Kind: "entity_sync_rule" | Entity UUID: 6e7a257d-145b-4cb4-8099-b94141061523 | Task UUID: 5d0d1e8f-c733-4a9a-82ba-654184a6b083 | Intent spec UUID: 407b4f23-fedb-53ae-9904-246eaf34ebdd 
+2023-08-25 21:54:19,398Z INFO resource_intentful.py:469 tenant_uuid:00000000-0000-0000-0000-000000000001  $$$ Lock Successfully Acquired for kind id: 6e7a257d-145b-4cb4-8099-b94141061523, lock_uuid: 152c6986-cb18-5575-8355-4b201aa4732f 
+2023-08-25 21:54:19,404Z INFO config_utils.py:243 tenant_uuid:00000000-0000-0000-0000-000000000001  The new value of _is_multi_tenant flag is:False 
+2023-08-25 21:54:19,408Z INFO client.py:243 tenant_uuid:00000000-0000-0000-0000-000000000001  Creating stub for Ergon on 127.0.0.1: 2090 
+2023-08-25 21:54:19,513Z INFO resource_intentful.py:509 tenant_uuid:00000000-0000-0000-0000-000000000001  $$$ Lock owner updated to unknown for kind id: 6e7a257d-145b-4cb4-8099-b94141061523, lock_uuid: 152c6986-cb18-5575-8355-4b201aa4732f 
+2023-08-25 21:54:20,194Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:54:21,058Z INFO category.py:166 Looking up category by uuid: eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,084Z INFO category.py:1144 Looking up for Category by uuid: 9f591c69-34da-5ca4-a578-2a5a6474e2bd 
+2023-08-25 21:54:21,131Z INFO category.py:520 Getting ['domain'] entities for the category eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,185Z INFO category.py:520 Getting ['vm'] entities for the category eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,362Z INFO category.py:166 Looking up category by uuid: eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,378Z INFO category.py:1144 Looking up for Category by uuid: 9f591c69-34da-5ca4-a578-2a5a6474e2bd 
+2023-08-25 21:54:21,402Z INFO category.py:520 Getting ['domain'] entities for the category eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,431Z INFO category.py:520 Getting ['vm'] entities for the category eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,482Z INFO category.py:166 Looking up category by uuid: eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,518Z INFO category.py:1144 Looking up for Category by uuid: 9f591c69-34da-5ca4-a578-2a5a6474e2bd 
+2023-08-25 21:54:21,594Z INFO category.py:520 Getting ['domain'] entities for the category eb8b4155-b3d1-5772-8d2f-d566d43d8e46 
+2023-08-25 21:54:21,661Z INFO entity.py:330 created Domain(b4023823-4ce6-4f3e-a976-17c4d64e3fb1) -> [u'Domain(4d88f294-11df-45d2-928a-de649b5c07a6)', u'Domain(7eebe0ef-62a1-4920-8183-680f5e91c237)'] 
+2023-08-25 21:54:21,768Z INFO mixins.py:124 Update resource domain: {'last_updated_time_usecs': 1693000384572856L, 'uuid': UUID('7eebe0ef-62a1-4920-8183-680f5e91c237'), 'create_time_usecs': 1693000384572856L} [] 
+2023-08-25 21:54:21,784Z INFO entity.py:420 skipping idempotent update for domain Domain(7eebe0ef-62a1-4920-8183-680f5e91c237) -> [] 
+2023-08-25 21:54:25,644Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:25,649Z INFO utils.py:92  Init kind to db type relationship maps 
+2023-08-25 21:54:25,651Z INFO utils.py:92  Init kind to db type relationship maps 
+2023-08-25 21:54:25,746Z INFO local_connection_info.py:85 Starting remote connection update entity cycle. 
+2023-08-25 21:54:25,752Z INFO local_connection_info.py:97 Waiting for RC leadership, sleeping for 1800 secs. 
+2023-08-25 21:54:25,778Z INFO leadership.py:153  Leadership blueprint zknode does not exist, watch will be triggered when it is created 
+2023-08-25 21:54:25,787Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:25,800Z INFO master.py:74  Volunteering for master leadership 
+2023-08-25 21:54:25,807Z INFO leadership.py:405  Volunteering for leadership for the path: /appliance/logical/pyleaders/aplos_rc_leader with value: dd35bfa1-cf02-44ac-adf0-c442e9a19398 
+2023-08-25 21:54:25,932Z INFO leadership.py:422  Successfully created intent-node for leadership at path: /appliance/logical/pyleaders/aplos_rc_leader/n_0000000001 with value: dd35bfa1-cf02-44ac-adf0-c442e9a19398 
+2023-08-25 21:54:25,937Z INFO leadership.py:826 Setting watch on previous contender at /appliance/logical/pyleaders/aplos_rc_leader/n_0000000000 for its removal 
+2023-08-25 21:54:25,941Z INFO local_host.py:201  Resetting IP/port/FQDN from config. New values: 10.37.109.88 9440 False  
+2023-08-25 21:54:25,952Z INFO connection_heartbeat.py:115  Initializing connection heartbeat table 
+2023-08-25 21:54:25,960Z INFO metric_utils.py:66  Metric table connection_heartbeat is registered. 
+2023-08-25 21:54:25,995Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:25,999Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:26,034Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:26,073Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:26,250Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:26,273Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:26,292Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:54:48,957Z INFO server_cert_utils.py:181 Update of keys based on call back from zk 
+2023-08-25 21:54:48,960Z INFO server_cert_utils.py:181 Update of keys based on call back from zk 
+2023-08-25 21:54:48,964Z INFO server_cert_utils.py:195 No prism key defined in zookeeper, use default 
+2023-08-25 21:54:48,964Z INFO server_cert_utils.py:203 Using default for secure key 
+2023-08-25 21:54:48,964Z INFO server_cert_utils.py:216 Key is determined to be a RSA cert 
+2023-08-25 21:54:49,157Z INFO server_cert_utils.py:195 No prism key defined in zookeeper, use default 
+2023-08-25 21:54:49,158Z INFO server_cert_utils.py:203 Using default for secure key 
+2023-08-25 21:54:49,159Z INFO server_cert_utils.py:216 Key is determined to be a RSA cert 
+2023-08-25 21:54:50,200Z INFO server_cert_utils.py:296 Setting key file contents 
+2023-08-25 21:54:50,202Z INFO server_cert_utils.py:390 Verfiying Key Pair 
+2023-08-25 21:54:50,256Z INFO server_cert_utils.py:393 Token in verifying key pair: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXN0Ijoia2V5X2ZvbyJ9.YtnDqoFsgKNtYEZlViNFJso1gWUw4B6AV21ZZ78BYEaRL_CbpMuvLrJ-q38GjQ3av7rgzjU3LErPo1Hs6dVYnvC33ARRPSxIiDzTphqGVojzv_ZehRLpNSz3Hm5uRfTwqWzqVWQQSJoj2IsiJBCd5B1Da1ONqWhhlivcrwkDbQC7s-I-9zrHcMEadkGBlqm2vTJYR-FqeQ4f_hZJb7GhCQ9nX2cQIgXRo9SIxC84892NHJyxMANgGruwuqZvpZMOQwteSrQXKEbWp91XgkVE5qpL_D_hf-wxeKRGrN0SLYNis2puCk1F-ABRLS47XjqPd3rgUQoD1n-Q7IIbGDog2A 
+2023-08-25 21:54:50,272Z INFO server_cert_utils.py:396 Key Value pair verification status is True 
+2023-08-25 21:54:50,273Z INFO server_cert_utils.py:265 Using RSA key for JWT sesions 
+2023-08-25 21:54:50,429Z INFO server_cert_utils.py:296 Setting key file contents 
+2023-08-25 21:54:50,431Z INFO server_cert_utils.py:390 Verfiying Key Pair 
+2023-08-25 21:54:50,450Z INFO server_cert_utils.py:393 Token in verifying key pair: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXN0Ijoia2V5X2ZvbyJ9.YtnDqoFsgKNtYEZlViNFJso1gWUw4B6AV21ZZ78BYEaRL_CbpMuvLrJ-q38GjQ3av7rgzjU3LErPo1Hs6dVYnvC33ARRPSxIiDzTphqGVojzv_ZehRLpNSz3Hm5uRfTwqWzqVWQQSJoj2IsiJBCd5B1Da1ONqWhhlivcrwkDbQC7s-I-9zrHcMEadkGBlqm2vTJYR-FqeQ4f_hZJb7GhCQ9nX2cQIgXRo9SIxC84892NHJyxMANgGruwuqZvpZMOQwteSrQXKEbWp91XgkVE5qpL_D_hf-wxeKRGrN0SLYNis2puCk1F-ABRLS47XjqPd3rgUQoD1n-Q7IIbGDog2A 
+2023-08-25 21:54:50,452Z INFO server_cert_utils.py:396 Key Value pair verification status is True 
+2023-08-25 21:54:50,453Z INFO server_cert_utils.py:265 Using RSA key for JWT sesions 
+2023-08-25 21:55:37,654Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:55:37,969Z INFO legacy_role.py:153 Legacy roles ['ROLE_USER_ADMIN', 'ROLE_CLUSTER_VIEWER', 'ROLE_CLUSTER_ADMIN', 'ROLE_MULTICLUSTER_ADMIN'] 
+2023-08-25 21:55:37,970Z INFO legacy_role.py:154 Themis roles [u'Super Admin', u'Prism Viewer', u'Prism Admin'] 
+2023-08-25 21:56:02,386Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:02,524Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:02,758Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:02,767Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:02,867Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:03,481Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:07,574Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 21:56:07,827Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 21:56:07,862Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 21:56:08,144Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 21:56:08,180Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 21:56:10,699Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 21:56:28,151Z WARNING interface.py:1881  The filter_criteria None did not return valid operator and values. 
+2023-08-25 21:56:28,152Z WARNING interface.py:1882  The list of non IDF entities would not be filtered 
+2023-08-25 21:56:28,943Z WARNING genesis_utils.py:350  Deprecated: use util.ndb.infrastructure.cluster.get_cluster_uuid(config_proto=None) instead 
+2023-08-25 21:56:30,585Z INFO intent_spec.py:382  Lock Successfully Acquired for kind id: ae93f4a8-2cdf-4f17-9091-a25244331605, lock_uuid: 4f3730ba-3d0b-5eb9-9b6f-f78238c18cb3, intent_spec_uuid: 86acffcc-405e-5a5e-ac22-2c94a876685d 
+2023-08-25 21:56:31,324Z INFO intent_spec.py:207  [None] For intent spec with UUID 86acffcc-405e-5a5e-ac22-2c94a876685d, changing state from kPending to kComplete 
+2023-08-25 21:56:31,510Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:56:32,654Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:56:32,964Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:56:49,176Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:56:56,333Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 21:57:08,070Z WARNING interface.py:1881  The filter_criteria None did not return valid operator and values. 
+2023-08-25 21:57:08,071Z WARNING interface.py:1882  The list of non IDF entities would not be filtered 
+2023-08-25 21:57:08,408Z INFO interface.py:2614  cas_mismatch with spec_hash: False 
+2023-08-25 21:57:18,980Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:19,068Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:19,089Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:19,474Z WARNING interface.py:1881  The filter_criteria None did not return valid operator and values. 
+2023-08-25 21:57:19,476Z WARNING interface.py:1882  The list of non IDF entities would not be filtered 
+2023-08-25 21:57:19,478Z INFO cluster.py:110  Refreshing cluster_map_cache 
+2023-08-25 21:57:19,562Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:19,587Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:19,641Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:20,030Z INFO interface.py:2614  cas_mismatch with spec_hash: True 
+2023-08-25 21:57:20,094Z INFO intent_spec.py:382  Lock Successfully Acquired for kind id: ae93f4a8-2cdf-4f17-9091-a25244331605, lock_uuid: 4f3730ba-3d0b-5eb9-9b6f-f78238c18cb3, intent_spec_uuid: 86acffcc-405e-5a5e-ac22-2c94a876685d 
+2023-08-25 21:57:20,109Z INFO intent_spec.py:180  [None] Found intent spec with UUID 86acffcc-405e-5a5e-ac22-2c94a876685d and cas_value 0 
+2023-08-25 21:57:20,261Z INFO interface.py:2652  spec_version updated for out of bound changes. 
+2023-08-25 21:57:20,457Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:20,460Z WARNING genesis_utils.py:350  Deprecated: use util.ndb.infrastructure.cluster.get_cluster_uuid(config_proto=None) instead 
+2023-08-25 21:57:20,504Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:20,535Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:20,987Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:21,032Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:21,035Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:21,064Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:21,068Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:21,092Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:57:21,552Z WARNING interface.py:1881  The filter_criteria None did not return valid operator and values. 
+2023-08-25 21:57:21,554Z WARNING interface.py:1882  The list of non IDF entities would not be filtered 
+2023-08-25 21:57:21,626Z INFO interface.py:2614  cas_mismatch with spec_hash: False 
+2023-08-25 21:58:01,382Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 21:59:02,146Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 21:59:09,675Z INFO local_host.py:201 Resetting IP/port/FQDN from config. New values: 10.37.96.193 9440 True  
+2023-08-25 21:59:16,547Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:59:16,566Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 21:59:16,598Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:00:00,940Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:01:01,259Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:01:54,209Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:01:57,177Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 22:01:57,364Z INFO legacy_role.py:153 Legacy roles ['ROLE_USER_ADMIN', 'ROLE_CLUSTER_VIEWER', 'ROLE_CLUSTER_ADMIN', 'ROLE_MULTICLUSTER_ADMIN'] 
+2023-08-25 22:01:57,365Z INFO legacy_role.py:154 Themis roles [u'Super Admin', u'Prism Viewer', u'Prism Admin'] 
+2023-08-25 22:01:57,399Z INFO resource_intentful.py:1385  Serving get call from aplos engine rpc for kind user and uuid 00000000-0000-0000-0000-000000000000 
+2023-08-25 22:02:00,732Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:03:00,986Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:04:00,859Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:04:06,806Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:04:06,829Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:04:06,845Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:05:00,249Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:06:00,703Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:06:54,124Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:07:00,433Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:08:00,305Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:08:52,717Z INFO cluster_map_cache_utils.py:29 Periodic refresh of cluster map 
+2023-08-25 22:08:52,718Z INFO cluster.py:110 Refreshing cluster_map_cache 
+2023-08-25 22:08:57,086Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:08:57,106Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:08:57,131Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:09:00,813Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:10:00,178Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:11:00,414Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:11:54,416Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:12:00,596Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:13:00,749Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:13:47,337Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:13:47,350Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:13:47,369Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:14:00,320Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:15:00,620Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:16:00,417Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:16:54,437Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:17:00,635Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:18:00,214Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:18:37,566Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:18:37,578Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:18:37,591Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:19:00,443Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:20:00,810Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:21:00,313Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:21:54,427Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:22:00,677Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:23:00,176Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:23:27,771Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:23:27,782Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:23:27,798Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:23:52,762Z INFO cluster_map_cache_utils.py:29 Periodic refresh of cluster map 
+2023-08-25 22:23:52,763Z INFO cluster.py:110 Refreshing cluster_map_cache 
+2023-08-25 22:24:00,557Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:24:25,937Z INFO local_connection_info.py:97 Waiting for RC leadership, sleeping for 1800 secs. 
+2023-08-25 22:25:00,679Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:26:00,648Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:26:39,417Z INFO athena_auth.py:136 Basic user authentication for user admin 
+2023-08-25 22:26:54,657Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:27:00,212Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:28:00,145Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:28:17,995Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:28:18,008Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:28:18,025Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:29:00,429Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:30:00,175Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:31:00,369Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:31:54,426Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:32:01,510Z INFO manager.py:66 Token provided in request from host: 10.37.109.88 failed 
+2023-08-25 22:32:22,219Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:32:22,232Z INFO config_utils.py:117  The new value of is_cloud flag is False 
+2023-08-25 22:32:22,240Z INFO config_utils.py:117  The new value of is_cloud flag is False 
