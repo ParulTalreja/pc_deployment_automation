@@ -65,7 +65,7 @@ def get_trace_after_last_stage(analysis_result,peclusterFile, pegenesisFile,pccl
     timestamp, stageLine, stage=get_last_stage_passed(analysis_result,peclusterFile,pegenesisFile,0)
     analysis_result.message_list.append(message(stage["name"] + " PASSED.", None))
     if(stage['stageNo.']>'2' and pegenesisFile is not None):
-        analysis_result.message_list.append(message("TRACEBACK OF PE GENESIS FILE", None))
+        analysis_result.message_list.append(message("Traceback", None))
         #genesisFile
         str = ""
         with open(pegenesisFile, "r", encoding="latin-1", newline="") as f:
