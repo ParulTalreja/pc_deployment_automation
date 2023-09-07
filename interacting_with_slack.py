@@ -21,8 +21,8 @@ app = App(token=os.environ["BUG_TRIAGE_BOT_BOT_TOKEN"])
 
 @app.event("app_mention")
 def pc_mention_reply(event, say, client):
-    print("check-this")
     thread_ts = event["ts"]
+    client.chat_postMessage(text = "*Processing your query*", channel = "C05QMNCHTLN", thread_ts = thread_ts)
     print("Thread", thread_ts)
     msg = event["text"][event["text"].find("> ")+3:-1]
     print(msg)
