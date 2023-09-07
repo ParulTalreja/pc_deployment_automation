@@ -35,6 +35,7 @@ def pc_mention_reply(event, say, client):
             client.chat_postMessage(text=message_object.text, channel="C05QMNCHTLN", thread_ts=thread_ts)
         if message_object.code is not None:
             client.chat_postMessage(text=f"```{message_object.code}```", channel="C05QMNCHTLN", thread_ts=thread_ts)
+    sleep(2)
     if ask_jira:
         jira_blocks = [
             {
