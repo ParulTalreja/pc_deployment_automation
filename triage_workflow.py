@@ -77,7 +77,7 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent ,
                 analysis_result.message_list.append(message("The failue has been caused by: "+chksm_mapping_available["static_resolution"],None))
                 return analysis_result
             else:
-                analysis_result.message_list.append(message(chksm_mapping_available["static_resolution"] + "."+"For more information refer to jira ticket id"+ chksm_mapping_available["jira"],None))
+                analysis_result.message_list.append(message(chksm_mapping_available["static_resolution"] + "."+"For more information refer to jira ticket Id: "+ chksm_mapping_available["jira"],None))
                 return analysis_result
         else:
             analysis_result.message_list.append(message("No Existing Result found in Database",None))
