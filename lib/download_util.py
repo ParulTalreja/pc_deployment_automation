@@ -7,21 +7,21 @@ import zipfile
 import requests
 
 
-def download_pc_logs(PC_LOG_URL):
+def download_pc_logs(PC_LOG_URL,deployment_id):
     zip_links=fetch_page_content(PC_LOG_URL)
     #if PC logs are in zip format
     if zip_links:
-        downloaded_location=zip_download_and_extract(PC_LOG_URL)
+        downloaded_location=zip_download_and_extract(PC_LOG_URL,deployment_id)
     else:
-        downloaded_location=tar_download_and_extract(PC_LOG_URL)
+        downloaded_location=tar_download_and_extract(PC_LOG_URL,deployment_id)
     return downloaded_location
 
 
 
-def tar_download_and_extract(PC_LOG_URL):
+def tar_download_and_extract(PC_LOG_URL,deployment_id):
     file_name = 'home_nutanix_data_logs.tar.gz'
     file_url=PC_LOG_URL+file_name
-    extract_folder = "resources"
+    extract_folder = "resources/"+deployment_id
     # Create the extraction folder if it doesn't exist
     os.makedirs(extract_folder, exist_ok=True)
     # Download the file
@@ -36,7 +36,7 @@ def tar_download_and_extract(PC_LOG_URL):
 
         # Run the tar command to extract the file
         command = ["tar", "-xvf", tar_file_path, "-C", extract_folder]
-        extract_folder_url = "resources/home/nutanix/data/logs"
+        extract_folder_url = "resources/"+deployment_id+"/home/nutanix/data/logs"
         try:
             subprocess.run(command, check=True)
             print("Extraction completed successfully.")
@@ -47,10 +47,10 @@ def tar_download_and_extract(PC_LOG_URL):
     else:
         print("Failed to download the tar file. Please check if logs are available")
 
-def zip_download_and_extract(LOG_URL):
+def zip_download_and_extract(LOG_URL,deployment_id):
     # PE_LOG_URL:URL of the .zip file to download
     # Folder where you want to extract the contents
-    extract_folder = "resources"
+    extract_folder = "resources/"+deployment_id
 
     # Create the extraction folder if it doesn't exist
     os.makedirs(extract_folder, exist_ok=True)

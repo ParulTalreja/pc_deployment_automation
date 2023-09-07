@@ -60,7 +60,7 @@
         "stageNo.": "8",
         "name": "Trust Validation",
         "logMessage": "[Pc-Deployment] (3.4.2) App Deployment Post Deployment Steps/Trust validation steps End",
-        "log_file": ["genesis.out"],
+        "log_file": ["prism_gateway.log"],
         "pc_check": true
     }, 
     

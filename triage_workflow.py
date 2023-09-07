@@ -86,7 +86,7 @@ def get_log_files_for_staging(parent_path):
     return parent_path+"/"+last_cluster_config_out, parent_path+"/"+last_genesis_out
 
 
-def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
+def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
     dir_name = "triage_rules/"
     file_name = "pc_deploy_debug_mapping.json"
     mapping_found = False
@@ -109,12 +109,12 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
                         if (PC_LOG_URL == ""):
                             return "PC LOGS NOT FOUND"
                         #downloaded_log_location="resources/home/nutanix/data/logs/"
-                        downloaded_log_location= download_util.download_pc_logs(PC_LOG_URL)
+                        downloaded_log_location= download_util.download_pc_logs(PC_LOG_URL,deployment_id)
                         #downloaded_log_location= (download_util_multithreaded.download_pc_logs(PC_LOG_URL))[0]
                     if "PE" in cluster_log:
                         if (PE_LOG_URL == ""):
                             return "PE LOGS NOT FOUND"
-                        downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL)
+                        downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL,deployment_id)
                         #downloaded_log_location= (download_util_multithreaded.download_multithreaded(PE_LOG_URL))[0]
 
                     for logFileName in i['file_lst']:
@@ -128,10 +128,10 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL):
             pe_cluster_config_log_location = ""
             pe_genesis_log_location = ""
             if PC_LOG_URL!="":
-                pc_log_location = download_util.download_pc_logs(PC_LOG_URL)
+                pc_log_location = download_util.download_pc_logs(PC_LOG_URL,deployment_id)
                 pc_cluster_config_log_location, pc_genesis_log_location = get_log_files_for_staging(pc_log_location)
             if PE_LOG_URL!="":
-                pe_log_location = download_util.download_pc_logs(PE_LOG_URL)
+                pe_log_location = download_util.download_pc_logs(PE_LOG_URL,deployment_id)
                 pe_cluster_config_log_location, pe_genesis_log_location = get_log_files_for_staging(pe_log_location)
             
             print(stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location))

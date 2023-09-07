@@ -26,7 +26,7 @@ def start_bot_analysis(rdm_link):
         return response
     pc_deployment = PCAutoDeployment(rdm_link)
     bot_start_time = time.time()
-    pcdeploymentlogLocation,pc_log_url, pe_log_url = pc_deployment._get_failed_deployment_logurl(rdm_link)
+    pcdeploymentlogLocation,pc_log_url, pe_log_url , deployment_id = pc_deployment._get_failed_deployment_logurl(rdm_link)
     print("RDM Link: ",rdm_link)
     if pc_log_url=="":
         print("PC LOGS NOT FOUND")
@@ -42,7 +42,7 @@ def start_bot_analysis(rdm_link):
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
         print(errorMessage)
-        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url)
+        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url,deployment_id)
     else:
         response="Logs are not available."
 
@@ -159,7 +159,7 @@ class PCAutoDeployment:
         PC_log_link = self.find_pc_log_url(URL)
         PE_log_link = self.find_pe_log_url(URL)
         #print(failedDeploymentLogUrl)
-        return failedDeploymentLogUrl, PC_log_link, PE_log_link
+        return failedDeploymentLogUrl, PC_log_link, PE_log_link , scheduled_deployment_id
 
     def is_log_available(self,log_url):
         r = requests.head(log_url)
