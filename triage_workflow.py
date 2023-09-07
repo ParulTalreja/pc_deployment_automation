@@ -134,9 +134,9 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
                 pe_log_location = download_util.download_pc_logs(PE_LOG_URL,deployment_id)
                 pe_cluster_config_log_location, pe_genesis_log_location = get_log_files_for_staging(pe_log_location)
             
-            print(stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location))
+            return stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
 
-            return "Log Signature not found in pc debug mapping"
+            # return "Log Signature not found in pc debug mapping"
 
 
 
