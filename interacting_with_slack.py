@@ -27,8 +27,41 @@ def pc_mention_reply(event, say, client):
     msg = event["text"][event["text"].find("> ")+3:-1]
     print(msg)
     result_analysis = start_bot_analysis(msg)
-    print("message_list",result_analysis.message_list[0].text)
-    print(result_analysis)
+    message_object_list = result_analysis.message_list
+    ask_jira = result_analysis.ask_jira
+    for message_object in message_object_list:
+        if message_object.text is not None:
+            client.chat_postMessage(text=message_object.text, channel="C05QMNCHTLN", thread_ts=thread_ts)
+        if message_object.code is not None:
+            client.chat_postMessage(text=f"```{message_object.code}", channel="C05QMNCHTLN", thread_ts=thread_ts)
+    if ask_jira:
+        jira_blocks = [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "Create JIRA ticket?"
+                }
+            },
+            {
+                "type": "actions",
+                "block_id": "jira_block",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": ":ticket: Create ticket"
+                        },
+                        "value": "create",
+                        "action_id": "create_jira"
+                    }
+                ]
+            }
+        ]
+        client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=event["user"], blocks=jira_blocks)
+    # print("message_list",result_analysis.message_list[0].text)
+    # print(result_analysis)
     
     client.chat_postMessage(text = result_analysis, channel = "C05QMNCHTLN", thread_ts = thread_ts)
     
