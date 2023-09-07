@@ -42,8 +42,8 @@ def filter_jira_issue(summary):
   return issues
 
 
-def main():
-  pass
+# def main():
+#   pass
 
-if __name__ == "__main__":
-  main()
+# if __name__ == "__main__":
+#   main()
