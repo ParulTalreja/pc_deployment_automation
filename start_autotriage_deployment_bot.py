@@ -9,9 +9,10 @@ import sys
 import time
 from bs4 import BeautifulSoup
 import argparse
-from analysis_result import analysis_result, message
+from analysis_result import response, message
 
-analysis_result=analysis_result(None, False)
+message_list=[]
+analysis_result=response(message_list, False)
 def list_of_strings(arg):
     return arg
 

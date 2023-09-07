@@ -1,4 +1,4 @@
-class analysis_result:
+class response:
   def __init__(self, message_list, ask_jira=False):
     self.message_list = message_list
     self.ask_jira = ask_jira
@@ -6,7 +6,7 @@ class analysis_result:
 
   def __str__(self):
     messages_str = "\n".join(str(message) for message in self.message_list)
-    return f"\n{messages_str}, \nJira: {self.jira}"
+    return f"\n{messages_str}, \nJira: {self.ask_jira}"
 
 
 class message:

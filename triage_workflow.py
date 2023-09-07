@@ -1,12 +1,16 @@
 import json
 import re
 import urllib3
+
+from start_autotriage_deployment_bot import analysis_result
+
 urllib3.disable_warnings()
 import os
 from file_read_backwards import FileReadBackwards
 from lib import download_util, util
 import stage_extraction
-from analysis_result import analysis_result,message
+from analysis_result import response, message
+
 
 
 def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
@@ -67,7 +71,7 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent ,
         analysis_result.message_list.append(
             message("Below is the error root cause", chksm_mapping_available))
 
-        return chksm_mapping_available
+        return analysis_result
 
 def get_log_files_for_staging(parent_path):
     files = os.listdir(parent_path)
@@ -152,8 +156,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
             #Add here stage which was successfull+ file name for analysis
 
             traceback=stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
-            analysis_result.message_list.append(
-                message("file name", traceback))
+            analysis_result.message_list.append(message("file name", traceback))
             return analysis_result
 
 
