@@ -2,12 +2,13 @@ from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from start_autotriage_deployment_bot import start_bot_analysis
 import ssl
+import os
 
 from time import sleep
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-app = App(token="xoxb-2172428722-5834253288615-yLtHilm9NQjody0UczowP8C1")
+app = App(token=os.environ["BUG_TRIAGE_BOT_BOT_TOKEN"])
 
 # @app.event({
 #      "type": "message",
@@ -20,8 +21,8 @@ app = App(token="xoxb-2172428722-5834253288615-yLtHilm9NQjody0UczowP8C1")
 
 @app.event("app_mention")
 def pc_mention_reply(event, say, client):
-    print("check-this")
     thread_ts = event["ts"]
+    client.chat_postEphemeral(text = "_Processing your query_", channel = "C05QMNCHTLN", thread_ts = thread_ts, user=event["user"])
     print("Thread", thread_ts)
     msg = event["text"][event["text"].find("> ")+3:-1]
     print(msg)
@@ -39,7 +40,7 @@ def pc_mention_reply(event, say, client):
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": f"Hey there <@{event['user']}>! How was your experience with RDM?"
+                "text": f"Hey there <@{event['user']}>! How was your experience with the me?"
             },
         },
         {
@@ -91,4 +92,4 @@ def review_bad(ack, body, client):
     client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"], text="Thank you for your feedback!")
     
 if __name__ == "__main__":
-    SocketModeHandler(app, "xapp-1-A05QUUW297F-5851356677237-a3cf8634e69fa5ae6dde66172eab28c85a6071c37f5e43c1cf0447cd308c7c38").start()
+    SocketModeHandler(app, os.environ["BUG_TRIAGE_BOT_APP_TOKEN"]).start()

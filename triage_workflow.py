@@ -58,6 +58,7 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent ,
         print("Thread Id: ",error_thread_id)
         error_msg=find_error_msg_in_logfile_using_threadId(downloaded_log_location,logFileName,error_thread_id)
     file_msg_chcksum = util.get_checksum_of_errorstring(error_msg)
+
     #Get combined checksum of RDM error message and logfile message
     chksm = util.get_checksum_without_caching(rdm_error_checksm+file_msg_chcksum)
 
