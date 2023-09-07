@@ -40,7 +40,7 @@ def pc_mention_reply(event, say, client):
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": f"Hey there <@{event['user']}>! How was your experience with RDM?"
+                "text": f"Hey there <@{event['user']}>! How was your experience with the me?"
             },
         },
         {
