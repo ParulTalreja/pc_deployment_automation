@@ -1,6 +1,7 @@
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from start_autotriage_deployment_bot import start_bot_analysis
+from jira_script import jira_integration
 import ssl
 import os
 
@@ -62,6 +63,14 @@ def pc_mention_reply(event, say, client):
             }
         ]
         client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=event["user"], blocks=jira_blocks)
+
+        @app.action("create_jira")
+        def create_jira(ack, body, client):
+            ack()
+            thread_ts = body["container"]["thread_ts"]
+            jira_id = jira_integration.create_jira_issue(result_analysis.jira_summary, result_analysis.jira_description)
+            client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"],
+                                      text=f"Jira Ticket Raised, Jira Id: {jira_id}")
     # print("message_list",result_analysis.message_list[0].text)
     # print(result_analysis)
     
@@ -128,12 +137,7 @@ def review_bad(ack, body, client):
     client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"], text="Thank you for your feedback!")
 
 
-@app.action("create_jira")
-def create_jira(ack, body, client):
-    ack()
-    thread_ts = body["container"]["thread_ts"]
-    client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"],
-                              text="Jira Ticket Raised")
+
     
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["BUG_TRIAGE_BOT_APP_TOKEN"]).start()
