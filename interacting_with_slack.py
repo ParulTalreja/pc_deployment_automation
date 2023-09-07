@@ -29,6 +29,7 @@ def pc_mention_reply(event, say, client):
     result_analysis = start_bot_analysis(msg)
     message_object_list = result_analysis.message_list
     ask_jira = result_analysis.ask_jira
+    print("ask_jira", ask_jira)
     for message_object in message_object_list:
         if message_object.text is not None:
             client.chat_postMessage(text=message_object.text, channel="C05QMNCHTLN", thread_ts=thread_ts)
@@ -63,7 +64,7 @@ def pc_mention_reply(event, say, client):
     # print("message_list",result_analysis.message_list[0].text)
     # print(result_analysis)
     
-    # client.chat_postMessage(text = result_analysis, channel = "C05QMNCHTLN", thread_ts = thread_ts)
+    client.chat_postMessage(text = result_analysis, channel = "C05QMNCHTLN", thread_ts = thread_ts)
     
     sleep(2)
     
@@ -124,6 +125,14 @@ def review_bad(ack, body, client):
     channel = body["channel"]["id"]
     thread_ts = body["container"]["thread_ts"]
     client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"], text="Thank you for your feedback!")
+
+
+@app.action("jira_block")
+def review_bad(ack, body, client):
+    ack()
+    thread_ts = body["container"]["thread_ts"]
+    client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"],
+                              text="Jira Ticket Raised")
     
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["BUG_TRIAGE_BOT_APP_TOKEN"]).start()
