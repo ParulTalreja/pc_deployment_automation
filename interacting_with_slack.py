@@ -7,7 +7,7 @@ from time import sleep
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-app = App(token="xoxb-2172428722-5834253288615-yLtHilm9NQjody0UczowP8C1")
+app = App(token="xoxb-2172428722-5834253288615-1KqVplKleZnwJZiOXoO9e1QS")
 
 # @app.event({
 #      "type": "message",
@@ -91,4 +91,4 @@ def review_bad(ack, body, client):
     client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"], text="Thank you for your feedback!")
     
 if __name__ == "__main__":
-    SocketModeHandler(app, "xapp-1-A05QUUW297F-5851356677237-a3cf8634e69fa5ae6dde66172eab28c85a6071c37f5e43c1cf0447cd308c7c38").start()
+    SocketModeHandler(app, "xapp-1-A05QUUW297F-5857132050242-fca0e929ca38bbadcca510960005a1bf91f7bce3492bb278976666b64b5796ab").start()
