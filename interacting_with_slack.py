@@ -63,7 +63,7 @@ def pc_mention_reply(event, say, client):
     # print("message_list",result_analysis.message_list[0].text)
     # print(result_analysis)
     
-    client.chat_postMessage(text = result_analysis, channel = "C05QMNCHTLN", thread_ts = thread_ts)
+    # client.chat_postMessage(text = result_analysis, channel = "C05QMNCHTLN", thread_ts = thread_ts)
     
     sleep(2)
     
