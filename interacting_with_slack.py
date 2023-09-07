@@ -27,7 +27,7 @@ def pc_mention_reply(event, say, client):
     msg = event["text"][event["text"].find("> ")+3:-1]
     print(msg)
     result_analysis = start_bot_analysis(msg)
-    print("message_list",result_analysis.message_list)
+    print("message_list",result_analysis.message_list[0].text)
     print(result_analysis)
     
     client.chat_postMessage(text = result_analysis, channel = "C05QMNCHTLN", thread_ts = thread_ts)
