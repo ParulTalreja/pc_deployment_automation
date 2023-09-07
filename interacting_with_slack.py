@@ -2,12 +2,13 @@ from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from start_autotriage_deployment_bot import start_bot_analysis
 import ssl
+import os
 
 from time import sleep
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-app = App(token="xoxb-2172428722-5834253288615-1KqVplKleZnwJZiOXoO9e1QS")
+app = App(token=os.environ["BUG_TRIAGE_BOT_BOT_TOKEN"])
 
 # @app.event({
 #      "type": "message",
@@ -91,4 +92,4 @@ def review_bad(ack, body, client):
     client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"], text="Thank you for your feedback!")
     
 if __name__ == "__main__":
-    SocketModeHandler(app, "xapp-1-A05QUUW297F-5857132050242-fca0e929ca38bbadcca510960005a1bf91f7bce3492bb278976666b64b5796ab").start()
+    SocketModeHandler(app, os.environ["BUG_TRIAGE_BOT_APP_TOKEN"]).start()
