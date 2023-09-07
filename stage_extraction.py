@@ -63,7 +63,7 @@ def get_last_stage_passed(analysis_result,clusterFile, genesisFile, ispc):
 
 def get_trace_after_last_stage(analysis_result,peclusterFile, pegenesisFile,pcclusterFile, pcgenesisFile):
     timestamp, stageLine, stage=get_last_stage_passed(analysis_result,peclusterFile,pegenesisFile,0)
-    analysis_result.message_list.append(message(stage["name"] + "PASSED.", None))
+    analysis_result.message_list.append(message(stage["name"] + " PASSED.", None))
     if(stage['stageNo.']>'2' and pegenesisFile is not None):
         analysis_result.message_list.append(message("TRACEBACK OF PE GENESIS FILE", None))
         #genesisFile
