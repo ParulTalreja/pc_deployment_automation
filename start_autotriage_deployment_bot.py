@@ -23,6 +23,8 @@ def is_valid_rdm_url(rdmurl):
     return False
 
 def start_bot_analysis(rdm_link):
+    analysis_result.message_list=[]
+    analysis_result.ask_jira=False
     if not is_valid_rdm_url(rdm_link):
         error_text="This is invalid RDM link. Please enter valid RDM Link"
         error_code="Example of valid RDM links are: https://rdm.eng.nutanix.com/scheduled_deployments/64d11f1a82e14fe9cd8ca089"
