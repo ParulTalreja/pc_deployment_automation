@@ -15,9 +15,9 @@ def insert_in_mongodb(checksum, static_resolution=None, jira=None):
   x = checksum.insert_one(dict)
   print("Document inserted with id: ", x.inserted_id)
 
-def main():
-  print("inside main: ")
-  insert_in_mongodb("1539d9301a5c518935e00198b4a5d3bf", "test_from_python")
+# def main():
+#   print("inside main: ")
+#   insert_in_mongodb("1539d9301a5c518935e00198b4a5d3bf", "test_from_python")
 
-if __name__ == "__main__":
-  main()
+# if __name__ == "__main__":
+#   main()

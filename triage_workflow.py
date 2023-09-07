@@ -8,6 +8,7 @@ from file_read_backwards import FileReadBackwards
 from lib import download_util, util
 import stage_extraction
 from analysis_result import response, message
+from mongodb import find_by_checksum,test_insert_mongodb
 
 
 
@@ -61,16 +62,29 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent ,
     chksm = util.get_checksum_without_caching(rdm_error_checksm+file_msg_chcksum)
 
     #print("Checksum for string: {0} is {1}".format(checksum_string, chksm))
-    chksm_mapping_available= util.retrieve_value_from_json(chksm)
+    chksm_mapping_available= find_by_checksum.find_in_mongodb(chksm)
     if(not chksm_mapping_available):
-        util.update_json_with_checksum(chksm, searchContent)
-        return "No Existing Result found based on checksum"
+        test_insert_mongodb.insert_in_mongodb(chksm)
+        analysis_result.message_list.append(message("Fix for Issue not Found",None))
+        analysis_result.ask_jira = True
+        analysis_result.jira_summary = searchContent
+        analysis_result.jira_description = error_msg
+        return analysis_result
     else:
         #print(chksm_mapping_available)
-        analysis_result.message_list.append(
-            message("Below is the error root cause", chksm_mapping_available))
-
-        return analysis_result
+        if(chksm_mapping_available["static_resolution"]):
+            if(not chksm_mapping_available['jira']):
+                analysis_result.message_list.append(message("The failue has been caused by: "+chksm_mapping_available["static_resolution"],None))
+                return analysis_result
+            else:
+                analysis_result.message_list.append(message(chksm_mapping_available["static_resolution"] + "."+"For more information refer to jira ticket id"+ chksm_mapping_available["jira"],None))
+                return analysis_result
+        else:
+            analysis_result.message_list.append(message("No Existing Result found in Database",None))
+            analysis_result.ask_jira = True
+            analysis_result.jira_summary = searchContent
+            analysis_result.jira_description = error_msg
+            return analysis_result
 
 def get_log_files_for_staging(parent_path):
     files = os.listdir(parent_path)
@@ -153,10 +167,12 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id,ana
             analysis_result.message_list.append(
                 message("Log Signature not found in pc debug mapping", ))
             #Add here stage which was successfull+ file name for analysis
-
-            #traceback=
-            analysis_result=stage_extraction.get_trace_after_last_stage(analysis_result,pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
-            #analysis_result.message_list.append(message("file name", traceback))
+            analysis_result.message_list.append(
+                message("Finding stage of deployment failure", ))
+            analysis_result,failure_stage, traceback = stage_extraction.get_trace_after_last_stage(analysis_result,pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
+            analysis_result.ask_jira = True
+            analysis_result.jira_summary = failure_stage
+            analysis_result.jira_description = traceback
             return analysis_result
 
 

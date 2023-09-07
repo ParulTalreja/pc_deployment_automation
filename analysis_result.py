@@ -1,7 +1,9 @@
 class response:
-  def __init__(self, message_list, ask_jira=False):
+  def __init__(self, message_list, ask_jira=False,jira_summary="",jira_description = ""):
     self.message_list = message_list
     self.ask_jira = ask_jira
+    self.jira_summary=jira_summary
+    self.jira_description = jira_description
 
 
   def __str__(self):

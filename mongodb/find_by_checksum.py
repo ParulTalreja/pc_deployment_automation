@@ -10,10 +10,10 @@ def find_in_mongodb(checksum):
   else:
     return document
 
-def main():
-  checksum = "1539d9301a5c518935e00198b4a5d3bf"
-  document = find_in_mongodb(checksum)
-  print(document)
+# def main():
+#   checksum = "1539d9301a5c518935e00198b4a5d3bf"
+#   document = find_in_mongodb(checksum)
+#   print(document)
 
-if __name__ == "__main__":
-  main()
+# if __name__ == "__main__":
+#   main()

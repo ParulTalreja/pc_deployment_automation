@@ -112,7 +112,7 @@ def get_trace_after_last_stage(analysis_result,peclusterFile, pegenesisFile,pccl
                 before.append(line)
             
             analysis_result.message_list.append(message(None, str))
-    return analysis_result
+    return analysis_result, "Failed after "+stage["name"], str
     #if stage["pc_check"]:
 
 
