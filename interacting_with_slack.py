@@ -127,7 +127,7 @@ def review_bad(ack, body, client):
     client.chat_postEphemeral(channel="C05QMNCHTLN", thread_ts=thread_ts, user=body["user"]["id"], text="Thank you for your feedback!")
 
 
-@app.action("jira_block")
+@app.action("create_jira")
 def review_bad(ack, body, client):
     ack()
     thread_ts = body["container"]["thread_ts"]
