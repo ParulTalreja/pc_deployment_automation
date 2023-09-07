@@ -155,7 +155,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id,ana
             #Add here stage which was successfull+ file name for analysis
 
             #traceback=
-            stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
+            analysis_result=stage_extraction.get_trace_after_last_stage(analysis_result,pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
             #analysis_result.message_list.append(message("file name", traceback))
             return analysis_result
 
