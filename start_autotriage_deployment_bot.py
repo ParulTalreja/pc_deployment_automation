@@ -46,7 +46,7 @@ def start_bot_analysis(rdm_link):
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
         analysis_result.message_list.append(message("Bot has looked into PC deployment logs and found below error", errorMessage))
-        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url,deployment_id)
+        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url,deployment_id,analysis_result)
     else:
         error_text="Deployment Logs are not available.Looks like it got expired"
         error_code=pcdeploymentlogLocation

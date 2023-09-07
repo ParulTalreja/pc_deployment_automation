@@ -2,8 +2,6 @@ import json
 import re
 import urllib3
 
-from start_autotriage_deployment_bot import analysis_result
-
 urllib3.disable_warnings()
 import os
 from file_read_backwards import FileReadBackwards
@@ -47,7 +45,7 @@ def find_error_msg_in_logfile_using_threadId(dir_name, file_name, error_thread_i
         print("Error message not found in %s", file_name)
 
 
-def _collects_log_from_file(downloaded_log_location,logFileName, searchContent , rdm_error_checksm):
+def _collects_log_from_file(downloaded_log_location,logFileName, searchContent , rdm_error_checksm,analysis_result):
     if(logFileName=="prism_gateway.log"):
         error_msg=_find_error_msg_in_logfile(downloaded_log_location,logFileName,searchContent)
         analysis_result.message_list.append(
@@ -96,7 +94,7 @@ def get_log_files_for_staging(parent_path):
     return parent_path+"/"+last_cluster_config_out, parent_path+"/"+last_genesis_out
 
 
-def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
+def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id,analysis_result):
     dir_name = "triage_rules/"
     file_name = "pc_deploy_debug_mapping.json"
     mapping_found = False
@@ -136,7 +134,7 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
                     for logFileName in i['file_lst']:
                         analysis_result.message_list.append(
                             message("Looking into logfile"+logFileName))
-                        return _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'],rdm_error_checksm)
+                        return _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'],rdm_error_checksm,analysis_result)
 
 
 
