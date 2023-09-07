@@ -6,6 +6,7 @@ import os
 from file_read_backwards import FileReadBackwards
 from lib import download_util, util
 import stage_extraction
+from analysis_result import analysis_result,message
 
 
 def _find_error_thread_id_in_file(dir_name, file_name, searchContent):
@@ -45,13 +46,14 @@ def find_error_msg_in_logfile_using_threadId(dir_name, file_name, error_thread_i
 def _collects_log_from_file(downloaded_log_location,logFileName, searchContent , rdm_error_checksm):
     if(logFileName=="prism_gateway.log"):
         error_msg=_find_error_msg_in_logfile(downloaded_log_location,logFileName,searchContent)
-        print(error_msg)
+        analysis_result.message_list.append(
+            message("Found below error in log", error_msg))
+        #print(error_msg)
     else:
         error_thread_id=_find_error_thread_id_in_file(downloaded_log_location,logFileName,searchContent)
         print("Thread Id: ",error_thread_id)
         error_msg=find_error_msg_in_logfile_using_threadId(downloaded_log_location,logFileName,error_thread_id)
     file_msg_chcksum = util.get_checksum_of_errorstring(error_msg)
-
     #Get combined checksum of RDM error message and logfile message
     chksm = util.get_checksum_without_caching(rdm_error_checksm+file_msg_chcksum)
 
@@ -62,6 +64,9 @@ def _collects_log_from_file(downloaded_log_location,logFileName, searchContent ,
         return "No Existing Result found based on checksum"
     else:
         #print(chksm_mapping_available)
+        analysis_result.message_list.append(
+            message("Below is the error root cause", chksm_mapping_available))
+
         return chksm_mapping_available
 
 def get_log_files_for_staging(parent_path):
@@ -102,7 +107,9 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
                 use_for_checksum=i['use_for_checksum']
                 # Case 1- Direct Deflect Issue
                 if not use_for_checksum:
-                    return i['response']
+                    analysis_result.message_list.append(
+                        message("This is known issue. Please Follow below suggestions", i['response']))
+                    return analysis_result
                 else:
                     cluster_log = i['cluster_log'] #possible values PC/PE/PC,PE
                     if "PC" in cluster_log:
@@ -110,14 +117,20 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
                             return "PC LOGS NOT FOUND"
                         #downloaded_log_location="resources/home/nutanix/data/logs/"
                         downloaded_log_location= download_util.download_pc_logs(PC_LOG_URL,deployment_id)
+                        analysis_result.message_list.append(
+                            message("Mapping is found. Downloading PC logs",))
                         #downloaded_log_location= (download_util_multithreaded.download_pc_logs(PC_LOG_URL))[0]
                     if "PE" in cluster_log:
                         if (PE_LOG_URL == ""):
                             return "PE LOGS NOT FOUND"
+                        analysis_result.message_list.append(
+                            message("Mapping is found. Downloading PE logs", ))
                         downloaded_log_location= download_util.zip_download_and_extract(PE_LOG_URL,deployment_id)
                         #downloaded_log_location= (download_util_multithreaded.download_multithreaded(PE_LOG_URL))[0]
 
                     for logFileName in i['file_lst']:
+                        analysis_result.message_list.append(
+                            message("Looking into logfile"+logFileName))
                         return _collects_log_from_file(downloaded_log_location,logFileName, i['log_signature'],rdm_error_checksm)
 
 
@@ -133,10 +146,15 @@ def pc_deploy_debug_mapping(errorMessage,PC_LOG_URL,PE_LOG_URL,deployment_id):
             if PE_LOG_URL!="":
                 pe_log_location = download_util.download_pc_logs(PE_LOG_URL,deployment_id)
                 pe_cluster_config_log_location, pe_genesis_log_location = get_log_files_for_staging(pe_log_location)
-            
-            print(stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location))
 
-            return "Log Signature not found in pc debug mapping"
+            analysis_result.message_list.append(
+                message("Log Signature not found in pc debug mapping", ))
+            #Add here stage which was successfull+ file name for analysis
+
+            traceback=stage_extraction.get_trace_after_last_stage(pe_cluster_config_log_location,pe_genesis_log_location,pc_cluster_config_log_location,pc_genesis_log_location)
+            analysis_result.message_list.append(
+                message("file name", traceback))
+            return analysis_result
 
 
 

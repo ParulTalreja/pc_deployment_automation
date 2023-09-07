@@ -9,8 +9,9 @@ import sys
 import time
 from bs4 import BeautifulSoup
 import argparse
-from analysis_result import analysis_result
+from analysis_result import analysis_result, message
 
+analysis_result=analysis_result(None, False)
 def list_of_strings(arg):
     return arg
 
@@ -22,8 +23,10 @@ def is_valid_rdm_url(rdmurl):
 
 def start_bot_analysis(rdm_link):
     if not is_valid_rdm_url(rdm_link):
-        response = "Invalid RDM link"
-        return response
+        error_text="This is invalid RDM link. Please enter valid RDM Link"
+        error_code="Example of valid RDM links are: https://rdm.eng.nutanix.com/scheduled_deployments/64d11f1a82e14fe9cd8ca089"
+        analysis_result.message_list.append(message(error_text,error_code))
+        return analysis_result
     pc_deployment = PCAutoDeployment(rdm_link)
     bot_start_time = time.time()
     pcdeploymentlogLocation,pc_log_url, pe_log_url , deployment_id = pc_deployment._get_failed_deployment_logurl(rdm_link)
@@ -41,10 +44,15 @@ def start_bot_analysis(rdm_link):
 
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
-        print(errorMessage)
+        analysis_result.message_list.append(message("Bot has looked into PC deployment logs and found below error", errorMessage))
         response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url,deployment_id)
     else:
-        response="Logs are not available."
+        error_text="Deployment Logs are not available.Looks like it got expired"
+        error_code=pcdeploymentlogLocation
+        analysis_result.message_list.append(message(error_text, error_code))
+        error_text = "Please try with fresh deployment and share logs here if deployment fails"
+        analysis_result.message_list.append(message(error_text))
+        response = analysis_result
 
     analysis_competion_time= time.time()-bot_start_time
     #result=analysis_result(response, analysis_competion_time)
