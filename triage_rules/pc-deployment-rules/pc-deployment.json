@@ -1,0 +1,116 @@
+{
+  "source": "RDM",
+  "error_string": [
+    {
+      "IP 127.0.0.1": [
+        {
+          "triage": [
+            {
+              "file_name": "Deployment.txt",
+              "source_file": "http.py",
+              "log_signature": "*/PrismGateway/services/rest/v2.0/vms/* \"ip_addresses\":[\\b10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b]",
+              "remedy": "The IP address have valid list of IPs available other than {127.0.0.1}.Please contact RDM Team regarding IP allocation",
+              "action": "custom_func()"
+            },
+            {
+              "file_name": "Deployment.txt",
+              "source_file": "http.py",
+              "log_signature": "*/PrismGateway/services/rest/v2.0/vms/* \"ip_addresses\":[!10{}]",
+              "remedy": "This happens when the VM got 127.0.0.1 as the IP which could be because the DHCP pool is exhausted of IPs. Check with IT team on this.",
+            }
+          ],
+          "default": [
+            {
+              "vm": "PC",
+              "file_name": "genesis.out",
+              "source_file": "deployment.py",
+              "error_around_timestamp": "true"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "No host has enough available resources for VM": [
+        {
+          "triage": [
+            {
+              "file_name": "Deployment.txt",
+              "source_file": "pc_deploy_plugin.py",
+              "log_signature": "*/No host has enough available resources for VM:[{a-z 0-9}*]",
+              "remedy": "Hosts should have atleast these many resources as follows : \\\\nFor 1-node Small PC : 6vcpus and 26GiB RAM\\\\nFor scaleout Small PC : 18vcpus and 78GiB RAM\\\\nFor 1-node Large PC : 10vcpus and 44GiB RAM\\\\nFor scaleout Large PC : 30vcpus and 132GiB RAM\\\\nLook into https://confluence.eng.nutanix.com:8443/pages/viewpage.action?spaceKey\u003dPRIS\u0026title\u003dTriaging+RDM+PC+deployment+issues for more info\",\n"
+            }
+          ],
+          "default": []
+        }
+      ]
+    },
+    {
+      "Unable to set prism password": [
+        {
+          "triage": [
+            {
+              "file_name": "Deployment.txt",
+              "source_file": "prism_client.py",
+              "log_signature": "*/HTTP Auth Failed get https://{0-9}+/api/iam/authn/.well-known/openid-configuration",
+              "remedy": "Authentication Failed. Please contact IAM team"
+            }
+          ],
+          "default": []
+        }
+      ]
+    },
+    {
+      "PE-PC Trust creation failed on PC: {\\\"message\\\":\\\"RPC error kTransportError raised: Error response code: 404\\\"": [
+        {
+          "triage": [
+            {
+              "vm": "PC",
+              "file_name": "prism_gateway.log",
+              "source_file": "TrustSetupWithMulticlusterCommand",
+              "error_around_timestamp": "true",
+              "log_signature": "Failed to add certificate to remote cluster",
+              "checksum_calculation": true,
+              "check_open_jira": true
+            },
+            {
+              "vm": "PC",
+              "file_name": "prism_gateway.log",
+              "source_file": "TrustSetupWithMulticlusterCommand",
+              "error_around_timestamp": "true",
+              "log_signature": "Server down",
+              "checksum_calculation": true,
+              "check_open_jira": true
+            }
+          ],
+          "default": []
+        }
+      ]
+    },
+    {
+      "Failed while enabling CMSP: Encountered error in cmsp sub task \u0027IAMv2 Migration \u0026 Bootstrap": [
+        {
+          "triage": [
+            {
+              "file_name": "Deployment.txt",
+              "source_file": "pc_deploy_plugin.py",
+              "log_signature": "[30008]Post-Deploymemt error: CMSP enablement failed on PC. \n Error message: Failed while enabling CMSP: Encountered error in cmsp sub task \u0027IAMv2 Migration \u0026 Bootstrap\u0027",
+              "remedy": "Encountered error in cmsp sub task IAMv2 Migration and Bootstrap.Please contact IAM team"
+            }
+          ],
+          "default": []
+        }
+      ]
+    }
+  ],
+  "default_workflow":[
+    {
+              "vm": "PE",
+              "file_name": ["aplos.out","cluster_config.out","genesis.out"],
+              "error_around_timestamp": "true",
+              "checksum_calculation": true,
+              "check_open_jira": true
+    }
+  ]
+
+}
