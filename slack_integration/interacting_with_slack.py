@@ -1,7 +1,7 @@
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from start_autotriage_deployment_bot import start_bot_analysis
-from jira_script import jira_integration
+from jira_integration import jira_integration
 import ssl
 import os
 

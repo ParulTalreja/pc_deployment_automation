@@ -3,7 +3,7 @@
     {
         "stageNo.": "1",
         "name": "Validation of Pc deployment request was successful",
-        "logMessage": "Prism central deployment parent task created with uuid",
+            "logMessage": "Prism central deployment parent task created with uuid",
         "log_file": ["cluster_config.out"],
         "pc_check": false
     },

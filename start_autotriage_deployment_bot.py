@@ -2,14 +2,14 @@ import requests
 import json
 import re
 import urllib3
-import triage_workflow
+from src import triage_workflow
+
 urllib3.disable_warnings()
 from lib import util
-import sys
 import time
 from bs4 import BeautifulSoup
 import argparse
-from analysis_result import response, message
+from src.analysis_result import response, message
 
 message_list=[]
 analysis_result=response(message_list, False)
@@ -48,7 +48,7 @@ def start_bot_analysis(rdm_link):
     if pc_deployment.is_log_available(pcdeploymentlogLocation):
         errorMessage = util.searchException(pcdeploymentlogLocation)
         analysis_result.message_list.append(message("Bot has looked into PC deployment logs and found below error", errorMessage))
-        response = triage_workflow.pc_deploy_debug_mapping(errorMessage,pc_log_url,pe_log_url,deployment_id,analysis_result)
+        response = triage_workflow.pc_deploy_debug_mapping(errorMessage, pc_log_url, pe_log_url, deployment_id, analysis_result)
     else:
         error_text="Deployment Logs are not available.Looks like it got expired"
         error_code=pcdeploymentlogLocation

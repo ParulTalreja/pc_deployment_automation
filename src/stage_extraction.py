@@ -9,13 +9,13 @@ import re
 import ast
 import hashlib
 from datetime import datetime
-from analysis_result import response, message
+from src.analysis_result import response, message
 
 def get_last_stage_passed(analysis_result,clusterFile, genesisFile, ispc):
     timestamp=None
     stageLine=None
     stage=None
-    with open("stages.json", "r") as j:
+    with open("../triage_rules/stages.json", "r") as j:
         stage_list= json.load(j)
         i=0
         logMessage=stage_list["stages"][i]['logMessage']
